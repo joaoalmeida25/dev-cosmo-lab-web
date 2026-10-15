@@ -1,0 +1,132 @@
+@import 'tailwindcss';
+
+:root {
+  --primitive-purple-300: #a060f8;
+  --primitive-purple-400: #9858f8;
+  --primitive-purple-500: #7f52fc;
+  --primitive-purple-600: #7041fd;
+  --primitive-purple-700: #6030f8;
+
+  --primitive-neutral-950: #080b11;
+  --primitive-neutral-900: #090d13;
+  --primitive-neutral-850: #0d1018;
+  --primitive-neutral-800: #18142d;
+  --primitive-neutral-700: #2c2742;
+
+  --primitive-white: #ffffff;
+  --primitive-neutral-50: #fafafe;
+  --primitive-neutral-100: #f7f6fe;
+  --primitive-neutral-150: #f3f2fd;
+  --primitive-neutral-200: #efeafe;
+  --primitive-neutral-300: #e5dbf5;
+
+  --primitive-gray-50: #f8f8f8;
+  --primitive-gray-200: #e8e8f0;
+  --primitive-gray-400: #98a0b8;
+  --primitive-gray-500: #788098;
+
+  --primitive-navy-950: #181830;
+  --primitive-navy-900: #202038;
+  --primitive-navy-700: #5c4b7f;
+}
+
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --background: color-mix(in srgb, var(--primitive-neutral-950) 90%, var(--primitive-gray-400));
+  --background-soft: color-mix(
+    in srgb,
+    var(--primitive-neutral-900) 86%,
+    var(--primitive-gray-400)
+  );
+  --surface: color-mix(in srgb, var(--primitive-neutral-850) 80%, var(--primitive-gray-400));
+  --surface-hover: color-mix(in srgb, var(--primitive-neutral-800) 80%, var(--primitive-gray-400));
+  --border: color-mix(in srgb, var(--primitive-neutral-700) 74%, var(--primitive-gray-400));
+
+  --text-primary: var(--primitive-gray-50);
+  --text-secondary: var(--primitive-gray-400);
+  --text-muted: color-mix(in srgb, var(--primitive-gray-500) 20%, var(--primitive-gray-400));
+
+  --primary: var(--primitive-purple-600);
+  --primary-foreground: var(--primitive-white);
+  --primary-hover: var(--primitive-purple-500);
+  --primary-soft: var(--primitive-neutral-800);
+
+  --icon-surface: var(--primitive-neutral-800);
+  --chip-background: var(--primitive-neutral-800);
+  --focus-ring: var(--primitive-purple-400);
+
+  --hero-gradient-from: var(--primitive-purple-700);
+  --hero-gradient-to: var(--primitive-purple-300);
+  --ambient-glow: color-mix(in srgb, var(--primitive-purple-600) 18%, transparent);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --background: color-mix(in srgb, var(--primitive-neutral-50) 72%, var(--primitive-gray-200));
+  --background-soft: color-mix(in srgb, var(--primitive-neutral-50) 40%, var(--primitive-gray-200));
+  --surface: var(--primitive-white);
+  --surface-hover: var(--primitive-neutral-100);
+  --border: color-mix(in srgb, var(--primitive-gray-200) 80%, var(--primitive-gray-400));
+
+  --text-primary: var(--primitive-navy-950);
+  --text-secondary: var(--primitive-navy-900);
+  --text-muted: var(--primitive-navy-700);
+
+  --primary: var(--primitive-purple-500);
+  --primary-foreground: var(--primitive-white);
+  --primary-hover: var(--primitive-purple-600);
+  --primary-soft: var(--primitive-neutral-200);
+
+  --icon-surface: var(--primitive-neutral-150);
+  --chip-background: var(--primitive-neutral-200);
+  --focus-ring: var(--primitive-purple-500);
+
+  --hero-gradient-from: var(--primitive-purple-500);
+  --hero-gradient-to: var(--primitive-purple-300);
+  --ambient-glow: color-mix(in srgb, var(--primitive-purple-500) 10%, transparent);
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --color-background: var(--background);
+  --color-background-soft: var(--background-soft);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-border: var(--border);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-soft: var(--primary-soft);
+
+  --color-icon-surface: var(--icon-surface);
+  --color-chip-background: var(--chip-background);
+  --color-focus-ring: var(--focus-ring);
+
+  --color-hero-gradient-from: var(--hero-gradient-from);
+  --color-hero-gradient-to: var(--hero-gradient-to);
+  --color-ambient-glow: var(--ambient-glow);
+
+  --radius-control: 12px;
+  --radius-card: 16px;
+
+  --shadow-card: 0 4px 16px color-mix(in srgb, var(--text-primary) 6%, transparent);
+  --shadow-primary: 0 4px 24px var(--ambient-glow);
+}
+
+@layer base {
+  body {
+    min-height: 100%;
+    background-color: var(--background);
+    color: var(--text-primary);
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "theme": {
+    "loading": "Loading theme",
+    "enableLight": "Enable light theme",
+    "enableDark": "Enable dark theme"
+  },
+  "language": {
+    "toggle": "Select language",
+    "current": "Current language: {language}",
+    "select": "Switch language to {language}",
+    "options": "Language options",
+    "names": {
+      "pt-BR": "Portuguese",
+      "en": "English",
+      "es": "Spanish"
+    }
+  },
+  "accessibility": {
+    "opensInNewTab": "opens in a new tab"
+  }
+}

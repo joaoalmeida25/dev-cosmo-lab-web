@@ -1,0 +1,21 @@
+{
+  "theme": {
+    "loading": "Cargando tema",
+    "enableLight": "Activar tema claro",
+    "enableDark": "Activar tema oscuro"
+  },
+  "language": {
+    "toggle": "Seleccionar idioma",
+    "current": "Idioma actual: {language}",
+    "select": "Cambiar idioma a {language}",
+    "options": "Opciones de idioma",
+    "names": {
+      "pt-BR": "Portugués",
+      "en": "Inglés",
+      "es": "Español"
+    }
+  },
+  "accessibility": {
+    "opensInNewTab": "se abre en una pestaña nueva"
+  }
+}
