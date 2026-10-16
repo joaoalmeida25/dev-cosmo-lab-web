@@ -3,9 +3,9 @@ import { Fragment } from 'react';
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    'border-primary bg-primary text-primary-foreground shadow-primary enabled:hover:border-primary-hover enabled:hover:bg-primary-hover [&[href]]:hover:border-primary-hover [&[href]]:hover:bg-primary-hover',
+    'border-primary bg-primary text-primary-foreground shadow-primary enabled:hover:border-primary-hover enabled:hover:bg-primary-hover enabled:hover:text-primary-hover-foreground [&[href]]:hover:border-primary-hover [&[href]]:hover:bg-primary-hover [&[href]]:hover:text-primary-hover-foreground disabled:border-primary-disabled disabled:bg-primary-disabled disabled:text-primary-disabled-foreground disabled:shadow-none',
   secondary:
-    'border-border bg-surface/80 text-text-primary backdrop-blur-sm enabled:hover:bg-surface-hover [&[href]]:hover:bg-surface-hover',
+    'border-border bg-transparent text-text-primary backdrop-blur-sm enabled:hover:bg-surface-hover [&[href]]:hover:bg-surface-hover',
   outline:
     'border-primary bg-transparent text-text-primary enabled:hover:bg-primary-soft [&[href]]:hover:bg-primary-soft',
   ghost:
@@ -13,8 +13,8 @@ const variantClasses: Record<ButtonVariant, string> = {
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: 'min-h-11 gap-3 rounded-control px-4 py-2 text-sm [&_[data-button-icon]]:size-4',
-  md: 'min-h-12 gap-2.5 rounded-control px-4 py-3 text-sm [&_[data-button-icon]]:size-4.5',
+  sm: 'min-h-11 gap-2 rounded-control px-4 py-2 text-sm [&_[data-button-icon]]:size-4',
+  md: 'min-h-11 gap-2.5 rounded-control px-5 py-2.5 text-sm [&_[data-button-icon]]:size-4.5',
   lg: 'min-h-12 gap-2.5 rounded-control px-5 py-3 text-sm [&_[data-button-icon]]:size-4.5',
   icon: 'size-11 shrink-0 gap-0 rounded-full p-0 text-sm [&_[data-button-icon]]:size-5',
 };
@@ -29,7 +29,10 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   const classes = [
-    'inline-flex cursor-pointer items-center justify-center border font-medium transition-[color,background-color,border-color,transform] duration-150 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus-ring enabled:active:translate-y-px disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none [&[href]]:active:translate-y-px [&_[data-button-icon]]:inline-flex [&_[data-button-icon]]:shrink-0 [&_[data-button-icon]>*]:size-full',
+    'inline-flex cursor-pointer items-center justify-center border font-medium transition-[color,background-color,border-color,transform] duration-150 focus-visible:outline-focus-ring enabled:active:translate-y-px disabled:cursor-not-allowed motion-reduce:transition-none [&[href]]:active:translate-y-px [&_[data-button-icon]]:inline-flex [&_[data-button-icon]]:shrink-0 [&_[data-button-icon]>*]:size-full',
+    variant === 'primary'
+      ? 'focus-visible:outline-3 focus-visible:outline-offset-3'
+      : 'focus-visible:outline-2 focus-visible:outline-offset-4 disabled:opacity-40',
     variantClasses[variant],
     sizeClasses[size],
     className,

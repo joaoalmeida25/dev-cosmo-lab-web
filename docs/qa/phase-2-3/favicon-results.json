@@ -1,0 +1,26 @@
+[
+  {
+    "route": "/",
+    "icons": ["/favicon.ico"],
+    "decoded": {
+      "width": 256,
+      "height": 256
+    }
+  },
+  {
+    "route": "/en",
+    "icons": ["/favicon.ico"],
+    "decoded": {
+      "width": 256,
+      "height": 256
+    }
+  },
+  {
+    "route": "/es",
+    "icons": ["/favicon.ico"],
+    "decoded": {
+      "width": 256,
+      "height": 256
+    }
+  }
+]

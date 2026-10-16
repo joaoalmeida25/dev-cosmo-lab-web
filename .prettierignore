@@ -4,3 +4,6 @@ coverage
 dist
 build
 package-lock.json
+
+# Preserve the original design handoff documentation and references byte for byte.
+docs/design/

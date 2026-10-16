@@ -2,7 +2,8 @@
 
 import { useEffect, useId, useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { usePathname, useRouter } from '@/i18n/navigation';
+import { getPathname, usePathname } from '@/i18n/navigation';
+import { useRouter } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { LanguageToggleView } from '@/components/language-toggle/language-toggle-view.component';
 import { Locale, SupportedLocale } from '@/components/language-toggle/language-toggle.types';
@@ -53,7 +54,9 @@ export const LanguageToggle = () => {
     setIsOpen(false);
 
     const href = `${pathname}${window.location.search}${window.location.hash}`;
-    router.replace(href, { locale: nextLocale, scroll: false });
+    // Resolve the canonical URL directly. The localized router forces a locale
+    // prefix on locale changes, which can leave the default locale at /pt-BR.
+    router.replace(getPathname({ href, locale: nextLocale }), { scroll: false });
   };
 
   return (

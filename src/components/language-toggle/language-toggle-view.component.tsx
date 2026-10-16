@@ -1,4 +1,3 @@
-import { FLOATING_CONTROL_BUTTON_CLASSES } from '@/components/floating-controls/floating-controls.constants';
 import { Button } from '@/components/ui/button/button.component';
 import { Locale, SupportedLocale } from '@/components/language-toggle/language-toggle.types';
 import type { useTranslations } from 'next-intl';
@@ -33,14 +32,17 @@ export const LanguageToggleView = ({
     <div ref={containerRef} className="relative">
       <Button
         variant="secondary"
-        size="icon"
+        size="sm"
         onClick={() => setIsOpen((currentValue) => !currentValue)}
         aria-label={`${translate('toggle')}. ${translate('current', { language: currentLanguage })}`}
         aria-expanded={isOpen}
         aria-controls={optionsId}
-        className={`${FLOATING_CONTROL_BUTTON_CLASSES} text-xs font-semibold tracking-wide`}
+        className="gap-1.5 px-3 text-xs font-semibold tracking-wide"
       >
         {localeCodes[locale]}
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="m3 4.5 3 3 3-3" stroke="currentColor" strokeWidth="1.5" />
+        </svg>
       </Button>
 
       <div
@@ -48,9 +50,9 @@ export const LanguageToggleView = ({
         role="group"
         aria-label={translate('options')}
         aria-hidden={!isOpen}
-        className={`absolute top-[calc(100%+0.5rem)] left-0 w-11 origin-top overflow-hidden rounded-control border border-border/60 bg-surface/75 shadow-card ring-1 ring-inset ring-text-primary/5 backdrop-blur-xl transition-[max-height,opacity,transform,visibility] duration-200 ease-out motion-reduce:transition-none ${
+        className={`absolute top-[calc(100%+0.5rem)] right-0 w-16 origin-top overflow-hidden rounded-control border border-border/60 bg-surface shadow-card ring-1 ring-inset ring-text-primary/5 backdrop-blur-xl transition-[max-height,opacity,transform,visibility] duration-200 ease-out motion-reduce:transition-none ${
           isOpen
-            ? 'visible max-h-24 translate-y-0 opacity-100 pointer-events-auto'
+            ? 'visible max-h-28 translate-y-0 opacity-100 pointer-events-auto'
             : 'invisible max-h-0 -translate-y-1 opacity-0 pointer-events-none'
         }`}
       >
@@ -61,7 +63,7 @@ export const LanguageToggleView = ({
             tabIndex={isOpen ? 0 : -1}
             onClick={() => changeLocale(optionLocale)}
             aria-label={translate('select', { language: translate(`names.${optionLocale}`) })}
-            className={`flex h-10 w-full cursor-pointer items-center justify-center text-xs font-semibold tracking-wide text-text-primary transition-[color,background-color] duration-200 hover:bg-surface-hover/70 focus-visible:z-10 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-focus-ring motion-reduce:transition-none ${index > 0 ? 'border-t border-border/50' : ''}`}
+            className={`flex h-11 w-full cursor-pointer items-center justify-center text-xs font-semibold tracking-wide text-text-primary transition-[color,background-color] duration-200 hover:bg-surface-hover/70 focus-visible:z-10 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-focus-ring motion-reduce:transition-none ${index > 0 ? 'border-t border-border/50' : ''}`}
           >
             {localeCodes[optionLocale]}
           </button>

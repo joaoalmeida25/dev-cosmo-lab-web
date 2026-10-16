@@ -1,92 +1,57 @@
 @import 'tailwindcss';
 
-:root {
-  --primitive-purple-300: #a060f8;
-  --primitive-purple-400: #9858f8;
-  --primitive-purple-500: #7f52fc;
-  --primitive-purple-600: #7041fd;
-  --primitive-purple-700: #6030f8;
+@custom-variant light (&:where([data-theme='light'], [data-theme='light'] *));
 
-  --primitive-neutral-950: #080b11;
-  --primitive-neutral-900: #090d13;
-  --primitive-neutral-850: #0d1018;
-  --primitive-neutral-800: #18142d;
-  --primitive-neutral-700: #2c2742;
-
-  --primitive-white: #ffffff;
-  --primitive-neutral-50: #fafafe;
-  --primitive-neutral-100: #f7f6fe;
-  --primitive-neutral-150: #f3f2fd;
-  --primitive-neutral-200: #efeafe;
-  --primitive-neutral-300: #e5dbf5;
-
-  --primitive-gray-50: #f8f8f8;
-  --primitive-gray-200: #e8e8f0;
-  --primitive-gray-400: #98a0b8;
-  --primitive-gray-500: #788098;
-
-  --primitive-navy-950: #181830;
-  --primitive-navy-900: #202038;
-  --primitive-navy-700: #5c4b7f;
-}
-
+/* Phase 2 palette and primary states approved in docs/design/phase-2-decisions.md.
+   Secondary/accent text and decorative borders retain contextual restrictions. */
 :root,
 :root[data-theme='dark'] {
   color-scheme: dark;
-
-  --background: color-mix(in srgb, var(--primitive-neutral-950) 90%, var(--primitive-gray-400));
-  --background-soft: color-mix(
-    in srgb,
-    var(--primitive-neutral-900) 86%,
-    var(--primitive-gray-400)
-  );
-  --surface: color-mix(in srgb, var(--primitive-neutral-850) 80%, var(--primitive-gray-400));
-  --surface-hover: color-mix(in srgb, var(--primitive-neutral-800) 80%, var(--primitive-gray-400));
-  --border: color-mix(in srgb, var(--primitive-neutral-700) 74%, var(--primitive-gray-400));
-
-  --text-primary: var(--primitive-gray-50);
-  --text-secondary: var(--primitive-gray-400);
-  --text-muted: color-mix(in srgb, var(--primitive-gray-500) 20%, var(--primitive-gray-400));
-
-  --primary: var(--primitive-purple-600);
-  --primary-foreground: var(--primitive-white);
-  --primary-hover: var(--primitive-purple-500);
-  --primary-soft: var(--primitive-neutral-800);
-
-  --icon-surface: var(--primitive-neutral-800);
-  --chip-background: var(--primitive-neutral-800);
-  --focus-ring: var(--primitive-purple-400);
-
-  --hero-gradient-from: var(--primitive-purple-700);
-  --hero-gradient-to: var(--primitive-purple-300);
-  --ambient-glow: color-mix(in srgb, var(--primitive-purple-600) 18%, transparent);
+  --background: #080c18;
+  --surface: #11182b;
+  --border: #27304b;
+  --text-primary: #f5f6fb;
+  --text-secondary: #a5afc4;
+  --accent: #a79dfc;
+  --primary: #6264df;
+  --primary-foreground: #ffffff;
+  --primary-hover: #5558cc;
+  --primary-hover-foreground: #ffffff;
+  --primary-soft: #191e37;
+  --primary-disabled: #434961;
+  --primary-disabled-foreground: #c6c9d8;
+  --focus-ring: #e2e8ff;
 }
 
 :root[data-theme='light'] {
   color-scheme: light;
+  --background: #fafafe;
+  --surface: #ffffff;
+  --border: #e2e7f1;
+  --text-primary: #12172b;
+  --text-secondary: #656f86;
+  --accent: #6665dd;
+  --primary: #6264df;
+  --primary-foreground: #ffffff;
+  --primary-hover: #5558cc;
+  --primary-hover-foreground: #ffffff;
+  --primary-soft: #eef0ff;
+  --primary-disabled: #e6e9f2;
+  --primary-disabled-foreground: #60677b;
+  --focus-ring: #4246a8;
+}
 
-  --background: color-mix(in srgb, var(--primitive-neutral-50) 72%, var(--primitive-gray-200));
-  --background-soft: color-mix(in srgb, var(--primitive-neutral-50) 40%, var(--primitive-gray-200));
-  --surface: var(--primitive-white);
-  --surface-hover: var(--primitive-neutral-100);
-  --border: color-mix(in srgb, var(--primitive-gray-200) 80%, var(--primitive-gray-400));
-
-  --text-primary: var(--primitive-navy-950);
-  --text-secondary: var(--primitive-navy-900);
-  --text-muted: var(--primitive-navy-700);
-
-  --primary: var(--primitive-purple-500);
-  --primary-foreground: var(--primitive-white);
-  --primary-hover: var(--primitive-purple-600);
-  --primary-soft: var(--primitive-neutral-200);
-
-  --icon-surface: var(--primitive-neutral-150);
-  --chip-background: var(--primitive-neutral-200);
-  --focus-ring: var(--primitive-purple-500);
-
-  --hero-gradient-from: var(--primitive-purple-500);
-  --hero-gradient-to: var(--primitive-purple-300);
-  --ambient-glow: color-mix(in srgb, var(--primitive-purple-500) 10%, transparent);
+/* Provisional aliases and interaction/effect fallbacks: no approved values in handoff.
+   Reuse the documented palette; do not introduce additional brand shades. */
+:root {
+  --background-soft: var(--primary-soft);
+  --surface-hover: var(--primary-soft);
+  --text-muted: var(--text-secondary);
+  --icon-surface: var(--primary-soft);
+  --chip-background: var(--primary-soft);
+  --hero-gradient-from: var(--primary);
+  --hero-gradient-to: var(--accent);
+  --ambient-glow: color-mix(in srgb, var(--primary) 12%, transparent);
 }
 
 @theme inline {
@@ -103,9 +68,13 @@
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
 
+  --color-accent: var(--accent);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary-hover: var(--primary-hover);
+  --color-primary-hover-foreground: var(--primary-hover-foreground);
+  --color-primary-disabled: var(--primary-disabled);
+  --color-primary-disabled-foreground: var(--primary-disabled-foreground);
   --color-primary-soft: var(--primary-soft);
 
   --color-icon-surface: var(--icon-surface);
@@ -116,9 +85,11 @@
   --color-hero-gradient-to: var(--hero-gradient-to);
   --color-ambient-glow: var(--ambient-glow);
 
-  --radius-control: 12px;
+  /* Approved pill controls and default card radius. */
+  --radius-control: 9999px;
   --radius-card: 16px;
 
+  /* Shadows remain provisional. */
   --shadow-card: 0 4px 16px color-mix(in srgb, var(--text-primary) 6%, transparent);
   --shadow-primary: 0 4px 24px var(--ambient-glow);
 }

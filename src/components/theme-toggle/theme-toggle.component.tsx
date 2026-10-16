@@ -2,7 +2,6 @@
 
 import { useTheme } from '@/hooks/use-theme/use-theme.hook';
 import { Button } from '@/components/ui/button/button.component';
-import { FLOATING_CONTROL_BUTTON_CLASSES } from '@/components/floating-controls/floating-controls.constants';
 import { useTranslations } from 'next-intl';
 
 export const ThemeToggle = () => {
@@ -17,7 +16,7 @@ export const ThemeToggle = () => {
       onClick={toggleTheme}
       disabled={!isHydrated}
       aria-label={label}
-      className={FLOATING_CONTROL_BUTTON_CLASSES}
+      className="text-accent"
     >
       <svg
         viewBox="0 0 24 24"

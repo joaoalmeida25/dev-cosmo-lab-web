@@ -1,0 +1,2067 @@
+{
+  "matrix": [
+    {
+      "route": "/",
+      "theme": "dark",
+      "width": 375,
+      "lang": "pt-BR",
+      "overflow": false,
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "controls": 2,
+      "images": [
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 24,
+            "y": 19.5,
+            "width": 48,
+            "height": 36,
+            "top": 19.5,
+            "right": 72,
+            "bottom": 55.5,
+            "left": 24
+          }
+        },
+        {
+          "src": "",
+          "loaded": false,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 24,
+            "y": 624,
+            "width": 48,
+            "height": 36,
+            "top": 624,
+            "right": 72,
+            "bottom": 660,
+            "left": 24
+          }
+        },
+        {
+          "src": "",
+          "loaded": false,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "width": 69.578125,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "links": ["#main-content", "/", "/", "/", "/"],
+      "background": "rgb(8, 12, 24)"
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "width": 768,
+      "lang": "pt-BR",
+      "overflow": false,
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "controls": 2,
+      "images": [
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 40,
+            "y": 23.5,
+            "width": 54,
+            "height": 40,
+            "top": 23.5,
+            "right": 94,
+            "bottom": 63.5,
+            "left": 40
+          }
+        },
+        {
+          "src": "",
+          "loaded": false,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 40,
+            "y": 708,
+            "width": 54,
+            "height": 40,
+            "top": 708,
+            "right": 94,
+            "bottom": 748,
+            "left": 40
+          }
+        },
+        {
+          "src": "",
+          "loaded": false,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "width": 69.578125,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "links": ["#main-content", "/", "/", "/", "/"],
+      "background": "rgb(8, 12, 24)"
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "width": 1024,
+      "lang": "pt-BR",
+      "overflow": false,
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "controls": 2,
+      "images": [
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 80,
+            "y": 23.5,
+            "width": 54,
+            "height": 40,
+            "top": 23.5,
+            "right": 134,
+            "bottom": 63.5,
+            "left": 80
+          }
+        },
+        {
+          "src": "",
+          "loaded": false,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 80,
+            "y": 708,
+            "width": 54,
+            "height": 40,
+            "top": 708,
+            "right": 134,
+            "bottom": 748,
+            "left": 80
+          }
+        },
+        {
+          "src": "",
+          "loaded": false,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "width": 69.578125,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "links": ["#main-content", "/", "/", "/", "/"],
+      "background": "rgb(8, 12, 24)"
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "width": 1440,
+      "lang": "pt-BR",
+      "overflow": false,
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "controls": 2,
+      "images": [
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 80,
+            "y": 23.5,
+            "width": 54,
+            "height": 40,
+            "top": 23.5,
+            "right": 134,
+            "bottom": 63.5,
+            "left": 80
+          }
+        },
+        {
+          "src": "",
+          "loaded": false,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 80,
+            "y": 708,
+            "width": 54,
+            "height": 40,
+            "top": 708,
+            "right": 134,
+            "bottom": 748,
+            "left": 80
+          }
+        },
+        {
+          "src": "",
+          "loaded": false,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "width": 69.578125,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "links": ["#main-content", "/", "/", "/", "/"],
+      "background": "rgb(8, 12, 24)"
+    },
+    {
+      "route": "/",
+      "theme": "light",
+      "width": 375,
+      "lang": "pt-BR",
+      "overflow": false,
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "controls": 2,
+      "images": [
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 24,
+            "y": 19.5,
+            "width": 48,
+            "height": 36,
+            "top": 19.5,
+            "right": 72,
+            "bottom": 55.5,
+            "left": 24
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 24,
+            "y": 624,
+            "width": 48,
+            "height": 36,
+            "top": 624,
+            "right": 72,
+            "bottom": 660,
+            "left": 24
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "width": 69.578125,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "links": ["#main-content", "/", "/", "/", "/"],
+      "background": "rgb(250, 250, 254)"
+    },
+    {
+      "route": "/",
+      "theme": "light",
+      "width": 768,
+      "lang": "pt-BR",
+      "overflow": false,
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "controls": 2,
+      "images": [
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 40,
+            "y": 23.5,
+            "width": 54,
+            "height": 40,
+            "top": 23.5,
+            "right": 94,
+            "bottom": 63.5,
+            "left": 40
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 40,
+            "y": 708,
+            "width": 54,
+            "height": 40,
+            "top": 708,
+            "right": 94,
+            "bottom": 748,
+            "left": 40
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "width": 69.578125,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "links": ["#main-content", "/", "/", "/", "/"],
+      "background": "rgb(250, 250, 254)"
+    },
+    {
+      "route": "/",
+      "theme": "light",
+      "width": 1024,
+      "lang": "pt-BR",
+      "overflow": false,
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "controls": 2,
+      "images": [
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 80,
+            "y": 23.5,
+            "width": 54,
+            "height": 40,
+            "top": 23.5,
+            "right": 134,
+            "bottom": 63.5,
+            "left": 80
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 80,
+            "y": 708,
+            "width": 54,
+            "height": 40,
+            "top": 708,
+            "right": 134,
+            "bottom": 748,
+            "left": 80
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "width": 69.578125,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "links": ["#main-content", "/", "/", "/", "/"],
+      "background": "rgb(250, 250, 254)"
+    },
+    {
+      "route": "/",
+      "theme": "light",
+      "width": 1440,
+      "lang": "pt-BR",
+      "overflow": false,
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "controls": 2,
+      "images": [
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 80,
+            "y": 23.5,
+            "width": 54,
+            "height": 40,
+            "top": 23.5,
+            "right": 134,
+            "bottom": 63.5,
+            "left": 80
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 80,
+            "y": 708,
+            "width": 54,
+            "height": 40,
+            "top": 708,
+            "right": 134,
+            "bottom": 748,
+            "left": 80
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "width": 69.578125,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "links": ["#main-content", "/", "/", "/", "/"],
+      "background": "rgb(250, 250, 254)"
+    },
+    {
+      "route": "/en",
+      "theme": "dark",
+      "width": 375,
+      "lang": "en",
+      "overflow": false,
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "controls": 2,
+      "images": [
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 24,
+            "y": 19.5,
+            "width": 48,
+            "height": 36,
+            "top": 19.5,
+            "right": 72,
+            "bottom": 55.5,
+            "left": 24
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 24,
+            "y": 624,
+            "width": 48,
+            "height": 36,
+            "top": 624,
+            "right": 72,
+            "bottom": 660,
+            "left": 24
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "width": 70.875,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "links": ["#main-content", "/en", "/en", "/en", "/en"],
+      "background": "rgb(8, 12, 24)"
+    },
+    {
+      "route": "/en",
+      "theme": "dark",
+      "width": 768,
+      "lang": "en",
+      "overflow": false,
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "controls": 2,
+      "images": [
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 40,
+            "y": 23.5,
+            "width": 54,
+            "height": 40,
+            "top": 23.5,
+            "right": 94,
+            "bottom": 63.5,
+            "left": 40
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 40,
+            "y": 708,
+            "width": 54,
+            "height": 40,
+            "top": 708,
+            "right": 94,
+            "bottom": 748,
+            "left": 40
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "width": 70.875,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "links": ["#main-content", "/en", "/en", "/en", "/en"],
+      "background": "rgb(8, 12, 24)"
+    },
+    {
+      "route": "/en",
+      "theme": "dark",
+      "width": 1024,
+      "lang": "en",
+      "overflow": false,
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "controls": 2,
+      "images": [
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 80,
+            "y": 23.5,
+            "width": 54,
+            "height": 40,
+            "top": 23.5,
+            "right": 134,
+            "bottom": 63.5,
+            "left": 80
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 80,
+            "y": 708,
+            "width": 54,
+            "height": 40,
+            "top": 708,
+            "right": 134,
+            "bottom": 748,
+            "left": 80
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "width": 70.875,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "links": ["#main-content", "/en", "/en", "/en", "/en"],
+      "background": "rgb(8, 12, 24)"
+    },
+    {
+      "route": "/en",
+      "theme": "dark",
+      "width": 1440,
+      "lang": "en",
+      "overflow": false,
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "controls": 2,
+      "images": [
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 80,
+            "y": 23.5,
+            "width": 54,
+            "height": 40,
+            "top": 23.5,
+            "right": 134,
+            "bottom": 63.5,
+            "left": 80
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 80,
+            "y": 708,
+            "width": 54,
+            "height": 40,
+            "top": 708,
+            "right": 134,
+            "bottom": 748,
+            "left": 80
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "width": 70.875,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "links": ["#main-content", "/en", "/en", "/en", "/en"],
+      "background": "rgb(8, 12, 24)"
+    },
+    {
+      "route": "/en",
+      "theme": "light",
+      "width": 375,
+      "lang": "en",
+      "overflow": false,
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "controls": 2,
+      "images": [
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 24,
+            "y": 19.5,
+            "width": 48,
+            "height": 36,
+            "top": 19.5,
+            "right": 72,
+            "bottom": 55.5,
+            "left": 24
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 24,
+            "y": 624,
+            "width": 48,
+            "height": 36,
+            "top": 624,
+            "right": 72,
+            "bottom": 660,
+            "left": 24
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "width": 70.875,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "links": ["#main-content", "/en", "/en", "/en", "/en"],
+      "background": "rgb(250, 250, 254)"
+    },
+    {
+      "route": "/en",
+      "theme": "light",
+      "width": 768,
+      "lang": "en",
+      "overflow": false,
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "controls": 2,
+      "images": [
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 40,
+            "y": 23.5,
+            "width": 54,
+            "height": 40,
+            "top": 23.5,
+            "right": 94,
+            "bottom": 63.5,
+            "left": 40
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 40,
+            "y": 708,
+            "width": 54,
+            "height": 40,
+            "top": 708,
+            "right": 94,
+            "bottom": 748,
+            "left": 40
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "width": 70.875,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "links": ["#main-content", "/en", "/en", "/en", "/en"],
+      "background": "rgb(250, 250, 254)"
+    },
+    {
+      "route": "/en",
+      "theme": "light",
+      "width": 1024,
+      "lang": "en",
+      "overflow": false,
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "controls": 2,
+      "images": [
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 80,
+            "y": 23.5,
+            "width": 54,
+            "height": 40,
+            "top": 23.5,
+            "right": 134,
+            "bottom": 63.5,
+            "left": 80
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 80,
+            "y": 708,
+            "width": 54,
+            "height": 40,
+            "top": 708,
+            "right": 134,
+            "bottom": 748,
+            "left": 80
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "width": 70.875,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "links": ["#main-content", "/en", "/en", "/en", "/en"],
+      "background": "rgb(250, 250, 254)"
+    },
+    {
+      "route": "/en",
+      "theme": "light",
+      "width": 1440,
+      "lang": "en",
+      "overflow": false,
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "controls": 2,
+      "images": [
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 80,
+            "y": 23.5,
+            "width": 54,
+            "height": 40,
+            "top": 23.5,
+            "right": 134,
+            "bottom": 63.5,
+            "left": 80
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 80,
+            "y": 708,
+            "width": 54,
+            "height": 40,
+            "top": 708,
+            "right": 134,
+            "bottom": 748,
+            "left": 80
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "width": 70.875,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "links": ["#main-content", "/en", "/en", "/en", "/en"],
+      "background": "rgb(250, 250, 254)"
+    },
+    {
+      "route": "/es",
+      "theme": "dark",
+      "width": 375,
+      "lang": "es",
+      "overflow": false,
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "controls": 2,
+      "images": [
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 24,
+            "y": 19.5,
+            "width": 48,
+            "height": 36,
+            "top": 19.5,
+            "right": 72,
+            "bottom": 55.5,
+            "left": 24
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 24,
+            "y": 624,
+            "width": 48,
+            "height": 36,
+            "top": 624,
+            "right": 72,
+            "bottom": 660,
+            "left": 24
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "width": 70,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "links": ["#main-content", "/es", "/es", "/es", "/es"],
+      "background": "rgb(8, 12, 24)"
+    },
+    {
+      "route": "/es",
+      "theme": "dark",
+      "width": 768,
+      "lang": "es",
+      "overflow": false,
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "controls": 2,
+      "images": [
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 40,
+            "y": 23.5,
+            "width": 54,
+            "height": 40,
+            "top": 23.5,
+            "right": 94,
+            "bottom": 63.5,
+            "left": 40
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 40,
+            "y": 708,
+            "width": 54,
+            "height": 40,
+            "top": 708,
+            "right": 94,
+            "bottom": 748,
+            "left": 40
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "width": 70,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "links": ["#main-content", "/es", "/es", "/es", "/es"],
+      "background": "rgb(8, 12, 24)"
+    },
+    {
+      "route": "/es",
+      "theme": "dark",
+      "width": 1024,
+      "lang": "es",
+      "overflow": false,
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "controls": 2,
+      "images": [
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 80,
+            "y": 23.5,
+            "width": 54,
+            "height": 40,
+            "top": 23.5,
+            "right": 134,
+            "bottom": 63.5,
+            "left": 80
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 80,
+            "y": 708,
+            "width": 54,
+            "height": 40,
+            "top": 708,
+            "right": 134,
+            "bottom": 748,
+            "left": 80
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "width": 70,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "links": ["#main-content", "/es", "/es", "/es", "/es"],
+      "background": "rgb(8, 12, 24)"
+    },
+    {
+      "route": "/es",
+      "theme": "dark",
+      "width": 1440,
+      "lang": "es",
+      "overflow": false,
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "controls": 2,
+      "images": [
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 80,
+            "y": 23.5,
+            "width": 54,
+            "height": 40,
+            "top": 23.5,
+            "right": 134,
+            "bottom": 63.5,
+            "left": 80
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 80,
+            "y": 708,
+            "width": 54,
+            "height": 40,
+            "top": 708,
+            "right": 134,
+            "bottom": 748,
+            "left": 80
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "width": 70,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "links": ["#main-content", "/es", "/es", "/es", "/es"],
+      "background": "rgb(8, 12, 24)"
+    },
+    {
+      "route": "/es",
+      "theme": "light",
+      "width": 375,
+      "lang": "es",
+      "overflow": false,
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "controls": 2,
+      "images": [
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 24,
+            "y": 19.5,
+            "width": 48,
+            "height": 36,
+            "top": 19.5,
+            "right": 72,
+            "bottom": 55.5,
+            "left": 24
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 24,
+            "y": 624,
+            "width": 48,
+            "height": 36,
+            "top": 624,
+            "right": 72,
+            "bottom": 660,
+            "left": 24
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "width": 70,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "links": ["#main-content", "/es", "/es", "/es", "/es"],
+      "background": "rgb(250, 250, 254)"
+    },
+    {
+      "route": "/es",
+      "theme": "light",
+      "width": 768,
+      "lang": "es",
+      "overflow": false,
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "controls": 2,
+      "images": [
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 40,
+            "y": 23.5,
+            "width": 54,
+            "height": 40,
+            "top": 23.5,
+            "right": 94,
+            "bottom": 63.5,
+            "left": 40
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 40,
+            "y": 708,
+            "width": 54,
+            "height": 40,
+            "top": 708,
+            "right": 94,
+            "bottom": 748,
+            "left": 40
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "width": 70,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "links": ["#main-content", "/es", "/es", "/es", "/es"],
+      "background": "rgb(250, 250, 254)"
+    },
+    {
+      "route": "/es",
+      "theme": "light",
+      "width": 1024,
+      "lang": "es",
+      "overflow": false,
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "controls": 2,
+      "images": [
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 80,
+            "y": 23.5,
+            "width": 54,
+            "height": 40,
+            "top": 23.5,
+            "right": 134,
+            "bottom": 63.5,
+            "left": 80
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 80,
+            "y": 708,
+            "width": 54,
+            "height": 40,
+            "top": 708,
+            "right": 134,
+            "bottom": 748,
+            "left": 80
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "width": 70,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "links": ["#main-content", "/es", "/es", "/es", "/es"],
+      "background": "rgb(250, 250, 254)"
+    },
+    {
+      "route": "/es",
+      "theme": "light",
+      "width": 1440,
+      "lang": "es",
+      "overflow": false,
+      "main": 1,
+      "header": 1,
+      "footer": 1,
+      "controls": 2,
+      "images": [
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 80,
+            "y": 23.5,
+            "width": 54,
+            "height": 40,
+            "top": 23.5,
+            "right": 134,
+            "bottom": 63.5,
+            "left": 80
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-dark.png&w=64&q=75",
+          "loaded": true,
+          "visible": false,
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          }
+        },
+        {
+          "src": "http://localhost:3100/_next/image?url=%2Fassets%2Fbrand%2Fdev-cosmo-lab-logo-on-light.png&w=64&q=75",
+          "loaded": true,
+          "visible": true,
+          "box": {
+            "x": 80,
+            "y": 708,
+            "width": 54,
+            "height": 40,
+            "top": 708,
+            "right": 134,
+            "bottom": 748,
+            "left": 80
+          }
+        }
+      ],
+      "buttons": [
+        {
+          "width": 70,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ],
+      "links": ["#main-content", "/es", "/es", "/es", "/es"],
+      "background": "rgb(250, 250, 254)"
+    }
+  ],
+  "functional": {
+    "escape": true,
+    "outsideClick": true,
+    "languageRoundTrip": true,
+    "queryAndHash": true,
+    "themeToggleAndPersistence": true,
+    "brandHomeLink": true,
+    "skipLink": true
+  },
+  "errors": [
+    {
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "location": {
+        "url": "http://localhost:3100/favicon.ico",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    }
+  ],
+  "failures": [],
+  "responses": []
+}

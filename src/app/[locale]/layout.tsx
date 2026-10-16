@@ -8,6 +8,9 @@ import { notFound } from 'next/navigation';
 import { DEFAULT_THEME, THEME_STORAGE_KEY } from '@/constants/theme.constants';
 import { routing } from '@/i18n/routing';
 import { SITE_URL } from '@/constants/site.constants';
+import { Header } from '@/components/shared/header/header.component';
+import { Footer } from '@/components/shared/footer/footer.component';
+import { getTranslations } from 'next-intl/server';
 import '@/styles/globals.css';
 
 const geistSans = Geist({
@@ -22,6 +25,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 const themeScript = `(() => {
@@ -46,6 +52,7 @@ const RootLayout = async ({ children }: LayoutProps<'/[locale]'>) => {
   if (!hasLocale(routing.locales, locale)) notFound();
 
   const messages = await getMessages();
+  const t = await getTranslations('common.accessibility');
 
   return (
     <html
@@ -56,7 +63,17 @@ const RootLayout = async ({ children }: LayoutProps<'/[locale]'>) => {
     >
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider locale={locale} messages={{ common: messages.common }}>
-          {children}
+          <a
+            href="#main-content"
+            className="sr-only z-50 rounded-control bg-surface px-5 py-3 text-text-primary focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:outline-2 focus:outline-focus-ring"
+          >
+            {t('skipToContent')}
+          </a>
+          <Header />
+          <main id="main-content" tabIndex={-1} className="flex flex-1 flex-col">
+            {children}
+          </main>
+          <Footer />
         </NextIntlClientProvider>
         <Script
           id="theme-bootstrap"

@@ -16,6 +16,17 @@
     }
   },
   "accessibility": {
-    "opensInNewTab": "se abre en una pestaña nueva"
+    "opensInNewTab": "se abre en una pestaña nueva",
+    "skipToContent": "Saltar al contenido"
+  },
+  "navigation": {
+    "main": "Navegación principal",
+    "footer": "Navegación del pie de página",
+    "home": "Inicio"
+  },
+  "footer": {
+    "description": "Explorar, evolucionar y construir un futuro con más tecnología y libertad.",
+    "institutional": "Institucional",
+    "copyright": "© {year} Dev Cosmo Lab. Todos los derechos reservados."
   }
 }

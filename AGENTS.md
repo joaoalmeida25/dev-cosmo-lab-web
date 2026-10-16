@@ -275,6 +275,18 @@ Guidelines:
 - Home section headings use simple titles without visual numbering or decorative lines before them.
 - Present engineering practices separately from technologies when they describe ways of working.
 
+### Visual source of truth
+
+Every visual implementation must first consult `docs/design/`, follow the asset
+manifest and use the final approved mockups as the highest-priority visual reference.
+Reference precedence: final approved mockups, then brand guide and asset manifest,
+then Figma for complementary structure, then existing code as a technical baseline.
+Respect explicit final asset replacements documented in the handoff (such as the
+clean Hero); older mockup imagery does not override those replacements.
+Approved incremental decisions in `docs/design/` (such as `phase-2-decisions.md`)
+override older operational values within their explicit scope.
+Do not infer approved values or assets where the handoff declares a pending decision.
+
 ### Icons and brand assets
 
 - Use local SVG assets from Simple Icons or official brand sources for brand logos.
@@ -324,7 +336,13 @@ chore: configure prettier
 docs: update readme
 ```
 
-Do not create commits unless explicitly requested.
+The required delivery sequence is:
+
+Implementation → Validation → Review → Adjustments → Approval → Commit → Push → Next phase.
+
+Codex must not create commits or push automatically. Each action requires explicit
+user authorization; approval of an implementation alone does not authorize a commit
+or push. Preserve existing staged and unstaged work throughout review.
 
 ---
 

@@ -5,13 +5,15 @@ Uma única aplicação Next.js, sem backend próprio, banco de dados, autentica�
 
 ## Status
 
-Fase 1: bootstrap independente com Home temporária em três idiomas e controles de tema.
-A identidade visual definitiva, o Header comercial, o catálogo e os detalhes de produtos
-serão implementados nas próximas fases. Não há integração de checkout ou deploy configurado.
+Fase 2: fundação visual com Header e Footer globais, identidade do handoff V2,
+Home temporária em três idiomas e controles de tema integrados ao Header.
+A Home comercial, o catálogo e os detalhes de produtos serão implementados nas próximas fases. Não há integração de checkout ou deploy configurado.
 
 O domínio oficial ainda não foi definido. `src/constants/site.constants.ts` utiliza
 `http://localhost:3000` exclusivamente como base local de metadados. Essa configuração
-deve ser substituída antes de qualquer publicação. Logo, favicon e imagens oficiais estão pendentes.
+deve ser substituída antes de qualquer publicação. A marca utiliza os derivados do
+handoff, com variantes dark/light.
+O favicon oficial está em `public/favicon.ico`, compartilhado pelos três idiomas.
 
 ## Stack
 
@@ -58,7 +60,7 @@ A primeira geração de fontes pelo `next/font/google` pode exigir acesso à red
 ```text
 src/
 ├── app/[locale]/          # Layout e Home localizada
-├── components/           # Controles de idioma/tema e Button
+├── components/           # Shell compartilhado, controles de idioma/tema e Button
 ├── constants/            # Base local do site e configuração de tema
 ├── features/home/        # Home temporária
 ├── hooks/                # Persistência local e tema
@@ -85,8 +87,28 @@ enviadas pelo provider ao cliente.
 
 Dark é o tema padrão. A preferência dark/light é salva em `localStorage` com a chave
 `dev-cosmo-lab-theme` e aplicada em `data-theme` no elemento HTML. O script inicial
-e o hook usam a mesma constante. Os tokens herdados são provisórios e não representam
-a identidade visual aprovada da marca.
+e o hook usam a mesma constante. A paleta e os estados do CTA seguem a homologação em
+`docs/design/phase-2-decisions.md`, que prevalece sobre os valores anteriores do guia.
+Sombras, gradientes, hover secundário e ajustes tipográficos finos continuam
+provisórios conforme esse documento.
+
+## Fundação visual
+
+Consulte `docs/design/` antes de qualquer implementação visual. Os mockups finais
+aprovados têm prioridade, seguidos pelo guia/manifesto, Figma estrutural e código.
+Respeite as substituições finais explícitas de assets documentadas no pacote V2.
+Os arquivos do handoff foram preservados; mockups não são assets de produção.
+
+O shell em `src/app/[locale]/layout.tsx` mantém Header, um único `main` e Footer.
+Brand e Container são compartilhados; somente os controles interativos são Client
+Components. O logo leva à Home também no mobile, onde não é necessário menu para
+uma única página. Produtos, redes sociais e demais destinos não confirmados são
+omitidos até existirem. A fonte Geist foi mantida conforme o guia.
+
+A Home continua temporária. Hero, destaque, ecossistema, CTA e catálogo pertencem
+às fases seguintes. Não há backend ou configuração de deploy.
+
+Evidências, tokens aplicados e pendências: `docs/phase-2-report.md`.
 
 ## Origem técnica
 
