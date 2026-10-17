@@ -1,0 +1,56 @@
+{
+  "id": "neural-system-ui",
+  "slug": "neural-system-ui",
+  "name": "Neural System UI",
+  "category": "development",
+  "type": "development-library",
+  "status": "in-development",
+  "editorialOrder": 4,
+  "sourceUrl": "https://app.notion.com/p/3dd6206b5311812f8b08e9f4ad09520b",
+  "images": null,
+  "gallery": [],
+  "commercial": {
+    "priceCents": null,
+    "currency": "BRL",
+    "checkoutUrl": null,
+    "verifiedAt": null
+  },
+  "content": {
+    "pt-BR": {
+      "subtitle": "",
+      "shortDescription": "Biblioteca React para explorar sistemas, serviços e fluxos através de uma experiência neural 3D interativa.",
+      "description": "Biblioteca React para explorar sistemas, serviços e fluxos através de uma experiência neural 3D interativa.",
+      "highlights": [
+        "Visualização neural 3D",
+        "Representação de sistemas e serviços",
+        "Showcase técnico em evolução"
+      ],
+      "materials": [],
+      "imageAlt": ""
+    },
+    "en": {
+      "subtitle": "",
+      "shortDescription": "A React library for exploring systems, services and flows through an interactive 3D neural experience.",
+      "description": "A React library for exploring systems, services and flows through an interactive 3D neural experience.",
+      "highlights": [
+        "3D neural visualization",
+        "Representation of systems and services",
+        "An evolving technical showcase"
+      ],
+      "materials": [],
+      "imageAlt": ""
+    },
+    "es": {
+      "subtitle": "",
+      "shortDescription": "Biblioteca React para explorar sistemas, servicios y flujos mediante una experiencia neural 3D interactiva.",
+      "description": "Biblioteca React para explorar sistemas, servicios y flujos mediante una experiencia neural 3D interactiva.",
+      "highlights": [
+        "Visualización neural 3D",
+        "Representación de sistemas y servicios",
+        "Showcase técnico en evolución"
+      ],
+      "materials": [],
+      "imageAlt": ""
+    }
+  }
+}

@@ -1,3 +1,4 @@
+import { ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button/button.component';
 import type { SupportedLocale } from '@/i18n/locale.types';
 import type { RefObject } from 'react';
@@ -37,9 +38,11 @@ export const LanguageToggleView = ({
         className="gap-1 px-2.5 text-[11px] font-semibold tracking-[0.06em]"
       >
         {currentCode}
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-          <path d="m3 4.5 3 3 3-3" stroke="currentColor" strokeWidth="1.5" />
-        </svg>
+        <ChevronDown
+          aria-hidden="true"
+          strokeWidth={1.75}
+          className={`size-3 transition-transform motion-reduce:transition-none ${isOpen ? 'rotate-180' : ''}`}
+        />
       </Button>
 
       <div

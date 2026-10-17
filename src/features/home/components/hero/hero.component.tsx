@@ -1,7 +1,14 @@
-import { getTranslations } from 'next-intl/server';
+import { hasLocale } from 'next-intl';
+import { routing } from '@/i18n/routing';
+import { getPathname } from '@/i18n/navigation';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { HeroView } from './hero-view.component';
 
 export const Hero = async () => {
+  const requestedLocale = await getLocale();
+  const locale = hasLocale(routing.locales, requestedLocale)
+    ? requestedLocale
+    : routing.defaultLocale;
   const t = await getTranslations('home.hero');
   const benefits = [
     { id: 'solutions', label: t('benefits.solutions') },
@@ -10,6 +17,7 @@ export const Hero = async () => {
   ];
   return (
     <HeroView
+      catalogHref={getPathname({ href: '/produtos', locale })}
       eyebrow={t('eyebrow')}
       description={t('description')}
       primaryAction={t('primaryAction')}

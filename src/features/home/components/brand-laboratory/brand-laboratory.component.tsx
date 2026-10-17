@@ -1,25 +1,25 @@
 import { getTranslations } from 'next-intl/server';
-import type { HomeIconName } from '../home-icon/home-icon.component';
+import { CodeXml, Compass, ChartNoAxesColumnIncreasing, type LucideIcon } from 'lucide-react';
 import { BrandLaboratoryView } from './brand-laboratory-view.component';
 
 export const BrandLaboratory = async () => {
   const t = await getTranslations('home.laboratory');
-  const pillars: Array<{ id: string; title: string; description: string; icon: HomeIconName }> = [
+  const pillars: Array<{ id: string; title: string; description: string; icon: LucideIcon }> = [
     {
       id: 'create',
-      icon: 'code',
+      icon: CodeXml,
       title: t('pillars.create.title'),
       description: t('pillars.create.description'),
     },
     {
       id: 'explore',
-      icon: 'compass',
+      icon: Compass,
       title: t('pillars.explore.title'),
       description: t('pillars.explore.description'),
     },
     {
       id: 'evolve',
-      icon: 'growth',
+      icon: ChartNoAxesColumnIncreasing,
       title: t('pillars.evolve.title'),
       description: t('pillars.evolve.description'),
     },

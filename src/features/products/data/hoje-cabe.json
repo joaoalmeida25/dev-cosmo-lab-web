@@ -1,0 +1,56 @@
+{
+  "id": "hoje-cabe",
+  "slug": "hoje-cabe",
+  "name": "Hoje Cabe",
+  "category": "wellbeing",
+  "type": "application",
+  "status": "planned",
+  "editorialOrder": 2,
+  "sourceUrl": "https://app.notion.com/p/33e6206b531181139e86f32ebb923a00",
+  "images": null,
+  "gallery": [],
+  "commercial": {
+    "priceCents": null,
+    "currency": "BRL",
+    "checkoutUrl": null,
+    "verifiedAt": null
+  },
+  "content": {
+    "pt-BR": {
+      "subtitle": "",
+      "shortDescription": "Assistente de decisão alimentar pensado para ajudar você a escolher a próxima refeição de acordo com suas metas e a realidade do dia.",
+      "description": "Assistente de decisão alimentar pensado para ajudar você a escolher a próxima refeição de acordo com suas metas e a realidade do dia.",
+      "highlights": [
+        "Decisões alimentares contextualizadas",
+        "Ajuste de refeições ao longo do dia",
+        "Experiência prática e mobile-first"
+      ],
+      "materials": [],
+      "imageAlt": ""
+    },
+    "en": {
+      "subtitle": "",
+      "shortDescription": "A food decision assistant designed to help you choose your next meal based on your goals and the realities of your day.",
+      "description": "A food decision assistant designed to help you choose your next meal based on your goals and the realities of your day.",
+      "highlights": [
+        "Food choices in context",
+        "Meal adjustments throughout the day",
+        "A practical, mobile-first experience"
+      ],
+      "materials": [],
+      "imageAlt": ""
+    },
+    "es": {
+      "subtitle": "",
+      "shortDescription": "Asistente de decisiones alimentarias pensado para ayudarte a elegir tu próxima comida según tus metas y la realidad del día.",
+      "description": "Asistente de decisiones alimentarias pensado para ayudarte a elegir tu próxima comida según tus metas y la realidad del día.",
+      "highlights": [
+        "Decisiones alimentarias contextualizadas",
+        "Ajuste de comidas durante el día",
+        "Experiencia práctica pensada para móviles"
+      ],
+      "materials": [],
+      "imageAlt": ""
+    }
+  }
+}

@@ -1,14 +1,21 @@
 'use client';
 
+import { usePathname } from '@/i18n/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { HeaderView } from './header-view.component';
-import type { IHeaderLabels } from './header.types';
+import type { IHeaderLabels, IHeaderNavigationItem } from './header.types';
 
 interface IHeaderInteractionProps {
   labels: IHeaderLabels;
 }
 
 export const HeaderInteraction = ({ labels }: IHeaderInteractionProps) => {
+  const pathname = usePathname();
+  const navigationItems: ReadonlyArray<IHeaderNavigationItem> = [
+    { key: 'home', href: '/', current: pathname === '/' },
+    { key: 'products', href: '/produtos', current: pathname === '/produtos' },
+    { key: 'about', href: '/#laboratory', current: false },
+  ];
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -48,6 +55,7 @@ export const HeaderInteraction = ({ labels }: IHeaderInteractionProps) => {
   return (
     <HeaderView
       labels={labels}
+      navigationItems={navigationItems}
       isScrolled={isScrolled}
       isMenuOpen={isMenuOpen}
       menuButtonRef={menuButtonRef}

@@ -1,5 +1,7 @@
+import { Menu, X } from 'lucide-react';
+import { Link } from '@/i18n/navigation';
 import type { RefObject } from 'react';
-import type { IHeaderLabels } from './header.types';
+import type { IHeaderLabels, IHeaderNavigationItem } from './header.types';
 import { Brand } from '@/components/shared/brand/brand.component';
 import { Container } from '@/components/shared/container/container.component';
 import { LanguageToggle } from '@/components/shared/language-toggle/language-toggle.component';
@@ -7,6 +9,7 @@ import { ThemeToggle } from '@/components/shared/theme-toggle/theme-toggle.compo
 
 interface IHeaderViewProps {
   labels: IHeaderLabels;
+  navigationItems: ReadonlyArray<IHeaderNavigationItem>;
   isScrolled: boolean;
   isMenuOpen: boolean;
   menuButtonRef: RefObject<HTMLButtonElement | null>;
@@ -15,14 +18,9 @@ interface IHeaderViewProps {
   onCloseMenu: () => void;
 }
 
-const navigationItems = [
-  { key: 'home', href: '#home' },
-  { key: 'products', href: '#featured-product' },
-  { key: 'about', href: '#laboratory' },
-] as const;
-
 export const HeaderView = ({
   labels,
+  navigationItems,
   isScrolled,
   isMenuOpen,
   menuButtonRef,
@@ -42,12 +40,13 @@ export const HeaderView = ({
             <ul className="flex items-center gap-6">
               {navigationItems.map((item) => (
                 <li key={item.key}>
-                  <a
+                  <Link
                     href={item.href}
-                    className="inline-flex min-h-11 items-center text-sm font-medium text-text-primary transition-colors duration-200 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus-ring motion-reduce:transition-none"
+                    aria-current={item.current ? 'page' : undefined}
+                    className="aria-[current=page]:text-accent aria-[current=page]:underline aria-[current=page]:underline-offset-8 inline-flex min-h-11 items-center text-sm font-medium text-text-primary transition-colors duration-200 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus-ring motion-reduce:transition-none"
                   >
                     {labels[item.key]}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -64,17 +63,11 @@ export const HeaderView = ({
               onClick={onToggleMenu}
               className="inline-flex size-11 cursor-pointer items-center justify-center rounded-full border border-border bg-transparent text-text-primary transition-colors duration-200 hover:bg-surface-hover focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus-ring motion-reduce:transition-none md:hidden"
             >
-              <span className="relative block h-4 w-5" aria-hidden="true">
-                <span
-                  className={`absolute top-0 left-0 h-px w-5 bg-current transition-transform duration-200 motion-reduce:transition-none ${isMenuOpen ? 'translate-y-[7px] rotate-45' : ''}`}
-                />
-                <span
-                  className={`absolute top-[7px] left-0 h-px w-5 bg-current transition-opacity duration-200 motion-reduce:transition-none ${isMenuOpen ? 'opacity-0' : ''}`}
-                />
-                <span
-                  className={`absolute top-[14px] left-0 h-px w-5 bg-current transition-transform duration-200 motion-reduce:transition-none ${isMenuOpen ? '-translate-y-[7px] -rotate-45' : ''}`}
-                />
-              </span>
+              {isMenuOpen ? (
+                <X aria-hidden="true" strokeWidth={1.75} className="size-5" />
+              ) : (
+                <Menu aria-hidden="true" strokeWidth={1.75} className="size-5" />
+              )}
             </button>
           </div>
         </div>
@@ -87,15 +80,16 @@ export const HeaderView = ({
           <ul className="p-2">
             {navigationItems.map((item, index) => (
               <li key={item.key}>
-                <a
+                <Link
                   ref={index === 0 ? firstMobileLinkRef : undefined}
                   href={item.href}
+                  aria-current={item.current ? 'page' : undefined}
                   tabIndex={isMenuOpen ? 0 : -1}
                   onClick={onCloseMenu}
                   className="flex min-h-12 items-center rounded-xl px-4 text-sm font-medium text-text-primary hover:bg-surface-hover focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-focus-ring"
                 >
                   {labels[item.key]}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

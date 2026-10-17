@@ -1,0 +1,56 @@
+{
+  "id": "followup-inbox",
+  "slug": "followup-inbox",
+  "name": "FollowUp Inbox",
+  "category": "productivity",
+  "type": "application",
+  "status": "in-development",
+  "editorialOrder": 3,
+  "sourceUrl": "https://app.notion.com/p/33e6206b531181438b5eed59be92cfbe",
+  "images": null,
+  "gallery": [],
+  "commercial": {
+    "priceCents": null,
+    "currency": "BRL",
+    "checkoutUrl": null,
+    "verifiedAt": null
+  },
+  "content": {
+    "pt-BR": {
+      "subtitle": "",
+      "shortDescription": "Aplicativo para organizar pendências recebidas em conversas, acompanhar prioridades e evitar que compromissos importantes sejam esquecidos.",
+      "description": "Aplicativo para organizar pendências recebidas em conversas, acompanhar prioridades e evitar que compromissos importantes sejam esquecidos.",
+      "highlights": [
+        "Captura rápida de pendências",
+        "Organização por status e prioridade",
+        "Acompanhamento de prazos"
+      ],
+      "materials": [],
+      "imageAlt": ""
+    },
+    "en": {
+      "subtitle": "",
+      "shortDescription": "An app to organize pending tasks from conversations, track priorities and keep important commitments from being forgotten.",
+      "description": "An app to organize pending tasks from conversations, track priorities and keep important commitments from being forgotten.",
+      "highlights": [
+        "Quick capture of pending tasks",
+        "Organization by status and priority",
+        "Deadline tracking"
+      ],
+      "materials": [],
+      "imageAlt": ""
+    },
+    "es": {
+      "subtitle": "",
+      "shortDescription": "Aplicación para organizar tareas pendientes recibidas en conversaciones, seguir prioridades y evitar que se olviden compromisos importantes.",
+      "description": "Aplicación para organizar tareas pendientes recibidas en conversaciones, seguir prioridades y evitar que se olviden compromisos importantes.",
+      "highlights": [
+        "Captura rápida de tareas pendientes",
+        "Organización por estado y prioridad",
+        "Seguimiento de plazos"
+      ],
+      "materials": [],
+      "imageAlt": ""
+    }
+  }
+}

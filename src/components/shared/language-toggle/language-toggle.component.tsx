@@ -3,7 +3,6 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { hasLocale, useLocale, useTranslations } from 'next-intl';
 import { getPathname, usePathname } from '@/i18n/navigation';
-import { useRouter } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { LanguageToggleView } from '@/components/shared/language-toggle/language-toggle-view.component';
 import type { SupportedLocale } from '@/i18n/locale.types';
@@ -21,7 +20,6 @@ export const LanguageToggle = () => {
     ? requestedLocale
     : routing.defaultLocale;
   const pathname = usePathname();
-  const router = useRouter();
   const optionsId = useId();
   const containerRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -56,9 +54,9 @@ export const LanguageToggle = () => {
     setIsOpen(false);
 
     const href = `${pathname}${window.location.search}${window.location.hash}`;
-    // Resolve the canonical URL directly. The localized router forces a locale
-    // prefix on locale changes, which can leave the default locale at /pt-BR.
-    router.replace(getPathname({ href, locale: nextLocale }), { scroll: false });
+    // A document navigation avoids Next 16.3 duplicating fragments when returning
+    // to a cached locale. Resolve the canonical prefix with next-intl first.
+    window.location.replace(getPathname({ href, locale: nextLocale }));
   };
 
   const toggleOptions = () => setIsOpen((current) => !current);

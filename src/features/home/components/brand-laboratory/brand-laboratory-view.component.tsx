@@ -1,7 +1,6 @@
-import { HomeIcon, type HomeIconName } from '../home-icon/home-icon.component';
+import type { LucideIcon } from 'lucide-react';
 import styles from './brand-laboratory-view.module.css';
 import { Container } from '@/components/shared/container/container.component';
-import { MotionReveal } from '@/components/shared/motion-reveal/motion-reveal.component';
 import { ThemedArtwork } from '@/components/shared/themed-artwork/themed-artwork.component';
 import { HomeScene } from '../home-scene/home-scene.component';
 
@@ -9,7 +8,7 @@ interface IBrandLaboratoryViewProps {
   eyebrow: string;
   title: string;
   description: string;
-  pillars: ReadonlyArray<{ id: string; title: string; description: string; icon: HomeIconName }>;
+  pillars: ReadonlyArray<{ id: string; title: string; description: string; icon: LucideIcon }>;
 }
 
 export const BrandLaboratoryView = ({
@@ -41,7 +40,7 @@ export const BrandLaboratoryView = ({
       />
 
       <Container>
-        <MotionReveal className="max-w-[760px] lg:max-w-[640px]">
+        <div className="max-w-[760px] lg:max-w-[640px]">
           <p className="text-[10px] leading-relaxed font-semibold tracking-[0.17em] text-text-accent-context uppercase md:text-[11px]">
             {eyebrow}
           </p>
@@ -54,19 +53,20 @@ export const BrandLaboratoryView = ({
           <p className="mt-5 max-w-[540px] text-[15px] leading-relaxed text-text-secondary md:text-base">
             {description}
           </p>
-        </MotionReveal>
+        </div>
 
         <div className="mt-10 grid max-w-[760px] gap-3 sm:grid-cols-3 lg:max-w-[688px]">
-          {pillars.map((pillar, index) => (
-            <MotionReveal key={pillar.id} delay={index * 60} className="h-full">
-              <article className="h-full rounded-card border border-photo-card-border bg-photo-card p-5 shadow-card backdrop-blur-md">
-                <HomeIcon name={pillar.icon} className="size-9 text-accent" />
-                <h3 className="mt-5 text-base font-semibold text-text-primary">{pillar.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-text-secondary">
-                  {pillar.description}
-                </p>
-              </article>
-            </MotionReveal>
+          {pillars.map(({ icon: Icon, ...pillar }) => (
+            <article
+              key={pillar.id}
+              className="h-full rounded-card border border-photo-card-border bg-photo-card p-5 shadow-card backdrop-blur-md"
+            >
+              <Icon aria-hidden="true" strokeWidth={1.75} className="size-9 text-accent" />
+              <h3 className="mt-5 text-base font-semibold text-text-primary">{pillar.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-text-secondary">
+                {pillar.description}
+              </p>
+            </article>
           ))}
         </div>
       </Container>

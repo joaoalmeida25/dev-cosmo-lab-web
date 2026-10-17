@@ -7,11 +7,6 @@ export const Footer = async () => {
   return (
     <FooterView
       description={t('footer.description')}
-      footer={t('navigation.footer')}
-      institutional={t('footer.institutional')}
-      home={t('navigation.home')}
-      products={t('navigation.products')}
-      about={t('navigation.about')}
       social={t('footer.social')}
       signature={t('footer.signature')}
       copyright={t('footer.copyright', { year: new Date().getFullYear() })}

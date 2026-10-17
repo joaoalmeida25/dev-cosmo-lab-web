@@ -2,5 +2,9 @@
   "home": {
     "title": "Dev Cosmo Lab — Tools to go further",
     "description": "Explore digital products, technology and practical knowledge from Dev Cosmo Lab. Discover the Propostas em Dia kit for everyday sales work."
+  },
+  "catalog": {
+    "title": "Product Catalog | Dev Cosmo Lab",
+    "description": "Explore digital products from Dev Cosmo Lab. Search and filter kits, apps and tools by category, stage and price."
   }
 }

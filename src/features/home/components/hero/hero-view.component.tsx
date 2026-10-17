@@ -2,11 +2,12 @@ import styles from './hero-view.module.css';
 import type { ReactNode } from 'react';
 import { Container } from '@/components/shared/container/container.component';
 import { ThemedArtwork } from '@/components/shared/themed-artwork/themed-artwork.component';
-import { ArrowRightIcon } from '@/components/shared/arrow-right-icon/arrow-right-icon.component';
+import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button/button.component';
 import { HomeScene } from '../home-scene/home-scene.component';
 
 interface IHeroViewProps {
+  catalogHref: string;
   eyebrow: string;
   description: string;
   primaryAction: string;
@@ -16,6 +17,7 @@ interface IHeroViewProps {
 }
 
 export const HeroView = ({
+  catalogHref,
   eyebrow,
   description,
   primaryAction,
@@ -70,10 +72,10 @@ export const HeroView = ({
             className="mt-7 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-4"
           >
             <Button
-              href="#featured-product"
+              href={catalogHref}
               size="lg"
               variant="primary"
-              rightIcon={<ArrowRightIcon />}
+              rightIcon={<ArrowRight aria-hidden="true" strokeWidth={1.75} />}
             >
               {primaryAction}
             </Button>

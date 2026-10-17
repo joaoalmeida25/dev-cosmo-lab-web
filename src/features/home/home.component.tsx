@@ -1,22 +1,28 @@
-import { getTranslations } from 'next-intl/server';
+import { getLocale } from 'next-intl/server';
+import { hasLocale } from 'next-intl';
+import { routing } from '@/i18n/routing';
 import { HomeView } from './home-view.component';
-import { FEATURED_PRODUCT } from '@/features/products/products.constants';
-import type { IProduct } from '@/features/products/products.types';
+import { FEATURED_PRODUCT_SLUG } from '@/features/products/products.constants';
+import { productsRepository } from '@/features/products/repositories/products.repository';
 
 export const Home = async () => {
-  const t = await getTranslations('products.proposalsKit');
-  const product: IProduct = {
-    ...FEATURED_PRODUCT,
-    subtitle: t('subtitle'),
-    description: t('description'),
-    materials: [
-      t('materials.spreadsheet'),
-      t('materials.messages'),
-      t('materials.templates'),
-      t('materials.guide'),
-    ],
-    imageAlt: t('imageAlt'),
-  };
-
-  return <HomeView product={product} />;
+  const [requestedLocale, product] = await Promise.all([
+    getLocale(),
+    productsRepository.getProductBySlug(FEATURED_PRODUCT_SLUG),
+  ]);
+  const locale = hasLocale(routing.locales, requestedLocale)
+    ? requestedLocale
+    : routing.defaultLocale;
+  if (!product?.images) throw new Error('Featured product artwork is missing');
+  const content = product.content[locale];
+  return (
+    <HomeView
+      product={{
+        name: product.name,
+        description: content.description,
+        imageAlt: content.imageAlt,
+        images: product.images,
+      }}
+    />
+  );
 };

@@ -1,0 +1,89 @@
+{
+  "hero": {
+    "eyebrow": "OUR PRODUCTS",
+    "title": "<line>Tools for new</line><line><highlight>horizons.</highlight></line>",
+    "description": "Digital products, technology and knowledge to turn your everyday routine into results.",
+    "benefits": {
+      "access": {
+        "title": "Instant access",
+        "description": "For available products"
+      },
+      "practical": {
+        "title": "Practical materials",
+        "description": "Made for everyday use"
+      },
+      "focus": {
+        "title": "Focus on productivity",
+        "description": "More results, less effort"
+      }
+    }
+  },
+  "interface": {
+    "results": "{count, plural, =0 {No products found} one {# product found} other {# products found}}",
+    "search": "Search products",
+    "searchPlaceholder": "Search products, solutions or keywords…",
+    "clearSearch": "Clear search",
+    "sort": "Sort by",
+    "priceSortUnavailable": "Price sorting is available once prices have been confirmed.",
+    "filters": "Filters",
+    "clearAll": "Clear all",
+    "removeFilter": "Remove filter: {label}",
+    "activeFilters": "Active filters",
+    "emptyTitle": "No products here. Yet.",
+    "emptyDescription": "Try another keyword or adjust your filters to explore new horizons.",
+    "updating": "Updating products…"
+  },
+  "groups": {
+    "category": "Category",
+    "status": "Status",
+    "type": "Product type",
+    "price": "Price range"
+  },
+  "categories": {
+    "all": "All categories",
+    "productivity": "Management & Productivity",
+    "wellbeing": "Food & Wellbeing",
+    "development": "Development & Technology"
+  },
+  "statuses": {
+    "all": "All",
+    "available": "Available",
+    "planned": "In planning",
+    "in-development": "In development"
+  },
+  "productTypes": {
+    "all": "All",
+    "digital-kit": "Digital kit",
+    "application": "Application",
+    "development-library": "Development library"
+  },
+  "prices": {
+    "all": "All prices",
+    "free": "Free",
+    "up-to-50": "Up to R$50",
+    "50-to-200": "Over R$50 up to R$200",
+    "over-200": "Over R$200",
+    "undefined": "Price to be announced"
+  },
+  "sorts": {
+    "editorial": "Ready first",
+    "name-asc": "Name A–Z",
+    "name-desc": "Name Z–A",
+    "price-asc": "Lowest price",
+    "price-desc": "Highest price"
+  },
+  "card": {
+    "highlights": "Highlights",
+    "plannedHighlights": "Planned highlights",
+    "developmentHighlights": "Expected highlights",
+    "soon": "Coming soon",
+    "development": "In development",
+    "undefinedPrice": "Price to be announced",
+    "free": "Free",
+    "action": "Get the kit",
+    "actionLabel": "Get {name} at the external checkout",
+    "plannedNote": "Project in planning.",
+    "developmentNote": "Project in development.",
+    "libraryNote": "Evolving showcase; a stable public version has not yet been published on npm."
+  }
+}

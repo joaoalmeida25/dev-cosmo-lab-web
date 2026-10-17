@@ -1,8 +1,8 @@
-import type { HomeIconName } from '../home-icon/home-icon.component';
+import type { LucideIcon } from 'lucide-react';
 
 export interface ISolutionCard {
   id: string;
-  icon: HomeIconName;
+  icon: LucideIcon;
   title: string;
   description: string;
   isAvailable: boolean;

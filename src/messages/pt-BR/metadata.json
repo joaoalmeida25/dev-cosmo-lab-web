@@ -2,5 +2,9 @@
   "home": {
     "title": "Dev Cosmo Lab — Ferramentas para ir além",
     "description": "Explore produtos digitais, tecnologia e conhecimento da Dev Cosmo Lab. Conheça o kit Propostas em Dia e organize sua rotina comercial."
+  },
+  "catalog": {
+    "title": "Catálogo de Produtos | Dev Cosmo Lab",
+    "description": "Explore produtos digitais da Dev Cosmo Lab. Busque e filtre kits, aplicativos e ferramentas por categoria, estágio e preço."
   }
 }

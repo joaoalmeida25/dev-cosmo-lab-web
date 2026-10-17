@@ -24,6 +24,8 @@
 
 .solutions {
   z-index: 2;
+  /* Preserve the soft tint without exposing the overlapping Laboratory artwork. */
+  background-color: color-mix(in srgb, var(--background-soft) 35%, var(--background));
 }
 
 .laboratory {

@@ -1,18 +1,24 @@
 import styles from './final-cta-view.module.css';
 import { Container } from '@/components/shared/container/container.component';
 import { ThemedArtwork } from '@/components/shared/themed-artwork/themed-artwork.component';
-import { ArrowRightIcon } from '@/components/shared/arrow-right-icon/arrow-right-icon.component';
-import { MotionReveal } from '@/components/shared/motion-reveal/motion-reveal.component';
+import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button/button.component';
 
 interface IFinalCTAViewProps {
+  catalogHref: string;
   eyebrow: string;
   title: string;
   description: string;
   action: string;
 }
 
-export const FinalCTAView = ({ eyebrow, title, description, action }: IFinalCTAViewProps) => {
+export const FinalCTAView = ({
+  catalogHref,
+  eyebrow,
+  title,
+  description,
+  action,
+}: IFinalCTAViewProps) => {
   return (
     <section
       aria-labelledby="final-cta-title"
@@ -32,11 +38,7 @@ export const FinalCTAView = ({ eyebrow, title, description, action }: IFinalCTAV
         className="absolute inset-0 -z-10 [background-image:var(--final-cta-overlay)]"
       />
       <Container>
-        <MotionReveal
-          variant="artwork"
-          duration={600}
-          className="mx-auto flex max-w-180 flex-col items-center text-center"
-        >
+        <div className="mx-auto flex max-w-180 flex-col items-center text-center">
           <p className="text-[10px] leading-relaxed font-semibold tracking-[0.17em] text-text-accent-context uppercase md:text-[11px]">
             {eyebrow}
           </p>
@@ -51,15 +53,15 @@ export const FinalCTAView = ({ eyebrow, title, description, action }: IFinalCTAV
           </p>
           <div className="mt-7">
             <Button
-              href="#featured-product"
+              href={catalogHref}
               size="lg"
               variant="primary"
-              rightIcon={<ArrowRightIcon />}
+              rightIcon={<ArrowRight aria-hidden="true" strokeWidth={1.75} />}
             >
               {action}
             </Button>
           </div>
-        </MotionReveal>
+        </div>
       </Container>
     </section>
   );

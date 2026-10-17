@@ -1,0 +1,89 @@
+{
+  "hero": {
+    "eyebrow": "NOSSOS PRODUTOS",
+    "title": "<line>Ferramentas para</line><line>novos <highlight>horizontes.</highlight></line>",
+    "description": "Produtos digitais, tecnologia e conhecimento para transformar sua rotina em resultados.",
+    "benefits": {
+      "access": {
+        "title": "Acesso imediato",
+        "description": "Nos produtos disponíveis"
+      },
+      "practical": {
+        "title": "Materiais práticos",
+        "description": "Aplicação no dia a dia"
+      },
+      "focus": {
+        "title": "Foco em produtividade",
+        "description": "Mais resultados, menos esforço"
+      }
+    }
+  },
+  "interface": {
+    "results": "{count, plural, =0 {Nenhum produto encontrado} one {# produto encontrado} other {# produtos encontrados}}",
+    "search": "Buscar produtos",
+    "searchPlaceholder": "Buscar produtos, soluções ou palavras-chave…",
+    "clearSearch": "Limpar busca",
+    "sort": "Ordenar por",
+    "priceSortUnavailable": "Ordenação por preço disponível quando houver preços confirmados.",
+    "filters": "Filtros",
+    "clearAll": "Limpar tudo",
+    "removeFilter": "Remover filtro: {label}",
+    "activeFilters": "Filtros ativos",
+    "emptyTitle": "Nenhum produto por aqui. Ainda.",
+    "emptyDescription": "Tente outra palavra-chave ou ajuste os filtros para explorar novos horizontes.",
+    "updating": "Atualizando produtos…"
+  },
+  "groups": {
+    "category": "Categoria",
+    "status": "Status",
+    "type": "Tipo de produto",
+    "price": "Faixa de preço"
+  },
+  "categories": {
+    "all": "Todas as categorias",
+    "productivity": "Gestão e Produtividade",
+    "wellbeing": "Alimentação e Bem-estar",
+    "development": "Desenvolvimento e Tecnologia"
+  },
+  "statuses": {
+    "all": "Todos",
+    "available": "Disponível",
+    "planned": "Em planejamento",
+    "in-development": "Em desenvolvimento"
+  },
+  "productTypes": {
+    "all": "Todos",
+    "digital-kit": "Kit digital",
+    "application": "Aplicativo",
+    "development-library": "Biblioteca de desenvolvimento"
+  },
+  "prices": {
+    "all": "Todos os preços",
+    "free": "Gratuito",
+    "up-to-50": "Até R$ 50",
+    "50-to-200": "Acima de R$ 50 até R$ 200",
+    "over-200": "Acima de R$ 200",
+    "undefined": "Preço a definir"
+  },
+  "sorts": {
+    "editorial": "Prontos primeiro",
+    "name-asc": "Nome A–Z",
+    "name-desc": "Nome Z–A",
+    "price-asc": "Menor preço",
+    "price-desc": "Maior preço"
+  },
+  "card": {
+    "highlights": "Destaques",
+    "plannedHighlights": "Destaques planejados",
+    "developmentHighlights": "Destaques previstos",
+    "soon": "Em breve",
+    "development": "Em desenvolvimento",
+    "undefinedPrice": "Preço a definir",
+    "free": "Gratuito",
+    "action": "Adquirir kit",
+    "actionLabel": "Adquirir {name} no checkout externo",
+    "plannedNote": "Projeto em planejamento.",
+    "developmentNote": "Projeto em desenvolvimento.",
+    "libraryNote": "Showcase em evolução; versão pública estável ainda não publicada no npm."
+  }
+}

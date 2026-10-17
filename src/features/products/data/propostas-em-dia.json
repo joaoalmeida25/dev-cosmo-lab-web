@@ -1,0 +1,78 @@
+{
+  "id": "propostas-em-dia",
+  "slug": "propostas-em-dia",
+  "name": "Propostas em Dia",
+  "category": "productivity",
+  "type": "digital-kit",
+  "status": "available",
+  "editorialOrder": 1,
+  "sourceUrl": "https://app.notion.com/p/3f96206b5311819bb4d0f533fb94c271",
+  "images": {
+    "dark": "/assets/devcosmo/products/propostas-em-dia/dark/showcase.webp",
+    "light": "/assets/devcosmo/products/propostas-em-dia/light/showcase.webp"
+  },
+  "gallery": [
+    "/assets/devcosmo/products/propostas-em-dia/screenshots/dashboard.png",
+    "/assets/devcosmo/products/propostas-em-dia/screenshots/control.png",
+    "/assets/devcosmo/products/propostas-em-dia/screenshots/examples.png"
+  ],
+  "commercial": {
+    "priceCents": 2990,
+    "currency": "BRL",
+    "checkoutUrl": "https://pay.kiwify.com.br/zA4x9hJ",
+    "verifiedAt": "2026-10-17"
+  },
+  "content": {
+    "pt-BR": {
+      "subtitle": "Kit Orçamentos sem Esquecimento",
+      "shortDescription": "Kit digital para organizar propostas comerciais, acompanhar negociações e manter os próximos contatos sob controle.",
+      "description": "Um kit digital para organizar suas propostas, acompanhar negociações e facilitar sua rotina comercial.",
+      "highlights": [
+        "Controle de propostas comerciais",
+        "Acompanhamento manual de negociações",
+        "Planilhas e modelos editáveis"
+      ],
+      "materials": [
+        "Planilha de acompanhamento de propostas",
+        "15 mensagens prontas para WhatsApp",
+        "Dois modelos editáveis de propostas",
+        "Guia rápido de uso"
+      ],
+      "imageAlt": "Composição promocional ilustrativa do kit Propostas em Dia, com embalagem digital e exemplos conceituais de organização de propostas."
+    },
+    "en": {
+      "subtitle": "A toolkit for keeping track of quotes",
+      "shortDescription": "A digital kit to organize business proposals, track negotiations and stay on top of your next contacts.",
+      "description": "A digital kit to organize proposals, keep track of negotiations and make everyday sales work easier.",
+      "highlights": [
+        "Business proposal tracking",
+        "Manual negotiation follow-up",
+        "Editable spreadsheets and templates"
+      ],
+      "materials": [
+        "Proposal tracking spreadsheet",
+        "15 ready-to-use WhatsApp messages",
+        "Two editable proposal templates",
+        "Quick-start guide"
+      ],
+      "imageAlt": "Illustrative promotional artwork for the Propostas em Dia digital kit, with digital packaging and conceptual proposal organization examples."
+    },
+    "es": {
+      "subtitle": "Un kit para dar seguimiento a tus presupuestos",
+      "shortDescription": "Kit digital para organizar propuestas comerciales, seguir negociaciones y mantener los próximos contactos bajo control.",
+      "description": "Un kit digital para organizar propuestas, dar seguimiento a negociaciones y facilitar tu rutina comercial.",
+      "highlights": [
+        "Control de propuestas comerciales",
+        "Seguimiento manual de negociaciones",
+        "Hojas de cálculo y plantillas editables"
+      ],
+      "materials": [
+        "Hoja de seguimiento de propuestas",
+        "15 mensajes listos para WhatsApp",
+        "Dos plantillas de propuesta editables",
+        "Guía rápida de uso"
+      ],
+      "imageAlt": "Composición promocional ilustrativa del kit digital Propostas em Dia, con empaque digital y ejemplos conceptuales de organización de propuestas."
+    }
+  }
+}

@@ -1,6 +1,5 @@
 import { SolutionCard } from './components/solution-card/solution-card.component';
 import { Container } from '@/components/shared/container/container.component';
-import { MotionReveal } from '@/components/shared/motion-reveal/motion-reveal.component';
 import { HomeScene } from '../home-scene/home-scene.component';
 
 import type { ISolutionCard } from './solutions-section.types';
@@ -27,11 +26,11 @@ export const SolutionsSectionView = ({
       id="solutions"
       aria-labelledby="solutions-title"
       tabIndex={-1}
-      className="relative scroll-mt-20 overflow-hidden bg-background-soft/35 py-section lg:py-section-lg"
+      className="relative scroll-mt-20 overflow-hidden py-section lg:py-section-lg"
     >
       <Container>
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.46fr)_minmax(0,1fr)] lg:items-center lg:gap-8">
-          <MotionReveal>
+          <div>
             <p className="text-[10px] leading-relaxed font-semibold tracking-[0.17em] text-text-accent-context uppercase md:text-[11px]">
               {eyebrow}
             </p>
@@ -44,20 +43,19 @@ export const SolutionsSectionView = ({
             <p className="mt-5 max-w-md text-[15px] leading-relaxed text-text-secondary md:text-base">
               {description}
             </p>
-          </MotionReveal>
+          </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {solutionCards.map((card, index) => (
-              <MotionReveal key={card.id} delay={index * 50} className="h-full">
-                <SolutionCard
-                  title={card.title}
-                  description={card.description}
-                  icon={card.icon}
-                  isAvailable={card.isAvailable}
-                  unavailable={unavailable}
-                  productAction={productAction}
-                />
-              </MotionReveal>
+            {solutionCards.map((card) => (
+              <SolutionCard
+                key={card.id}
+                title={card.title}
+                description={card.description}
+                icon={card.icon}
+                isAvailable={card.isAvailable}
+                unavailable={unavailable}
+                productAction={productAction}
+              />
             ))}
           </div>
         </div>

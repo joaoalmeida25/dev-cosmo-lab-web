@@ -21,7 +21,6 @@
   },
   "navigation": {
     "main": "Main navigation",
-    "footer": "Footer navigation",
     "home": "Home",
     "products": "Products",
     "about": "About",
@@ -30,10 +29,14 @@
   },
   "footer": {
     "description": "Explore, evolve and build a future with more technology and freedom.",
-    "institutional": "Navigation",
     "social": "Social media",
     "socialUnavailable": "{network}: official URL is not available yet",
     "signature": "Made with purpose. For new horizons.",
     "copyright": "© {year} Dev Cosmo Lab. All rights reserved."
+  },
+  "catalogError": {
+    "title": "Unable to load products.",
+    "description": "Try again to keep exploring the catalog.",
+    "retry": "Try again"
   }
 }

@@ -1,15 +1,15 @@
+import type { LucideIcon } from 'lucide-react';
 import styles from './featured-product-view.module.css';
 import { Container } from '@/components/shared/container/container.component';
 import { Section } from '@/components/shared/section/section.component';
 import { ThemedArtwork } from '@/components/shared/themed-artwork/themed-artwork.component';
-import { MotionReveal } from '@/components/shared/motion-reveal/motion-reveal.component';
-import type { IProduct } from '@/features/products/products.types';
+import type { IHomeFeaturedProduct } from '@/features/home/home.types';
 
 interface IFeaturedProductViewProps {
   eyebrow: string;
   illustration: string;
-  product: Pick<IProduct, 'name' | 'description' | 'images' | 'imageAlt'>;
-  benefits: ReadonlyArray<{ id: string; title: string; description: string }>;
+  product: Pick<IHomeFeaturedProduct, 'name' | 'description' | 'images' | 'imageAlt'>;
+  benefits: ReadonlyArray<{ id: string; title: string; description: string; icon: LucideIcon }>;
 }
 
 export const FeaturedProductView = ({
@@ -30,7 +30,7 @@ export const FeaturedProductView = ({
         className="absolute inset-0 [background-image:var(--featured-glow)]"
       />
       <Container>
-        <MotionReveal className="relative grid items-center gap-10 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)]">
+        <div className="relative grid items-center gap-10 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)]">
           <div className="min-w-0 lg:py-6">
             <p className="text-[10px] leading-relaxed font-semibold tracking-[0.14em] text-text-accent-context uppercase">
               {eyebrow}
@@ -45,13 +45,13 @@ export const FeaturedProductView = ({
               {product.description}
             </p>
             <ul className="mt-7 space-y-5">
-              {benefits.map((benefit, index) => (
+              {benefits.map(({ icon: Icon, ...benefit }) => (
                 <li key={benefit.id} className="flex gap-4">
                   <span
                     className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-icon-surface text-xl font-semibold text-accent"
                     aria-hidden="true"
                   >
-                    {index === 0 ? '✓' : index === 1 ? '↗' : '＋'}
+                    <Icon aria-hidden="true" strokeWidth={1.75} className="size-6" />
                   </span>
                   <span>
                     <strong className="block text-sm font-semibold text-text-primary">
@@ -84,7 +84,7 @@ export const FeaturedProductView = ({
               {illustration}
             </figcaption>
           </figure>
-        </MotionReveal>
+        </div>
       </Container>
     </Section>
   );
