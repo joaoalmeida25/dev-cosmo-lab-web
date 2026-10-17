@@ -16,7 +16,7 @@ export const ThemeToggle = () => {
       onClick={toggleTheme}
       disabled={!isHydrated}
       aria-label={label}
-      className="text-accent"
+      className="text-accent [&_[data-button-icon]]:size-[18px]"
     >
       <svg
         viewBox="0 0 24 24"

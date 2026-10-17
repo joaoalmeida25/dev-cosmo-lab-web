@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
+import { ThemeBootstrap } from './components/theme-bootstrap/theme-bootstrap.component';
 import { Geist, Geist_Mono } from 'next/font/google';
-import Script from 'next/script';
 import { locale as getLocale } from 'next/root-params';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
@@ -40,6 +40,7 @@ const themeScript = `(() => {
 
   document.documentElement.dataset.theme = theme;
   document.documentElement.style.colorScheme = theme;
+  document.documentElement.dataset.themeReady = 'true';
 })();`;
 
 export const generateStaticParams = () => {
@@ -62,6 +63,10 @@ const RootLayout = async ({ children }: LayoutProps<'/[locale]'>) => {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <ThemeBootstrap script={themeScript} locale={locale} />
+        <noscript>
+          <style>{`:root:not([data-theme-ready]) body { visibility: visible; } .themed-artwork { background-image: var(--artwork-dark); }`}</style>
+        </noscript>
         <NextIntlClientProvider locale={locale} messages={{ common: messages.common }}>
           <a
             href="#main-content"
@@ -75,11 +80,6 @@ const RootLayout = async ({ children }: LayoutProps<'/[locale]'>) => {
           </main>
           <Footer />
         </NextIntlClientProvider>
-        <Script
-          id="theme-bootstrap"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{ __html: themeScript }}
-        />
       </body>
     </html>
   );

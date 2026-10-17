@@ -1,18 +1,34 @@
 import { getTranslations } from 'next-intl/server';
-import { Container } from '@/components/shared/container/container.component';
+import { Hero } from './components/hero/hero.component';
+import { FeaturedProduct } from './components/featured-product/featured-product.component';
+import { SolutionsSection } from './components/solutions-section/solutions-section.component';
+import { BrandLaboratory } from './components/brand-laboratory/brand-laboratory.component';
+import { FinalCTA } from './components/final-cta/final-cta.component';
+import { FEATURED_PRODUCT } from '@/features/products/products.constants';
+import type { IProduct } from '@/features/products/products.types';
 
 export const Home = async () => {
-  const t = await getTranslations('home');
+  const t = await getTranslations('products.proposalsKit');
+  const product: IProduct = {
+    ...FEATURED_PRODUCT,
+    subtitle: t('subtitle'),
+    description: t('description'),
+    materials: [
+      t('materials.spreadsheet'),
+      t('materials.messages'),
+      t('materials.templates'),
+      t('materials.guide'),
+    ],
+    imageAlt: t('imageAlt'),
+  };
 
   return (
-    <Container className="flex flex-1 flex-col justify-center py-20 md:py-28">
-      <p className="text-sm text-text-muted">{t('status')}</p>
-      <h1 className="mt-4 text-4xl font-semibold tracking-tight text-text-primary sm:text-5xl">
-        Dev Cosmo Lab
-      </h1>
-      <p className="mt-6 max-w-xl text-base leading-relaxed text-text-secondary sm:text-lg">
-        {t('description')}
-      </p>
-    </Container>
+    <>
+      <Hero />
+      <FeaturedProduct product={product} />
+      <SolutionsSection />
+      <BrandLaboratory />
+      <FinalCTA />
+    </>
   );
 };

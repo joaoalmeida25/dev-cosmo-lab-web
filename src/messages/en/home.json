@@ -1,4 +1,78 @@
 {
-  "status": "In development",
-  "description": "We are preparing the Dev Cosmo Lab website."
+  "hero": {
+    "eyebrow": "Technology for new horizons",
+    "headline": "<line>Tools to help</line> <line>you <highlight>go further.</highlight></line>",
+    "description": "Digital products, technology and knowledge to turn ideas into results.",
+    "primaryAction": "Explore products",
+    "secondaryAction": "Discover the brand",
+    "benefits": {
+      "solutions": "Real solutions",
+      "productivity": "Built for productivity",
+      "evolution": "Continuous evolution"
+    }
+  },
+  "featured": {
+    "eyebrow": "Featured product",
+    "illustration": "Illustrative presentation of the three spreadsheets in the Propostas em Dia kit.",
+    "benefits": {
+      "organization": {
+        "title": "Better organization",
+        "description": "Keep proposal tracking together in one practical spreadsheet."
+      },
+      "followUp": {
+        "title": "Simple follow-up",
+        "description": "Record negotiations and keep the next contacts in view."
+      },
+      "materials": {
+        "title": "Ready-to-use materials",
+        "description": "Use messages, editable templates and a quick guide every day."
+      }
+    }
+  },
+  "solutions": {
+    "eyebrow": "Our solutions",
+    "title": "Explore our solutions",
+    "description": "Digital tools created for real needs, starting with a more organized sales routine.",
+    "unavailable": "Coming soon",
+    "productAction": "Go to the Propostas em Dia featured section",
+    "cards": {
+      "product": {
+        "title": "Propostas em Dia",
+        "description": "A spreadsheet and materials kit for keeping proposals organized."
+      },
+      "newProducts": {
+        "title": "New products",
+        "description": "New digital tools are in development."
+      },
+      "moreSolutions": {
+        "title": "More solutions",
+        "description": "Other possibilities will be introduced when they are ready."
+      }
+    }
+  },
+  "laboratory": {
+    "eyebrow": "The laboratory",
+    "title": "More than products. We explore possibilities.",
+    "description": "We bring technology, knowledge and creativity together to develop useful, clear solutions for everyday work.",
+    "pillars": {
+      "create": {
+        "title": "Create",
+        "description": "We turn ideas into solutions."
+      },
+      "explore": {
+        "title": "Explore",
+        "description": "We investigate new paths."
+      },
+      "evolve": {
+        "title": "Evolve",
+        "description": "We improve every experience."
+      }
+    }
+  },
+  "finalCta": {
+    "eyebrow": "New horizons",
+    "title": "Your next step starts here.",
+    "description": "Explore our products and discover how technology can take you further.",
+    "action": "Explore products"
+  }
 }

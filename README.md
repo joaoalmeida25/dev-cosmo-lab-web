@@ -5,9 +5,11 @@ Uma única aplicação Next.js, sem backend próprio, banco de dados, autentica�
 
 ## Status
 
-Fase 2: fundação visual com Header e Footer globais, identidade do handoff V2,
-Home temporária em três idiomas e controles de tema integrados ao Header.
-A Home comercial, o catálogo e os detalhes de produtos serão implementados nas próximas fases. Não há integração de checkout ou deploy configurado.
+Fase 3: Home Cosmic Observatory implementada, aguardando revisão visual da Thread 6
+e homologação da Thread 2. A página está disponível em três idiomas, com Hero,
+produto em destaque, soluções, laboratório e CTA final. Header, Footer, temas e
+controles da Fase 2 foram reaproveitados. Catálogo e detalhes de produtos pertencem às próximas fases.
+Não há integração de checkout ou deploy configurado.
 
 O domínio oficial ainda não foi definido. `src/constants/site.constants.ts` utiliza
 `http://localhost:3000` exclusivamente como base local de metadados. Essa configuração
@@ -62,7 +64,8 @@ src/
 ├── app/[locale]/          # Layout e Home localizada
 ├── components/           # Shell compartilhado, controles de idioma/tema e Button
 ├── constants/            # Base local do site e configuração de tema
-├── features/home/        # Home temporária
+├── features/home/        # Hero, destaque, soluções, laboratório e CTA
+├── features/products/    # Dados e contrato mínimo do produto
 ├── hooks/                # Persistência local e tema
 ├── i18n/                 # Roteamento, mensagens e metadados localizados
 ├── messages/             # pt-BR, en e es
@@ -79,7 +82,7 @@ Não foram mantidos componentes ou assets pessoais sem uso imediato.
 
 O next-intl oferece `pt-BR` como idioma padrão sem prefixo (`/`), inglês em `/en`
 e espanhol em `/es`. A troca de idioma preserva caminho, query e hash.
-Os namespaces atuais são `common`, `home` e `metadata`, com a mesma estrutura
+Os namespaces atuais são `common`, `home`, `products` e `metadata`, com a mesma estrutura
 nos três idiomas. Apenas as mensagens comuns necessárias aos controles são
 enviadas pelo provider ao cliente.
 
@@ -87,28 +90,37 @@ enviadas pelo provider ao cliente.
 
 Dark é o tema padrão. A preferência dark/light é salva em `localStorage` com a chave
 `dev-cosmo-lab-theme` e aplicada em `data-theme` no elemento HTML. O script inicial
-e o hook usam a mesma constante. A paleta e os estados do CTA seguem a homologação em
-`docs/design/phase-2-decisions.md`, que prevalece sobre os valores anteriores do guia.
-Sombras, gradientes, hover secundário e ajustes tipográficos finos continuam
-provisórios conforme esse documento.
+e o hook usam a mesma constante. A paleta e os estados do CTA preservam a homologação
+da Fase 2, enquanto os overlays usam aliases semânticos próprios da nova composição.
 
 ## Fundação visual
 
-Consulte `docs/design/` antes de qualquer implementação visual. Os mockups finais
-aprovados têm prioridade, seguidos pelo guia/manifesto, Figma estrutural e código.
-Respeite as substituições finais explícitas de assets documentadas no pacote V2.
+Consulte `design-handoff/devcosmo/` antes de qualquer implementação visual. Os mockups
+finais aprovados têm prioridade, seguidos pelas especificações, assets e manifesto.
+Respeite as substituições finais explícitas documentadas no handoff.
 Os arquivos do handoff foram preservados; mockups não são assets de produção.
 
 O shell em `src/app/[locale]/layout.tsx` mantém Header, um único `main` e Footer.
-Brand e Container são compartilhados; somente os controles interativos são Client
-Components. O logo leva à Home também no mobile, onde não é necessário menu para
-uma única página. Produtos, redes sociais e demais destinos não confirmados são
-omitidos até existirem. A fonte Geist foi mantida conforme o guia.
+Brand, Container e Section são compartilhados. Os controles interativos e o
+bootstrap do tema delimitam os Client Components. O Header inclui navegação por
+âncoras e menu mobile. YouTube e Instagram aparecem no Footer sem ação até que suas
+URLs oficiais sejam documentadas; demais destinos não confirmados são omitidos. A fonte
+Geist foi mantida conforme a homologação anterior.
 
-A Home continua temporária. Hero, destaque, ecossistema, CTA e catálogo pertencem
-às fases seguintes. Não há backend ou configuração de deploy.
+A Home utiliza as artes Cosmic Observatory aprovadas e CTAs para as âncoras reais
+`#featured-product`, `#solutions` e `#laboratory`. Preço, compra e ação de detalhes foram omitidos
+até a confirmação dos destinos comerciais. A arte do kit é identificada como ilustrativa.
 
-Evidências, tokens aplicados e pendências: `docs/phase-2-report.md`.
+As seções continuam Server Components. `MotionReveal` é um wrapper cliente leve
+para entrada única em viewport com IntersectionObserver/Web Animations, sem biblioteca
+de motion. Conteúdo sem JS permanece visível; movimento reduzido e foco por teclado
+cancelam a revelação. `ThemedArtwork` usa `getImageProps` e CSS
+`image-set` para baixar somente a arte do tema ativo após a seleção da preferência.
+`ThemeBootstrap` usa `next/script` com `beforeInteractive` no documento inicial e
+restaura os atributos do tema antes da pintura nas navegações de idioma. O conteúdo
+é revelado após essa seleção, com fallback dark visível sem JavaScript. Não há
+reinserção manual de script durante a navegação. Os assets públicos permanecem intactos; a otimização é feita
+pelo Next em runtime. Não há backend ou configuração de deploy.
 
 ## Origem técnica
 

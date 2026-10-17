@@ -1,4 +1,78 @@
 {
-  "status": "Em desenvolvimento",
-  "description": "Estamos preparando o website da Dev Cosmo Lab."
+  "hero": {
+    "eyebrow": "Tecnologia para novos horizontes",
+    "headline": "<line>Ferramentas</line> <line>para <highlight>ir além.</highlight></line>",
+    "description": "Produtos digitais, tecnologia e conhecimento para transformar ideias em resultados.",
+    "primaryAction": "Explorar produtos",
+    "secondaryAction": "Conhecer a marca",
+    "benefits": {
+      "solutions": "Soluções reais",
+      "productivity": "Foco em produtividade",
+      "evolution": "Evolução contínua"
+    }
+  },
+  "featured": {
+    "eyebrow": "Produto em destaque",
+    "illustration": "Apresentação ilustrativa das três planilhas do kit Propostas em Dia.",
+    "benefits": {
+      "organization": {
+        "title": "Mais organização",
+        "description": "Centralize o acompanhamento das propostas em uma planilha prática."
+      },
+      "followUp": {
+        "title": "Acompanhamento simples",
+        "description": "Registre negociações e mantenha os próximos contatos à vista."
+      },
+      "materials": {
+        "title": "Materiais prontos",
+        "description": "Use mensagens, modelos editáveis e um guia rápido no dia a dia."
+      }
+    }
+  },
+  "solutions": {
+    "eyebrow": "Nossas soluções",
+    "title": "Explore nossas soluções",
+    "description": "Ferramentas digitais criadas para necessidades reais, começando por uma rotina comercial mais organizada.",
+    "unavailable": "Em breve",
+    "productAction": "Ir para o destaque do Propostas em Dia",
+    "cards": {
+      "product": {
+        "title": "Propostas em Dia",
+        "description": "Kit de planilhas e materiais para acompanhar propostas com mais organização."
+      },
+      "newProducts": {
+        "title": "Novos produtos",
+        "description": "Novas ferramentas digitais em desenvolvimento."
+      },
+      "moreSolutions": {
+        "title": "Mais soluções",
+        "description": "Outras possibilidades serão apresentadas no momento certo."
+      }
+    }
+  },
+  "laboratory": {
+    "eyebrow": "O laboratório",
+    "title": "Mais do que produtos. Exploramos possibilidades.",
+    "description": "Unimos tecnologia, conhecimento e criatividade para desenvolver soluções úteis, claras e aplicáveis ao dia a dia.",
+    "pillars": {
+      "create": {
+        "title": "Criar",
+        "description": "Transformamos ideias em soluções."
+      },
+      "explore": {
+        "title": "Explorar",
+        "description": "Investigamos novos caminhos."
+      },
+      "evolve": {
+        "title": "Evoluir",
+        "description": "Aprimoramos cada experiência."
+      }
+    }
+  },
+  "finalCta": {
+    "eyebrow": "Novos horizontes",
+    "title": "Seu próximo passo começa aqui.",
+    "description": "Explore nossos produtos e descubra como a tecnologia pode levar você mais longe.",
+    "action": "Explorar produtos"
+  }
 }

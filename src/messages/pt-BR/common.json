@@ -22,11 +22,18 @@
   "navigation": {
     "main": "Navegação principal",
     "footer": "Navegação do rodapé",
-    "home": "Início"
+    "home": "Início",
+    "products": "Produtos",
+    "about": "Sobre",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu"
   },
   "footer": {
     "description": "Explorar, evoluir e construir um futuro com mais tecnologia e liberdade.",
-    "institutional": "Institucional",
+    "institutional": "Navegação",
+    "social": "Redes sociais",
+    "socialUnavailable": "{network}: URL oficial ainda não disponível",
+    "signature": "Feito com propósito. Para novos horizontes.",
     "copyright": "© {year} Dev Cosmo Lab. Todos os direitos reservados."
   }
 }

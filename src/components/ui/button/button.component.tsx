@@ -13,10 +13,10 @@ const variantClasses: Record<ButtonVariant, string> = {
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: 'min-h-11 gap-2 rounded-control px-4 py-2 text-sm [&_[data-button-icon]]:size-4',
+  sm: 'relative min-h-10 gap-2 rounded-control px-3 py-1.5 text-sm before:absolute before:-inset-y-0.5 before:inset-x-0 before:content-[""] [&_[data-button-icon]]:size-4',
   md: 'min-h-11 gap-2.5 rounded-control px-5 py-2.5 text-sm [&_[data-button-icon]]:size-4.5',
   lg: 'min-h-12 gap-2.5 rounded-control px-5 py-3 text-sm [&_[data-button-icon]]:size-4.5',
-  icon: 'size-11 shrink-0 gap-0 rounded-full p-0 text-sm [&_[data-button-icon]]:size-5',
+  icon: 'relative size-10 shrink-0 gap-0 rounded-full p-0 text-sm before:absolute before:-inset-0.5 before:content-[""] [&_[data-button-icon]]:size-5',
 };
 
 export const Button = ({
@@ -29,7 +29,7 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   const classes = [
-    'inline-flex cursor-pointer items-center justify-center border font-medium transition-[color,background-color,border-color,transform] duration-150 focus-visible:outline-focus-ring enabled:active:translate-y-px disabled:cursor-not-allowed motion-reduce:transition-none [&[href]]:active:translate-y-px [&_[data-button-icon]]:inline-flex [&_[data-button-icon]]:shrink-0 [&_[data-button-icon]>*]:size-full',
+    'inline-flex cursor-pointer items-center justify-center border font-medium transition-[color,background-color,border-color,transform] duration-200 focus-visible:outline-focus-ring enabled:active:translate-y-px disabled:cursor-not-allowed motion-reduce:transition-none [&[href]]:active:translate-y-px [&_[data-button-icon]]:inline-flex [&_[data-button-icon]]:shrink-0 [&_[data-button-icon]>*]:size-full',
     variant === 'primary'
       ? 'focus-visible:outline-3 focus-visible:outline-offset-3'
       : 'focus-visible:outline-2 focus-visible:outline-offset-4 disabled:opacity-40',

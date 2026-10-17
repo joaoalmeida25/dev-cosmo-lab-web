@@ -22,11 +22,18 @@
   "navigation": {
     "main": "Main navigation",
     "footer": "Footer navigation",
-    "home": "Home"
+    "home": "Home",
+    "products": "Products",
+    "about": "About",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   },
   "footer": {
     "description": "Explore, evolve and build a future with more technology and freedom.",
-    "institutional": "Institutional",
+    "institutional": "Navigation",
+    "social": "Social media",
+    "socialUnavailable": "{network}: official URL is not available yet",
+    "signature": "Made with purpose. For new horizons.",
     "copyright": "© {year} Dev Cosmo Lab. All rights reserved."
   }
 }
