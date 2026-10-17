@@ -1,11 +1,11 @@
 import { getTranslations } from 'next-intl/server';
-import { HeaderView } from './header-view.component';
+import { HeaderInteraction } from './header-interaction.component';
 
 export const Header = async () => {
   const t = await getTranslations('common');
 
   return (
-    <HeaderView
+    <HeaderInteraction
       labels={{
         mainNavigation: t('navigation.main'),
         home: t('navigation.home'),

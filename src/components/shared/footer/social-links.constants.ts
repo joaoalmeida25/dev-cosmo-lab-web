@@ -1,4 +1,4 @@
-export interface ISocialLink {
+interface ISocialLink {
   id: 'youtube' | 'instagram';
   label: string;
   href?: string;

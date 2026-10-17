@@ -1,12 +1,12 @@
 'use client';
 
 import { useEffect, useId, useRef, useState } from 'react';
-import { useLocale, useTranslations } from 'next-intl';
+import { hasLocale, useLocale, useTranslations } from 'next-intl';
 import { getPathname, usePathname } from '@/i18n/navigation';
 import { useRouter } from 'next/navigation';
 import { routing } from '@/i18n/routing';
-import { LanguageToggleView } from '@/components/language-toggle/language-toggle-view.component';
-import { Locale, SupportedLocale } from '@/components/language-toggle/language-toggle.types';
+import { LanguageToggleView } from '@/components/shared/language-toggle/language-toggle-view.component';
+import type { SupportedLocale } from '@/i18n/locale.types';
 
 const localeCodes: Record<SupportedLocale, string> = {
   'pt-BR': 'PT',
@@ -16,22 +16,24 @@ const localeCodes: Record<SupportedLocale, string> = {
 
 export const LanguageToggle = () => {
   const t = useTranslations('common.language');
-  const locale = useLocale() as SupportedLocale;
+  const requestedLocale = useLocale();
+  const locale = hasLocale(routing.locales, requestedLocale)
+    ? requestedLocale
+    : routing.defaultLocale;
   const pathname = usePathname();
   const router = useRouter();
   const optionsId = useId();
   const containerRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const availableLocales: Array<Locale> = routing.locales.filter(
-    (optionLocale) => optionLocale !== locale,
-  );
+  const availableLocales = routing.locales.filter((optionLocale) => optionLocale !== locale);
   const currentLanguage = t(`names.${locale}`);
 
   useEffect(() => {
     if (!isOpen) return;
 
     const handlePointerDown = (event: PointerEvent) => {
-      if (!containerRef.current?.contains(event.target as Node)) setIsOpen(false);
+      if (event.target instanceof Node && !containerRef.current?.contains(event.target))
+        setIsOpen(false);
     };
 
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -59,18 +61,23 @@ export const LanguageToggle = () => {
     router.replace(getPathname({ href, locale: nextLocale }), { scroll: false });
   };
 
+  const toggleOptions = () => setIsOpen((current) => !current);
+
   return (
     <LanguageToggleView
       containerRef={containerRef}
-      locale={locale}
-      availableLocales={availableLocales}
-      changeLocale={changeLocale}
-      currentLanguage={currentLanguage}
+      currentCode={localeCodes[locale]}
+      options={availableLocales.map((optionLocale) => ({
+        locale: optionLocale,
+        code: localeCodes[optionLocale],
+        label: t('select', { language: t(`names.${optionLocale}`) }),
+      }))}
+      onChangeLocale={changeLocale}
+      toggleLabel={`${t('toggle')}. ${t('current', { language: currentLanguage })}`}
+      optionsLabel={t('options')}
       optionsId={optionsId}
-      localeCodes={localeCodes}
-      translate={t}
       isOpen={isOpen}
-      setIsOpen={setIsOpen}
+      onToggle={toggleOptions}
     />
   );
 };

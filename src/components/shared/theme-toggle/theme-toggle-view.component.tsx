@@ -1,20 +1,19 @@
-'use client';
-
-import { useTheme } from '@/hooks/use-theme/use-theme.hook';
 import { Button } from '@/components/ui/button/button.component';
-import { useTranslations } from 'next-intl';
 
-export const ThemeToggle = () => {
-  const t = useTranslations('common.theme');
-  const { theme, toggleTheme, isHydrated } = useTheme();
-  const label = !isHydrated ? t('loading') : theme === 'dark' ? t('enableLight') : t('enableDark');
+interface IThemeToggleViewProps {
+  label: string;
+  disabled: boolean;
+  showSun: boolean;
+  onToggle: () => void;
+}
 
+export const ThemeToggleView = ({ label, disabled, showSun, onToggle }: IThemeToggleViewProps) => {
   return (
     <Button
       variant="secondary"
       size="icon"
-      onClick={toggleTheme}
-      disabled={!isHydrated}
+      onClick={onToggle}
+      disabled={disabled}
       aria-label={label}
       className="text-accent [&_[data-button-icon]]:size-[18px]"
     >
@@ -28,7 +27,7 @@ export const ThemeToggle = () => {
         aria-hidden="true"
         focusable="false"
       >
-        {theme === 'dark' ? (
+        {showSun ? (
           <>
             <circle cx="12" cy="12" r="4" />
             <path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5" />

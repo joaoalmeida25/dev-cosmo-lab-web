@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import type { ReactNode } from 'react';
+import { MotionRevealView } from './motion-reveal-view.component';
 
 interface IMotionRevealProps {
   children: ReactNode;
@@ -87,8 +88,8 @@ export const MotionReveal = ({
   }, [delay, duration, variant]);
 
   return (
-    <div ref={ref} data-motion-reveal className={className}>
+    <MotionRevealView elementRef={ref} className={className}>
       {children}
-    </div>
+    </MotionRevealView>
   );
 };

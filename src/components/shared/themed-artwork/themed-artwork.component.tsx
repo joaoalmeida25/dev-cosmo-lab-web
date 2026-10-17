@@ -1,5 +1,6 @@
 import { getImageProps } from 'next/image';
-import type { CSSProperties } from 'react';
+import type { IArtworkStyle } from './themed-artwork.types';
+import { ThemedArtworkView } from './themed-artwork-view.component';
 
 interface IThemedArtworkProps {
   darkSrc: string;
@@ -12,13 +13,6 @@ interface IThemedArtworkProps {
   lightHeight?: number;
   alt?: string;
   className?: string;
-}
-
-interface IArtworkStyle extends CSSProperties {
-  '--artwork-dark': string;
-  '--artwork-light': string;
-  '--artwork-mobile-dark'?: string;
-  '--artwork-mobile-light'?: string;
 }
 
 const getImageSet = (src: string, width: number, height: number) => {
@@ -55,12 +49,11 @@ export const ThemedArtwork = ({
   };
 
   return (
-    <div
-      role={alt ? 'img' : undefined}
-      aria-label={alt}
-      aria-hidden={alt ? undefined : true}
-      style={style}
-      className={`themed-artwork bg-no-repeat theme-ready:[background-image:var(--artwork-dark)] theme-ready:light:[background-image:var(--artwork-light)] ${mobileDarkSrc ? 'themed-artwork-responsive' : ''} ${className}`}
+    <ThemedArtworkView
+      artworkStyle={style}
+      alt={alt}
+      className={className}
+      hasMobileArtwork={Boolean(mobileDarkSrc)}
     />
   );
 };

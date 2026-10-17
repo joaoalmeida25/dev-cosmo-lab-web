@@ -1,0 +1,17 @@
+.scene {
+  --final-cta-overlay: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--background) 78%, transparent) 0%,
+    color-mix(in srgb, var(--background) 46%, transparent) 45%,
+    transparent 82%
+  );
+}
+
+:global(:root[data-theme='light']) .scene {
+  --final-cta-overlay: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--background) 88%, transparent) 0%,
+    color-mix(in srgb, var(--background) 58%, transparent) 44%,
+    transparent 82%
+  );
+}

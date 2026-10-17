@@ -1,0 +1,15 @@
+.scene {
+  --featured-glow: radial-gradient(
+    circle at 72% 48%,
+    color-mix(in srgb, var(--primary) 14%, transparent),
+    transparent 50%
+  );
+}
+
+:global(:root[data-theme='light']) .scene {
+  --featured-glow: radial-gradient(
+    circle at 72% 48%,
+    color-mix(in srgb, var(--primary-soft) 76%, transparent),
+    transparent 54%
+  );
+}

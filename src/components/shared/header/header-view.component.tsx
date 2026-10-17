@@ -1,20 +1,18 @@
-'use client';
-
-import { useEffect, useRef, useState } from 'react';
+import type { RefObject } from 'react';
+import type { IHeaderLabels } from './header.types';
 import { Brand } from '@/components/shared/brand/brand.component';
 import { Container } from '@/components/shared/container/container.component';
-import { LanguageToggle } from '@/components/language-toggle/language-toggle.component';
-import { ThemeToggle } from '@/components/theme-toggle/theme-toggle.component';
+import { LanguageToggle } from '@/components/shared/language-toggle/language-toggle.component';
+import { ThemeToggle } from '@/components/shared/theme-toggle/theme-toggle.component';
 
 interface IHeaderViewProps {
-  labels: {
-    mainNavigation: string;
-    home: string;
-    products: string;
-    about: string;
-    openMenu: string;
-    closeMenu: string;
-  };
+  labels: IHeaderLabels;
+  isScrolled: boolean;
+  isMenuOpen: boolean;
+  menuButtonRef: RefObject<HTMLButtonElement | null>;
+  firstMobileLinkRef: RefObject<HTMLAnchorElement | null>;
+  onToggleMenu: () => void;
+  onCloseMenu: () => void;
 }
 
 const navigationItems = [
@@ -23,40 +21,15 @@ const navigationItems = [
   { key: 'about', href: '#laboratory' },
 ] as const;
 
-export const HeaderView = ({ labels }: IHeaderViewProps) => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const firstMobileLinkRef = useRef<HTMLAnchorElement>(null);
-
-  useEffect(() => {
-    const updateHeader = () => {
-      setIsScrolled((current) => {
-        if (!current && window.scrollY >= 96) return true;
-        if (current && window.scrollY <= 64) return false;
-        return current;
-      });
-    };
-
-    updateHeader();
-    window.addEventListener('scroll', updateHeader, { passive: true });
-    return () => window.removeEventListener('scroll', updateHeader);
-  }, []);
-
-  useEffect(() => {
-    if (!isMenuOpen) return;
-
-    firstMobileLinkRef.current?.focus();
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key !== 'Escape') return;
-      setIsMenuOpen(false);
-      menuButtonRef.current?.focus();
-    };
-
-    document.addEventListener('keydown', closeOnEscape);
-    return () => document.removeEventListener('keydown', closeOnEscape);
-  }, [isMenuOpen]);
-
+export const HeaderView = ({
+  labels,
+  isScrolled,
+  isMenuOpen,
+  menuButtonRef,
+  firstMobileLinkRef,
+  onToggleMenu,
+  onCloseMenu,
+}: IHeaderViewProps) => {
   return (
     <header
       data-scrolled={isScrolled}
@@ -88,7 +61,7 @@ export const HeaderView = ({ labels }: IHeaderViewProps) => {
               aria-expanded={isMenuOpen}
               aria-controls="mobile-navigation"
               aria-label={isMenuOpen ? labels.closeMenu : labels.openMenu}
-              onClick={() => setIsMenuOpen((current) => !current)}
+              onClick={onToggleMenu}
               className="inline-flex size-11 cursor-pointer items-center justify-center rounded-full border border-border bg-transparent text-text-primary transition-colors duration-200 hover:bg-surface-hover focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-focus-ring motion-reduce:transition-none md:hidden"
             >
               <span className="relative block h-4 w-5" aria-hidden="true">
@@ -118,7 +91,7 @@ export const HeaderView = ({ labels }: IHeaderViewProps) => {
                   ref={index === 0 ? firstMobileLinkRef : undefined}
                   href={item.href}
                   tabIndex={isMenuOpen ? 0 : -1}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={onCloseMenu}
                   className="flex min-h-12 items-center rounded-xl px-4 text-sm font-medium text-text-primary hover:bg-surface-hover focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-focus-ring"
                 >
                   {labels[item.key]}

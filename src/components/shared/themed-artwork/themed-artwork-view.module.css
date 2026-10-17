@@ -1,0 +1,8 @@
+@media (max-width: 639px) {
+  :global(:root[data-theme-ready='true'][data-theme='dark']) .responsive {
+    background-image: var(--artwork-mobile-dark);
+  }
+  :global(:root[data-theme-ready='true'][data-theme='light']) .responsive {
+    background-image: var(--artwork-mobile-light);
+  }
+}

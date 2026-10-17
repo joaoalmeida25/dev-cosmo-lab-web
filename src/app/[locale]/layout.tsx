@@ -2,15 +2,12 @@ import type { Metadata } from 'next';
 import { ThemeBootstrap } from './components/theme-bootstrap/theme-bootstrap.component';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { locale as getLocale } from 'next/root-params';
-import { hasLocale, NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { DEFAULT_THEME, THEME_STORAGE_KEY } from '@/constants/theme.constants';
 import { routing } from '@/i18n/routing';
 import { SITE_URL } from '@/constants/site.constants';
-import { Header } from '@/components/shared/header/header.component';
-import { Footer } from '@/components/shared/footer/footer.component';
-import { getTranslations } from 'next-intl/server';
+import { AppShell } from '@/components/shared/app-shell/app-shell.component';
 import '@/styles/globals.css';
 
 const geistSans = Geist({
@@ -52,9 +49,6 @@ const RootLayout = async ({ children }: LayoutProps<'/[locale]'>) => {
 
   if (!hasLocale(routing.locales, locale)) notFound();
 
-  const messages = await getMessages();
-  const t = await getTranslations('common.accessibility');
-
   return (
     <html
       lang={locale}
@@ -67,19 +61,7 @@ const RootLayout = async ({ children }: LayoutProps<'/[locale]'>) => {
         <noscript>
           <style>{`:root:not([data-theme-ready]) body { visibility: visible; } .themed-artwork { background-image: var(--artwork-dark); }`}</style>
         </noscript>
-        <NextIntlClientProvider locale={locale} messages={{ common: messages.common }}>
-          <a
-            href="#main-content"
-            className="sr-only z-50 rounded-control bg-surface px-5 py-3 text-text-primary focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:outline-2 focus:outline-focus-ring"
-          >
-            {t('skipToContent')}
-          </a>
-          <Header />
-          <main id="main-content" tabIndex={-1} className="flex flex-1 flex-col">
-            {children}
-          </main>
-          <Footer />
-        </NextIntlClientProvider>
+        <AppShell locale={locale}>{children}</AppShell>
       </body>
     </html>
   );

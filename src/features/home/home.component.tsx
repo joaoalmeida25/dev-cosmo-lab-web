@@ -1,9 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import { Hero } from './components/hero/hero.component';
-import { FeaturedProduct } from './components/featured-product/featured-product.component';
-import { SolutionsSection } from './components/solutions-section/solutions-section.component';
-import { BrandLaboratory } from './components/brand-laboratory/brand-laboratory.component';
-import { FinalCTA } from './components/final-cta/final-cta.component';
+import { HomeView } from './home-view.component';
 import { FEATURED_PRODUCT } from '@/features/products/products.constants';
 import type { IProduct } from '@/features/products/products.types';
 
@@ -22,13 +18,5 @@ export const Home = async () => {
     imageAlt: t('imageAlt'),
   };
 
-  return (
-    <>
-      <Hero />
-      <FeaturedProduct product={product} />
-      <SolutionsSection />
-      <BrandLaboratory />
-      <FinalCTA />
-    </>
-  );
+  return <HomeView product={product} />;
 };

@@ -1,6 +1,6 @@
 'use client';
 
-import Script from 'next/script';
+import { ThemeBootstrapView } from './theme-bootstrap-view.component';
 import { useLayoutEffect } from 'react';
 import { useTheme } from '@/hooks/use-theme/use-theme.hook';
 
@@ -20,11 +20,5 @@ export const ThemeBootstrap = ({ script, locale }: IThemeBootstrapProps) => {
     document.documentElement.dataset.themeReady = 'true';
   }, [theme, isHydrated, locale]);
 
-  return isHydrated ? null : (
-    <Script
-      id="theme-bootstrap"
-      strategy="beforeInteractive"
-      dangerouslySetInnerHTML={{ __html: script }}
-    />
-  );
+  return <ThemeBootstrapView script={script} isHydrated={isHydrated} />;
 };

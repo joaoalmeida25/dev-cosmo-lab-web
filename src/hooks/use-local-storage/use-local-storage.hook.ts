@@ -18,11 +18,16 @@ const readStorage = (key: string): string | null => {
   }
 };
 
-const parseValue = <T>(serializedValue: string | null | undefined, initialValue: T): T => {
+const parseValue = <T>(
+  serializedValue: string | null | undefined,
+  initialValue: T,
+  resolveValue: (value: unknown) => T,
+): T => {
   if (serializedValue == null) return initialValue;
 
   try {
-    return JSON.parse(serializedValue) as T;
+    const parsedValue: unknown = JSON.parse(serializedValue);
+    return resolveValue(parsedValue);
   } catch {
     return initialValue;
   }
@@ -51,21 +56,25 @@ const subscribe = (onStoreChange: () => void) => {
 
 const getServerSnapshot = () => undefined;
 
-export const useLocalStorage = <T>(key: string, initialValue: T) => {
+export const useLocalStorage = <T>(
+  key: string,
+  initialValue: T,
+  resolveValue: (value: unknown) => T,
+) => {
   const getSnapshot = useCallback(() => readStorage(key), [key]);
 
   const serializedValue = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   const value = useMemo(
-    () => parseValue(serializedValue, initialValue),
-    [serializedValue, initialValue],
+    () => parseValue(serializedValue, initialValue, resolveValue),
+    [serializedValue, initialValue, resolveValue],
   );
 
   const setValue = useCallback(
     (nextValue: SetStateAction<T>) => {
       if (typeof window === 'undefined') return;
 
-      const currentValue = parseValue(readStorage(key), initialValue);
+      const currentValue = parseValue(readStorage(key), initialValue, resolveValue);
       const resolvedValue =
         typeof nextValue === 'function'
           ? (nextValue as (previousValue: T) => T)(currentValue)
@@ -88,7 +97,7 @@ export const useLocalStorage = <T>(key: string, initialValue: T) => {
 
       window.dispatchEvent(new Event(LOCAL_STORAGE_CHANGE_EVENT));
     },
-    [key, initialValue],
+    [key, initialValue, resolveValue],
   );
 
   return { value, setValue, isHydrated: serializedValue !== undefined };
