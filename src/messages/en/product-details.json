@@ -1,0 +1,50 @@
+{
+  "hero": {
+    "title": "Inside the solution",
+    "description": "Explore the details, features and possibilities of each Dev Cosmo Lab product."
+  },
+  "breadcrumb": "Breadcrumb",
+  "products": "Products",
+  "included": "What you receive",
+  "steps": "How it works",
+  "faq": "Frequently asked questions",
+  "buy": "Get the kit",
+  "access": "Access product",
+  "buyLabel": "Buy {name} at the external checkout (opens in a new tab)",
+  "accessLabel": "Access {name} (opens in a new tab)",
+  "gallery": {
+    "region": "Product gallery",
+    "previous": "Previous image",
+    "next": "Next image",
+    "select": "Select image",
+    "position": "Image {current} of {total}",
+    "unavailable": "Images are not available yet."
+  },
+  "specifications": {
+    "format": "Format",
+    "platform": "Platform",
+    "delivery": "Delivery",
+    "languages": "Language",
+    "compatibility": "Compatibility",
+    "license": "License",
+    "category": "Category"
+  },
+  "values": {
+    "web": "Web",
+    "desktop": "Desktop",
+    "mobile": "Mobile",
+    "download": "Downloadable materials",
+    "pt-BR": "Portuguese (PT-BR)",
+    "en": "English",
+    "es": "Spanish",
+    "excel": "Microsoft Excel",
+    "google-sheets": "Google Sheets",
+    "personal": "Personal use",
+    "commercial": "Commercial use",
+    "digital-files": "Digital files",
+    "webgl": "WebGL-enabled browser",
+    "polyform-noncommercial": "PolyForm Noncommercial 1.0.0"
+  },
+  "plannedIncluded": "Planned capabilities",
+  "plannedSteps": "How it is intended to work"
+}

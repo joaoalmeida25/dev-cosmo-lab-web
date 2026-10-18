@@ -38,6 +38,11 @@
   padding-top: calc(5rem + clamp(24px, 4.5vw, 72px));
 }
 
+/* Only the Hero-to-featured transition uses the compact content spacing. */
+.hero + section:global(#featured-product) {
+  padding-top: calc(3rem + clamp(24px, 4.5vw, 72px));
+}
+
 .edge {
   position: absolute;
   inset: auto 0 0;
@@ -53,5 +58,9 @@
 @media (min-width: 1024px) {
   .scene + section {
     padding-top: calc(6rem + clamp(24px, 4.5vw, 72px));
+  }
+
+  .hero + section:global(#featured-product) {
+    padding-top: calc(4rem + clamp(24px, 4.5vw, 72px));
   }
 }

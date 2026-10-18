@@ -13,15 +13,16 @@ export const Home = async () => {
   const locale = hasLocale(routing.locales, requestedLocale)
     ? requestedLocale
     : routing.defaultLocale;
-  if (!product?.images) throw new Error('Featured product artwork is missing');
+  if (!product) throw new Error('Featured product is missing');
   const content = product.content[locale];
   return (
     <HomeView
       product={{
+        slug: product.slug,
         name: product.name,
-        description: content.description,
+        description: content.featuredDescription ?? content.shortDescription,
         imageAlt: content.imageAlt,
-        images: product.images,
+        featured: product.media.featured,
       }}
     />
   );

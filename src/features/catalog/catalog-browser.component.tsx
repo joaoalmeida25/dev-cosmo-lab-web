@@ -136,6 +136,7 @@ export const CatalogBrowser = ({ products, locale, filters: parsed }: ICatalogBr
   const clearAll = () => navigate({ ...DEFAULT_CATALOG_FILTERS });
   const cards: ReadonlyArray<IProductCardPresentation> = visible.map((product) => ({
     id: product.id,
+    detailHref: product.status === 'available' ? `/produtos/${product.slug}` : null,
     name: product.name,
     subtitle: product.content.subtitle,
     description: product.content.shortDescription,
@@ -158,29 +159,16 @@ export const CatalogBrowser = ({ products, locale, filters: parsed }: ICatalogBr
           : product.status === 'in-development'
             ? t('card.developmentNote')
             : null,
-    images: product.images,
+    cover: product.cover,
     imageAlt: product.content.imageAlt,
     priceLabel:
-      product.status === 'planned'
-        ? t('card.soon')
-        : product.status === 'in-development'
-          ? t('card.development')
-          : product.priceCents === null
-            ? t('card.undefinedPrice')
-            : product.priceCents === 0
-              ? t('card.free')
-              : new Intl.NumberFormat(locale, {
-                  style: 'currency',
-                  currency: product.currency,
-                }).format(product.priceCents / 100),
-    action:
-      product.status === 'available' && product.checkoutUrl
-        ? {
-            href: product.checkoutUrl,
-            label: t('card.action'),
-            accessibleLabel: t('card.actionLabel', { name: product.name }),
-          }
-        : null,
+      product.priceCents === null
+        ? null
+        : product.priceCents === 0
+          ? t('card.free')
+          : new Intl.NumberFormat(locale, { style: 'currency', currency: product.currency }).format(
+              product.priceCents / 100,
+            ),
   }));
   const activeFilters = groups
     .filter((group) => group.selected !== 'all')

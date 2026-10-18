@@ -2,17 +2,22 @@ import type { LucideIcon } from 'lucide-react';
 import styles from './featured-product-view.module.css';
 import { Container } from '@/components/shared/container/container.component';
 import { Section } from '@/components/shared/section/section.component';
-import { ThemedArtwork } from '@/components/shared/themed-artwork/themed-artwork.component';
+import { Button } from '@/components/ui/button/button.component';
+import Image from 'next/image';
 import type { IHomeFeaturedProduct } from '@/features/home/home.types';
 
 interface IFeaturedProductViewProps {
+  detailHref: string;
+  action: string;
   eyebrow: string;
   illustration: string;
-  product: Pick<IHomeFeaturedProduct, 'name' | 'description' | 'images' | 'imageAlt'>;
+  product: Pick<IHomeFeaturedProduct, 'name' | 'description' | 'featured' | 'imageAlt'>;
   benefits: ReadonlyArray<{ id: string; title: string; description: string; icon: LucideIcon }>;
 }
 
 export const FeaturedProductView = ({
+  detailHref,
+  action,
   eyebrow,
   illustration,
   product,
@@ -23,7 +28,7 @@ export const FeaturedProductView = ({
       id="featured-product"
       aria-labelledby="featured-title"
       tabIndex={-1}
-      className={`${styles.scene} relative overflow-hidden bg-featured-surface lg:min-h-155`}
+      className={`${styles.scene} relative overflow-hidden bg-featured-surface`}
     >
       <div
         aria-hidden="true"
@@ -31,7 +36,7 @@ export const FeaturedProductView = ({
       />
       <Container>
         <div className="relative grid items-center gap-10 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)]">
-          <div className="min-w-0 lg:py-6">
+          <div className="min-w-0">
             <p className="text-[10px] leading-relaxed font-semibold tracking-[0.14em] text-text-accent-context uppercase">
               {eyebrow}
             </p>
@@ -64,22 +69,27 @@ export const FeaturedProductView = ({
                 </li>
               ))}
             </ul>
+            <Button href={detailHref} className="mt-7" variant="primary">
+              {action}
+            </Button>
           </div>
           <figure className="relative min-w-0 lg:-mr-8 xl:-mr-14">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 rounded-full bg-radial from-ambient-glow to-transparent to-70%"
             />
-            <ThemedArtwork
-              darkSrc={product.images.dark}
-              lightSrc={product.images.light}
-              width={1448}
-              height={1086}
-              lightWidth={1672}
-              lightHeight={941}
-              alt={product.imageAlt}
-              className="relative aspect-4/3 w-full bg-contain bg-center light:aspect-[1672/941]"
-            />
+            <div className="relative aspect-4/3 w-full">
+              {product.featured ? (
+                <Image
+                  src={product.featured}
+                  alt={product.imageAlt}
+                  fill
+                  unoptimized
+                  sizes="(min-width: 1440px) 840px, (min-width: 1024px) 60vw, 100vw"
+                  className="object-contain"
+                />
+              ) : null}
+            </div>
             <figcaption className="relative mx-auto mt-1 max-w-md text-center text-xs leading-relaxed text-text-secondary">
               {illustration}
             </figcaption>

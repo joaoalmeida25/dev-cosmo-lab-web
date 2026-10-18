@@ -76,12 +76,7 @@
     "highlights": "Highlights",
     "plannedHighlights": "Planned highlights",
     "developmentHighlights": "Expected highlights",
-    "soon": "Coming soon",
-    "development": "In development",
-    "undefinedPrice": "Price to be announced",
     "free": "Free",
-    "action": "Get the kit",
-    "actionLabel": "Get {name} at the external checkout",
     "plannedNote": "Project in planning.",
     "developmentNote": "Project in development.",
     "libraryNote": "Evolving showcase; a stable public version has not yet been published on npm."

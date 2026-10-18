@@ -1,14 +1,14 @@
 {
   "hero": {
     "eyebrow": "Technology for new horizons",
-    "headline": "<line>Tools to help</line> <line>you <highlight>go further.</highlight></line>",
-    "description": "Digital products, technology and knowledge to turn ideas into results.",
+    "headline": "<line>Technology to</line> <line><highlight>create, solve</highlight></line> <line>and evolve.</line>",
+    "description": "We develop digital products, build custom software and share knowledge about technology and artificial intelligence.",
     "primaryAction": "Explore products",
-    "secondaryAction": "Discover the brand",
+    "secondaryAction": "Discover our services",
     "benefits": {
-      "solutions": "Real solutions",
-      "productivity": "Built for productivity",
-      "evolution": "Continuous evolution"
+      "solutions": "Digital products",
+      "productivity": "Custom software",
+      "evolution": "Shared knowledge"
     }
   },
   "featured": {
@@ -27,33 +27,43 @@
         "title": "Ready-to-use materials",
         "description": "Use messages, editable templates and a quick guide every day."
       }
-    }
+    },
+    "action": "Discover the product"
   },
   "solutions": {
     "eyebrow": "Our solutions",
-    "title": "Explore our solutions",
-    "description": "Digital tools created for real needs, starting with a more organized sales routine.",
-    "unavailable": "Coming soon",
-    "productAction": "Go to the Propostas em Dia featured section",
+    "title": "Custom development",
+    "description": "Technology built around your project’s needs, with scope and integrations defined together.",
     "cards": {
-      "product": {
-        "title": "Propostas em Dia",
-        "description": "A spreadsheet and materials kit for keeping proposals organized."
+      "sites": {
+        "title": "Websites and Landing Pages",
+        "description": "Professional, business and sales pages to present your brand and what you offer."
       },
-      "newProducts": {
-        "title": "New products",
-        "description": "New digital tools are in development."
+      "applications": {
+        "title": "Web Applications and Systems",
+        "description": "Custom applications and internal tools to support your business processes and needs."
       },
-      "moreSolutions": {
-        "title": "More solutions",
-        "description": "Other possibilities will be introduced when they are ready."
+      "commerce": {
+        "title": "E-commerce",
+        "description": "Online store projects with features and integrations defined according to scope."
+      },
+      "maintenance": {
+        "title": "Maintenance and Evolution",
+        "description": "Improvements, fixes and modernization to evolve existing websites and systems."
       }
+    },
+    "journeyTitle": "From the first conversation to development",
+    "steps": {
+      "conversation": "Initial conversation",
+      "needs": "Needs assessment",
+      "proposal": "Tailored proposal",
+      "development": "Development after approval"
     }
   },
   "laboratory": {
     "eyebrow": "The laboratory",
     "title": "More than products. We explore possibilities.",
-    "description": "We bring technology, knowledge and creativity together to develop useful, clear solutions for everyday work.",
+    "description": "We create solutions and share knowledge about software development, technology and artificial intelligence, exploring practical tools for learning and improving productivity.",
     "pillars": {
       "create": {
         "title": "Create",
@@ -72,7 +82,13 @@
   "finalCta": {
     "eyebrow": "New horizons",
     "title": "Your next step starts here.",
-    "description": "Explore our products and discover how technology can take you further.",
+    "description": "Explore our digital products or discuss a custom development project.",
     "action": "Explore products"
+  },
+  "contact": {
+    "services": "Discuss a quote",
+    "final": "Discuss a project",
+    "pending": "Contact unavailable: our official WhatsApp number is awaiting confirmation.",
+    "message": "Hello! I found Dev Cosmo Lab through the website and would like to discuss a development project."
   }
 }

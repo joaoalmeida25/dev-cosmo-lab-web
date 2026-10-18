@@ -7,15 +7,6 @@
   "status": "available",
   "editorialOrder": 1,
   "sourceUrl": "https://app.notion.com/p/3f96206b5311819bb4d0f533fb94c271",
-  "images": {
-    "dark": "/assets/devcosmo/products/propostas-em-dia/dark/showcase.webp",
-    "light": "/assets/devcosmo/products/propostas-em-dia/light/showcase.webp"
-  },
-  "gallery": [
-    "/assets/devcosmo/products/propostas-em-dia/screenshots/dashboard.png",
-    "/assets/devcosmo/products/propostas-em-dia/screenshots/control.png",
-    "/assets/devcosmo/products/propostas-em-dia/screenshots/examples.png"
-  ],
   "commercial": {
     "priceCents": 2990,
     "currency": "BRL",
@@ -26,53 +17,244 @@
     "pt-BR": {
       "subtitle": "Kit Orçamentos sem Esquecimento",
       "shortDescription": "Kit digital para organizar propostas comerciais, acompanhar negociações e manter os próximos contatos sob controle.",
-      "description": "Um kit digital para organizar suas propostas, acompanhar negociações e facilitar sua rotina comercial.",
+      "description": "Organize suas propostas comerciais em uma planilha Excel, acompanhe as negociações no painel integrado e prepare seus próximos contatos. O kit reúne modelos editáveis de mensagens e propostas para personalizar e enviar manualmente, além de um guia prático.",
       "highlights": [
         "Controle de propostas comerciais",
         "Acompanhamento manual de negociações",
         "Planilhas e modelos editáveis"
       ],
       "materials": [
-        "Planilha de acompanhamento de propostas",
-        "15 mensagens prontas para WhatsApp",
-        "Dois modelos editáveis de propostas",
-        "Guia rápido de uso"
+        "Planilha Excel de controle e acompanhamento de propostas comerciais",
+        "Painel integrado à planilha",
+        "15 modelos editáveis de mensagens para adaptação e envio manual",
+        "Dois modelos editáveis de propostas comerciais",
+        "Guia prático"
       ],
-      "imageAlt": "Composição promocional ilustrativa do kit Propostas em Dia, com embalagem digital e exemplos conceituais de organização de propostas."
+      "imageAlt": "Composição promocional ilustrativa do kit Propostas em Dia, com planilha, painel e modelos de propostas.",
+      "details": {
+        "galleryAlts": [
+          "Exemplos fictícios de propostas na planilha Propostas em Dia; os exemplos não entram no painel.",
+          "Painel integrado à planilha Propostas em Dia, com indicadores de acompanhamento das propostas.",
+          "Planilha de controle de propostas Propostas em Dia, com campos para cadastro e acompanhamento manual."
+        ],
+        "seo": {
+          "title": "Propostas em Dia | Dev Cosmo Lab",
+          "description": "Kit digital para organizar propostas comerciais, acompanhar negociações e manter os próximos contatos sob controle."
+        },
+        "includedIntroduction": "Um conjunto de arquivos digitais para organizar propostas, acompanhar negociações e preparar seus contatos comerciais.",
+        "steps": [
+          {
+            "title": "Adquira o kit",
+            "description": "Conclua a aquisição pelo checkout externo indicado nesta página."
+          },
+          {
+            "title": "Receba e baixe os materiais",
+            "description": "Após a aquisição, receba os materiais digitais e faça o download dos arquivos."
+          },
+          {
+            "title": "Abra e configure a planilha",
+            "description": "Abra a planilha no Excel e siga o guia prático para configurar sua organização."
+          },
+          {
+            "title": "Cadastre e acompanhe as propostas",
+            "description": "Registre suas propostas comerciais e atualize as negociações e os próximos contatos."
+          },
+          {
+            "title": "Personalize e envie os modelos",
+            "description": "Adapte as mensagens e propostas à sua realidade e realize o envio manualmente."
+          }
+        ],
+        "faq": [
+          {
+            "question": "O que compõe o kit?",
+            "answer": "O kit inclui uma planilha Excel com painel integrado, 15 modelos editáveis de mensagens, dois modelos editáveis de propostas comerciais e um guia prático."
+          },
+          {
+            "question": "Preciso instalar algum sistema?",
+            "answer": "Você utiliza a planilha no Excel e os arquivos editáveis do kit. Propostas em Dia é um kit digital, não um aplicativo SaaS."
+          },
+          {
+            "question": "Como funciona o acompanhamento?",
+            "answer": "Você cadastra e atualiza as propostas na planilha e consulta o painel integrado para acompanhar as negociações e organizar seus próximos contatos."
+          },
+          {
+            "question": "As mensagens são enviadas automaticamente?",
+            "answer": "Não. Os modelos são preparados para adaptação e envio manual. O kit não envia mensagens nem lembretes automaticamente."
+          },
+          {
+            "question": "Posso editar os modelos?",
+            "answer": "Sim. Os 15 modelos de mensagens e os dois modelos de propostas são editáveis para você personalizar antes do envio."
+          }
+        ]
+      },
+      "featuredDescription": "Um kit digital para organizar suas propostas, acompanhar negociações e facilitar sua rotina comercial."
     },
     "en": {
       "subtitle": "A toolkit for keeping track of quotes",
       "shortDescription": "A digital kit to organize business proposals, track negotiations and stay on top of your next contacts.",
-      "description": "A digital kit to organize proposals, keep track of negotiations and make everyday sales work easier.",
+      "description": "Organize business proposals in an Excel spreadsheet, track negotiations in its integrated dashboard and prepare your next contacts. The kit includes editable message and proposal templates to personalize and send manually, plus a practical guide.",
       "highlights": [
         "Business proposal tracking",
         "Manual negotiation follow-up",
         "Editable spreadsheets and templates"
       ],
       "materials": [
-        "Proposal tracking spreadsheet",
-        "15 ready-to-use WhatsApp messages",
-        "Two editable proposal templates",
-        "Quick-start guide"
+        "Excel spreadsheet for recording and tracking business proposals",
+        "Dashboard integrated into the spreadsheet",
+        "15 editable message templates to personalize and send manually",
+        "Two editable business proposal templates",
+        "Practical guide"
       ],
-      "imageAlt": "Illustrative promotional artwork for the Propostas em Dia digital kit, with digital packaging and conceptual proposal organization examples."
+      "imageAlt": "Illustrative promotional artwork for the Propostas em Dia kit, showing its spreadsheet, dashboard and proposal templates.",
+      "details": {
+        "galleryAlts": [
+          "Fictional proposal examples in the Propostas em Dia spreadsheet; these examples are excluded from the dashboard.",
+          "Dashboard integrated into the Propostas em Dia spreadsheet, with proposal tracking indicators.",
+          "Propostas em Dia tracking spreadsheet, with fields for manual proposal entry and follow-up."
+        ],
+        "seo": {
+          "title": "Propostas em Dia | Dev Cosmo Lab",
+          "description": "A digital kit to organize business proposals, track negotiations and stay on top of your next contacts."
+        },
+        "includedIntroduction": "A set of digital files to organize proposals, follow up on negotiations and prepare business contacts.",
+        "steps": [
+          {
+            "title": "Get the kit",
+            "description": "Complete your purchase through the external checkout linked on this page."
+          },
+          {
+            "title": "Receive and download the materials",
+            "description": "After purchase, receive the digital materials and download the files."
+          },
+          {
+            "title": "Open and configure the spreadsheet",
+            "description": "Open the spreadsheet in Excel and follow the practical guide to set up your workflow."
+          },
+          {
+            "title": "Record and track proposals",
+            "description": "Enter your business proposals and update negotiations and upcoming contacts."
+          },
+          {
+            "title": "Personalize and send the templates",
+            "description": "Adapt the messages and proposals to your needs and send them manually."
+          }
+        ],
+        "faq": [
+          {
+            "question": "What is included in the kit?",
+            "answer": "The kit includes an Excel spreadsheet with an integrated dashboard, 15 editable message templates, two editable business proposal templates and a practical guide."
+          },
+          {
+            "question": "Do I need to install a system?",
+            "answer": "You use the spreadsheet in Excel and the editable files included in the kit. Propostas em Dia is a digital kit, not a SaaS application."
+          },
+          {
+            "question": "How does tracking work?",
+            "answer": "You enter and update proposals in the spreadsheet, then review the integrated dashboard to follow negotiations and organize upcoming contacts."
+          },
+          {
+            "question": "Are messages sent automatically?",
+            "answer": "No. The templates are designed to be personalized and sent manually. The kit does not send messages or reminders automatically."
+          },
+          {
+            "question": "Can I edit the templates?",
+            "answer": "Yes. The 15 message templates and two proposal templates are editable so you can personalize them before sending."
+          }
+        ]
+      },
+      "featuredDescription": "A digital kit to organize proposals, keep track of negotiations and make everyday sales work easier."
     },
     "es": {
       "subtitle": "Un kit para dar seguimiento a tus presupuestos",
       "shortDescription": "Kit digital para organizar propuestas comerciales, seguir negociaciones y mantener los próximos contactos bajo control.",
-      "description": "Un kit digital para organizar propuestas, dar seguimiento a negociaciones y facilitar tu rutina comercial.",
+      "description": "Organiza tus propuestas comerciales en una hoja de Excel, sigue las negociaciones en su panel integrado y prepara tus próximos contactos. El kit reúne plantillas editables de mensajes y propuestas para personalizar y enviar manualmente, además de una guía práctica.",
       "highlights": [
         "Control de propuestas comerciales",
         "Seguimiento manual de negociaciones",
         "Hojas de cálculo y plantillas editables"
       ],
       "materials": [
-        "Hoja de seguimiento de propuestas",
-        "15 mensajes listos para WhatsApp",
-        "Dos plantillas de propuesta editables",
-        "Guía rápida de uso"
+        "Hoja de Excel para registrar y seguir propuestas comerciales",
+        "Panel integrado en la hoja de cálculo",
+        "15 plantillas editables de mensajes para adaptar y enviar manualmente",
+        "Dos plantillas editables de propuestas comerciales",
+        "Guía práctica"
       ],
-      "imageAlt": "Composición promocional ilustrativa del kit digital Propostas em Dia, con empaque digital y ejemplos conceptuales de organización de propuestas."
+      "imageAlt": "Composición promocional ilustrativa del kit Propostas em Dia, con hoja de cálculo, panel y plantillas de propuestas.",
+      "details": {
+        "galleryAlts": [
+          "Ejemplos ficticios de propuestas en la hoja Propostas em Dia; los ejemplos no se incluyen en el panel.",
+          "Panel integrado en la hoja Propostas em Dia, con indicadores de seguimiento de propuestas.",
+          "Hoja de control Propostas em Dia, con campos para registrar propuestas y dar seguimiento manual."
+        ],
+        "seo": {
+          "title": "Propostas em Dia | Dev Cosmo Lab",
+          "description": "Kit digital para organizar propuestas comerciales, seguir negociaciones y mantener los próximos contactos bajo control."
+        },
+        "includedIntroduction": "Un conjunto de archivos digitales para organizar propuestas, seguir negociaciones y preparar tus contactos comerciales.",
+        "steps": [
+          {
+            "title": "Adquiere el kit",
+            "description": "Completa la compra en el checkout externo indicado en esta página."
+          },
+          {
+            "title": "Recibe y descarga los materiales",
+            "description": "Después de la compra, recibe los materiales digitales y descarga los archivos."
+          },
+          {
+            "title": "Abre y configura la hoja",
+            "description": "Abre la hoja en Excel y sigue la guía práctica para organizar tu trabajo."
+          },
+          {
+            "title": "Registra y sigue las propuestas",
+            "description": "Registra tus propuestas comerciales y actualiza las negociaciones y los próximos contactos."
+          },
+          {
+            "title": "Personaliza y envía las plantillas",
+            "description": "Adapta los mensajes y las propuestas a tus necesidades y realiza el envío manualmente."
+          }
+        ],
+        "faq": [
+          {
+            "question": "¿Qué incluye el kit?",
+            "answer": "El kit incluye una hoja de Excel con panel integrado, 15 plantillas editables de mensajes, dos plantillas editables de propuestas comerciales y una guía práctica."
+          },
+          {
+            "question": "¿Necesito instalar algún sistema?",
+            "answer": "Utilizas la hoja en Excel y los archivos editables del kit. Propostas em Dia es un kit digital, no una aplicación SaaS."
+          },
+          {
+            "question": "¿Cómo funciona el seguimiento?",
+            "answer": "Registras y actualizas las propuestas en la hoja y consultas el panel integrado para seguir las negociaciones y organizar los próximos contactos."
+          },
+          {
+            "question": "¿Los mensajes se envían automáticamente?",
+            "answer": "No. Las plantillas están preparadas para adaptar y enviar manualmente. El kit no envía mensajes ni recordatorios automáticamente."
+          },
+          {
+            "question": "¿Puedo editar las plantillas?",
+            "answer": "Sí. Las 15 plantillas de mensajes y las dos plantillas de propuestas son editables para que puedas personalizarlas antes de enviarlas."
+          }
+        ]
+      },
+      "featuredDescription": "Un kit digital para organizar propuestas, dar seguimiento a negociaciones y facilitar tu rutina comercial."
     }
+  },
+  "details": {
+    "specifications": {
+      "format": "digital-files",
+      "delivery": "download",
+      "languages": ["pt-BR"],
+      "compatibility": ["excel"]
+    }
+  },
+  "media": {
+    "cover": "/assets/devcosmo/products/propostas-em-dia/capa.webp",
+    "featured": "/assets/devcosmo/products/propostas-em-dia/destaque.webp",
+    "gallery": [
+      "/assets/devcosmo/products/propostas-em-dia/01.webp",
+      "/assets/devcosmo/products/propostas-em-dia/02.webp",
+      "/assets/devcosmo/products/propostas-em-dia/03.webp"
+    ]
   }
 }

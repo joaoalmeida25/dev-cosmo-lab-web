@@ -69,7 +69,7 @@ export const HeroView = ({
           </p>
           <div
             data-hero-step="actions"
-            className="mt-7 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-4"
+            className="mt-7 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
           >
             <Button
               href={catalogHref}
@@ -79,7 +79,7 @@ export const HeroView = ({
             >
               {primaryAction}
             </Button>
-            <Button href="#laboratory" size="lg" variant="secondary">
+            <Button href="#services" size="lg" variant="secondary">
               {secondaryAction}
             </Button>
           </div>

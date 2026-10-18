@@ -21,16 +21,16 @@ export const Catalog = async ({ filters }: ICatalogProps) => {
     : routing.defaultLocale;
   const localizedProducts = products.map((product) => ({
     id: product.id,
+    slug: product.slug,
     name: product.name,
     category: product.category,
     type: product.type,
     status: product.status,
     editorialOrder: product.editorialOrder,
     content: product.content[locale],
-    images: product.images,
+    cover: product.media.cover,
     priceCents: product.commercial.priceCents,
     currency: product.commercial.currency,
-    checkoutUrl: product.commercial.checkoutUrl,
   }));
   return (
     <>

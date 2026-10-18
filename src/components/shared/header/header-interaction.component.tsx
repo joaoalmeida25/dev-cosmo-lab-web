@@ -13,7 +13,11 @@ export const HeaderInteraction = ({ labels }: IHeaderInteractionProps) => {
   const pathname = usePathname();
   const navigationItems: ReadonlyArray<IHeaderNavigationItem> = [
     { key: 'home', href: '/', current: pathname === '/' },
-    { key: 'products', href: '/produtos', current: pathname === '/produtos' },
+    {
+      key: 'products',
+      href: '/produtos',
+      current: pathname === '/produtos' || pathname.startsWith('/produtos/'),
+    },
     { key: 'about', href: '/#laboratory', current: false },
   ];
   const [isScrolled, setIsScrolled] = useState(false);

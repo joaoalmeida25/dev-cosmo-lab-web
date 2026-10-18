@@ -31,16 +31,16 @@ const taxonomy = {
 const collection = async (): Promise<ReadonlyArray<ICatalogProduct>> =>
   (await productsRepository.getAllProducts()).map((product) => ({
     id: product.id,
+    slug: product.slug,
     name: product.name,
     category: product.category,
     status: product.status,
     type: product.type,
     editorialOrder: product.editorialOrder,
     content: product.content['pt-BR'],
-    images: product.images,
+    cover: product.media.cover,
     priceCents: product.commercial.priceCents,
     currency: product.commercial.currency,
-    checkoutUrl: product.commercial.checkoutUrl,
   }));
 const query = (patch: Partial<ICatalogFilters>): ICatalogFilters => ({
   ...DEFAULT_CATALOG_FILTERS,

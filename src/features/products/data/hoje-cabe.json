@@ -7,8 +7,6 @@
   "status": "planned",
   "editorialOrder": 2,
   "sourceUrl": "https://app.notion.com/p/33e6206b531181139e86f32ebb923a00",
-  "images": null,
-  "gallery": [],
   "commercial": {
     "priceCents": null,
     "currency": "BRL",
@@ -17,40 +15,190 @@
   },
   "content": {
     "pt-BR": {
-      "subtitle": "",
+      "subtitle": "Decisões alimentares no contexto do seu dia",
       "shortDescription": "Assistente de decisão alimentar pensado para ajudar você a escolher a próxima refeição de acordo com suas metas e a realidade do dia.",
-      "description": "Assistente de decisão alimentar pensado para ajudar você a escolher a próxima refeição de acordo com suas metas e a realidade do dia.",
+      "description": "Hoje Cabe é um projeto em planejamento para apoiar a escolha da próxima refeição considerando metas e a realidade do dia. A proposta explora decisões contextualizadas e ajustes das refeições ao longo da rotina, com uma experiência prática pensada primeiro para o celular.",
       "highlights": [
         "Decisões alimentares contextualizadas",
         "Ajuste de refeições ao longo do dia",
         "Experiência prática e mobile-first"
       ],
-      "materials": [],
-      "imageAlt": ""
+      "materials": [
+        "Assistência contextualizada para escolher a próxima refeição",
+        "Consideração das metas e da realidade do dia",
+        "Ajuste de refeições ao longo do dia em uma experiência mobile-first"
+      ],
+      "imageAlt": "",
+      "details": {
+        "galleryAlts": [],
+        "seo": {
+          "title": "Hoje Cabe | Dev Cosmo Lab",
+          "description": "Assistente de decisão alimentar pensado para ajudar você a escolher a próxima refeição de acordo com suas metas e a realidade do dia."
+        },
+        "includedIntroduction": "O escopo abaixo descreve o conceito planejado. Não representa recursos já disponíveis ao público.",
+        "steps": [
+          {
+            "title": "Considerar o contexto do dia",
+            "description": "O conceito prevê levar em conta as metas e a realidade da rotina alimentar."
+          },
+          {
+            "title": "Apoiar a próxima decisão",
+            "description": "A experiência planejada busca ajudar na escolha da próxima refeição a partir desse contexto."
+          },
+          {
+            "title": "Reavaliar ao longo da rotina",
+            "description": "O funcionamento previsto considera ajustes das refeições durante o dia."
+          }
+        ],
+        "faq": [
+          {
+            "question": "O que é o Hoje Cabe?",
+            "answer": "É um projeto de assistente para decisões alimentares contextualizadas, atualmente em planejamento."
+          },
+          {
+            "question": "O produto já está disponível?",
+            "answer": "Não. O projeto está em planejamento e ainda não é apresentado como um aplicativo público disponível."
+          },
+          {
+            "question": "Qual é a proposta de funcionamento?",
+            "answer": "A proposta é considerar metas e a realidade do dia para apoiar a escolha da próxima refeição e seus ajustes ao longo da rotina."
+          },
+          {
+            "question": "A experiência é pensada para celular?",
+            "answer": "Sim. O conceito documentado adota uma abordagem mobile-first; isso não significa que já exista um aplicativo publicado."
+          },
+          {
+            "question": "Há preço ou data de lançamento?",
+            "answer": "Ainda não há preço ou data de lançamento confirmados."
+          }
+        ]
+      }
     },
     "en": {
-      "subtitle": "",
+      "subtitle": "Food decisions in the context of your day",
       "shortDescription": "A food decision assistant designed to help you choose your next meal based on your goals and the realities of your day.",
-      "description": "A food decision assistant designed to help you choose your next meal based on your goals and the realities of your day.",
+      "description": "Hoje Cabe is a project in planning to support your next meal choice in the context of your goals and everyday circumstances. Its concept explores contextual decisions and meal adjustments throughout the day, with a practical, mobile-first experience.",
       "highlights": [
         "Food choices in context",
         "Meal adjustments throughout the day",
         "A practical, mobile-first experience"
       ],
-      "materials": [],
-      "imageAlt": ""
+      "materials": [
+        "Contextual assistance for choosing the next meal",
+        "Consideration of goals and everyday circumstances",
+        "Meal adjustments throughout the day in a mobile-first experience"
+      ],
+      "imageAlt": "",
+      "details": {
+        "galleryAlts": [],
+        "seo": {
+          "title": "Hoje Cabe | Dev Cosmo Lab",
+          "description": "A food decision assistant designed to help you choose your next meal based on your goals and the realities of your day."
+        },
+        "includedIntroduction": "The scope below describes the planned concept. It does not represent features already available to the public.",
+        "steps": [
+          {
+            "title": "Consider the day’s context",
+            "description": "The concept is intended to take goals and everyday food routines into account."
+          },
+          {
+            "title": "Support the next decision",
+            "description": "The planned experience aims to help with the next meal choice based on that context."
+          },
+          {
+            "title": "Reassess throughout the day",
+            "description": "The proposed flow considers meal adjustments as the day progresses."
+          }
+        ],
+        "faq": [
+          {
+            "question": "What is Hoje Cabe?",
+            "answer": "It is a project for a contextual food decision assistant, currently in planning."
+          },
+          {
+            "question": "Is the product available yet?",
+            "answer": "No. The project is in planning and is not presented as an available public application."
+          },
+          {
+            "question": "How is it intended to work?",
+            "answer": "The concept considers goals and everyday circumstances to support the next meal choice and adjustments throughout the day."
+          },
+          {
+            "question": "Is the experience designed for phones?",
+            "answer": "Yes. The documented concept takes a mobile-first approach; this does not mean a published app already exists."
+          },
+          {
+            "question": "Is there a price or launch date?",
+            "answer": "No price or launch date has been confirmed yet."
+          }
+        ]
+      }
     },
     "es": {
-      "subtitle": "",
+      "subtitle": "Decisiones alimentarias en el contexto de tu día",
       "shortDescription": "Asistente de decisiones alimentarias pensado para ayudarte a elegir tu próxima comida según tus metas y la realidad del día.",
-      "description": "Asistente de decisiones alimentarias pensado para ayudarte a elegir tu próxima comida según tus metas y la realidad del día.",
+      "description": "Hoje Cabe es un proyecto en planificación para apoyar la elección de la próxima comida considerando tus metas y la realidad del día. La propuesta explora decisiones contextualizadas y ajustes de las comidas durante la rutina, con una experiencia práctica pensada primero para móviles.",
       "highlights": [
         "Decisiones alimentarias contextualizadas",
         "Ajuste de comidas durante el día",
         "Experiencia práctica pensada para móviles"
       ],
-      "materials": [],
-      "imageAlt": ""
+      "materials": [
+        "Asistencia contextualizada para elegir la próxima comida",
+        "Consideración de las metas y la realidad del día",
+        "Ajuste de comidas durante el día en una experiencia mobile-first"
+      ],
+      "imageAlt": "",
+      "details": {
+        "galleryAlts": [],
+        "seo": {
+          "title": "Hoje Cabe | Dev Cosmo Lab",
+          "description": "Asistente de decisiones alimentarias pensado para ayudarte a elegir tu próxima comida según tus metas y la realidad del día."
+        },
+        "includedIntroduction": "El alcance siguiente describe el concepto planificado. No representa funciones ya disponibles para el público.",
+        "steps": [
+          {
+            "title": "Considerar el contexto del día",
+            "description": "El concepto prevé tener en cuenta las metas y la realidad de la rutina alimentaria."
+          },
+          {
+            "title": "Apoyar la próxima decisión",
+            "description": "La experiencia planificada busca ayudar a elegir la próxima comida a partir de ese contexto."
+          },
+          {
+            "title": "Reevaluar durante la rutina",
+            "description": "El funcionamiento previsto considera ajustes de las comidas durante el día."
+          }
+        ],
+        "faq": [
+          {
+            "question": "¿Qué es Hoje Cabe?",
+            "answer": "Es un proyecto de asistente para decisiones alimentarias contextualizadas, actualmente en planificación."
+          },
+          {
+            "question": "¿El producto ya está disponible?",
+            "answer": "No. El proyecto está en planificación y no se presenta como una aplicación pública disponible."
+          },
+          {
+            "question": "¿Cuál es la propuesta de funcionamiento?",
+            "answer": "La propuesta considera las metas y la realidad del día para apoyar la elección de la próxima comida y sus ajustes durante la rutina."
+          },
+          {
+            "question": "¿La experiencia está pensada para móviles?",
+            "answer": "Sí. El concepto documentado adopta un enfoque mobile-first; esto no significa que ya exista una aplicación publicada."
+          },
+          {
+            "question": "¿Hay precio o fecha de lanzamiento?",
+            "answer": "Todavía no hay precio ni fecha de lanzamiento confirmados."
+          }
+        ]
+      }
     }
+  },
+  "details": {},
+  "media": {
+    "cover": null,
+    "featured": null,
+    "gallery": []
   }
 }

@@ -1,8 +1,7 @@
-import type { IProductImages } from '@/features/products/products.types';
-
 export interface IHomeFeaturedProduct {
+  slug: string;
   name: string;
   description: string;
   imageAlt: string;
-  images: IProductImages;
+  featured: string | null;
 }

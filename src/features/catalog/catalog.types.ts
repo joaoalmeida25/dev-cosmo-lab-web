@@ -1,7 +1,6 @@
 import type { SupportedLocale } from '@/i18n/locale.types';
 import type {
   IProductContent,
-  IProductImages,
   ProductCategory,
   ProductStatus,
   ProductType,
@@ -20,15 +19,15 @@ export interface ICatalogFilters {
 }
 export interface ICatalogProduct {
   id: string;
+  slug: string;
   name: string;
   category: ProductCategory;
   status: ProductStatus;
   type: ProductType;
   editorialOrder: number;
   content: IProductContent;
-  images: IProductImages | null;
+  cover: string | null;
   priceCents: number | null;
-  checkoutUrl: string | null;
   currency: 'BRL';
 }
 export interface ICatalogLabels {

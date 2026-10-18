@@ -1,0 +1,50 @@
+{
+  "hero": {
+    "title": "La solución por dentro",
+    "description": "Explora los detalles, recursos y posibilidades de cada producto de Dev Cosmo Lab."
+  },
+  "breadcrumb": "Ruta de navegación",
+  "products": "Productos",
+  "included": "Qué recibes",
+  "steps": "Cómo funciona",
+  "faq": "Preguntas frecuentes",
+  "buy": "Adquirir kit",
+  "access": "Acceder al producto",
+  "buyLabel": "Adquirir {name} en el checkout externo (se abre en otra pestaña)",
+  "accessLabel": "Acceder a {name} (se abre en otra pestaña)",
+  "gallery": {
+    "region": "Galería del producto",
+    "previous": "Imagen anterior",
+    "next": "Imagen siguiente",
+    "select": "Seleccionar imagen",
+    "position": "Imagen {current} de {total}",
+    "unavailable": "Imágenes aún no disponibles."
+  },
+  "specifications": {
+    "format": "Formato",
+    "platform": "Plataforma",
+    "delivery": "Entrega",
+    "languages": "Idioma",
+    "compatibility": "Compatibilidad",
+    "license": "Licencia",
+    "category": "Categoría"
+  },
+  "values": {
+    "web": "Web",
+    "desktop": "Escritorio",
+    "mobile": "Móvil",
+    "download": "Materiales para descargar",
+    "pt-BR": "Portugués (PT-BR)",
+    "en": "Inglés",
+    "es": "Español",
+    "excel": "Microsoft Excel",
+    "google-sheets": "Hojas de cálculo de Google",
+    "personal": "Uso personal",
+    "commercial": "Uso comercial",
+    "digital-files": "Archivos digitales",
+    "webgl": "Navegador con WebGL",
+    "polyform-noncommercial": "PolyForm Noncommercial 1.0.0"
+  },
+  "plannedIncluded": "Recursos previstos",
+  "plannedSteps": "Funcionamiento previsto"
+}

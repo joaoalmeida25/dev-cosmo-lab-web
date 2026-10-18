@@ -1,3 +1,4 @@
+import { ProjectContact } from '../project-contact/project-contact.component';
 import styles from './final-cta-view.module.css';
 import { Container } from '@/components/shared/container/container.component';
 import { ThemedArtwork } from '@/components/shared/themed-artwork/themed-artwork.component';
@@ -51,7 +52,7 @@ export const FinalCTAView = ({
           <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-text-secondary md:text-base">
             {description}
           </p>
-          <div className="mt-7">
+          <div className="mt-7 flex flex-col items-center gap-4 sm:flex-row sm:items-start">
             <Button
               href={catalogHref}
               size="lg"
@@ -60,6 +61,7 @@ export const FinalCTAView = ({
             >
               {action}
             </Button>
+            <ProjectContact placement="final" />
           </div>
         </div>
       </Container>

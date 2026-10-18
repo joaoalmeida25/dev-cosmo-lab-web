@@ -124,6 +124,7 @@
   :root {
     background-color: var(--background);
     scroll-behavior: smooth;
+    scrollbar-gutter: stable;
   }
 
   /* Reveal content only once the critical Next Script has applied the saved theme.
@@ -136,6 +137,14 @@
     min-height: 100%;
     background-color: var(--background);
     color: var(--text-primary);
+  }
+}
+
+/* The root gutter already reserves the viewport scrollbar. Avoid reserving it
+   again through react-remove-scroll's body margin when a Radix portal opens. */
+@supports (scrollbar-gutter: stable) {
+  html body[data-scroll-locked] {
+    margin-right: 0 !important;
   }
 }
 

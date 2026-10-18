@@ -1,7 +1,6 @@
-import type { IProductImages } from '../../products.types';
-
 export interface IProductCardPresentation {
   id: string;
+  detailHref: string | null;
   name: string;
   subtitle: string;
   description: string;
@@ -11,8 +10,7 @@ export interface IProductCardPresentation {
   type: string;
   status: string;
   stageNote: string | null;
-  images: IProductImages | null;
+  cover: string | null;
   imageAlt: string;
-  priceLabel: string;
-  action: { href: string; label: string; accessibleLabel: string } | null;
+  priceLabel: string | null;
 }

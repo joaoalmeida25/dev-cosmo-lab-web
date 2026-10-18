@@ -5,5 +5,4 @@ export interface ISolutionCard {
   icon: LucideIcon;
   title: string;
   description: string;
-  isAvailable: boolean;
 }

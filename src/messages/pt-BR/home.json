@@ -1,14 +1,14 @@
 {
   "hero": {
     "eyebrow": "Tecnologia para novos horizontes",
-    "headline": "<line>Ferramentas</line> <line>para <highlight>ir além.</highlight></line>",
-    "description": "Produtos digitais, tecnologia e conhecimento para transformar ideias em resultados.",
+    "headline": "<line>Tecnologia para</line> <line><highlight>criar, resolver</highlight></line> <line>e evoluir.</line>",
+    "description": "Desenvolvemos produtos digitais, criamos software sob medida e compartilhamos conhecimento sobre tecnologia e inteligência artificial.",
     "primaryAction": "Explorar produtos",
-    "secondaryAction": "Conhecer a marca",
+    "secondaryAction": "Conhecer nossos serviços",
     "benefits": {
-      "solutions": "Soluções reais",
-      "productivity": "Foco em produtividade",
-      "evolution": "Evolução contínua"
+      "solutions": "Produtos digitais",
+      "productivity": "Software sob medida",
+      "evolution": "Conhecimento compartilhado"
     }
   },
   "featured": {
@@ -27,33 +27,43 @@
         "title": "Materiais prontos",
         "description": "Use mensagens, modelos editáveis e um guia rápido no dia a dia."
       }
-    }
+    },
+    "action": "Conhecer produto"
   },
   "solutions": {
     "eyebrow": "Nossas soluções",
-    "title": "Explore nossas soluções",
-    "description": "Ferramentas digitais criadas para necessidades reais, começando por uma rotina comercial mais organizada.",
-    "unavailable": "Em breve",
-    "productAction": "Ir para o destaque do Propostas em Dia",
+    "title": "Desenvolvimento sob medida",
+    "description": "Tecnologia construída para as necessidades do seu projeto, com escopo e integrações definidos em conjunto.",
     "cards": {
-      "product": {
-        "title": "Propostas em Dia",
-        "description": "Kit de planilhas e materiais para acompanhar propostas com mais organização."
+      "sites": {
+        "title": "Sites e Landing Pages",
+        "description": "Páginas profissionais, institucionais e comerciais para apresentar sua marca e suas ofertas."
       },
-      "newProducts": {
-        "title": "Novos produtos",
-        "description": "Novas ferramentas digitais em desenvolvimento."
+      "applications": {
+        "title": "Aplicações e Sistemas Web",
+        "description": "Aplicativos personalizados e ferramentas internas para apoiar processos e necessidades do seu negócio."
       },
-      "moreSolutions": {
-        "title": "Mais soluções",
-        "description": "Outras possibilidades serão apresentadas no momento certo."
+      "commerce": {
+        "title": "E-commerce",
+        "description": "Projetos de lojas virtuais, com funcionalidades e integrações definidas conforme o escopo."
+      },
+      "maintenance": {
+        "title": "Manutenção e Evolução",
+        "description": "Melhorias, correções e modernização para evoluir sites e sistemas existentes."
       }
+    },
+    "journeyTitle": "Do primeiro contato ao desenvolvimento",
+    "steps": {
+      "conversation": "Conversa inicial",
+      "needs": "Levantamento de necessidades",
+      "proposal": "Proposta personalizada",
+      "development": "Desenvolvimento após aprovação"
     }
   },
   "laboratory": {
     "eyebrow": "O laboratório",
     "title": "Mais do que produtos. Exploramos possibilidades.",
-    "description": "Unimos tecnologia, conhecimento e criatividade para desenvolver soluções úteis, claras e aplicáveis ao dia a dia.",
+    "description": "Criamos soluções e compartilhamos conhecimento sobre desenvolvimento de software, tecnologia e inteligência artificial, explorando ferramentas práticas para aprender e melhorar a produtividade.",
     "pillars": {
       "create": {
         "title": "Criar",
@@ -72,7 +82,13 @@
   "finalCta": {
     "eyebrow": "Novos horizontes",
     "title": "Seu próximo passo começa aqui.",
-    "description": "Explore nossos produtos e descubra como a tecnologia pode levar você mais longe.",
+    "description": "Explore nossos produtos digitais ou converse sobre um projeto de desenvolvimento sob medida.",
     "action": "Explorar produtos"
+  },
+  "contact": {
+    "services": "Conversar sobre um orçamento",
+    "final": "Conversar sobre um projeto",
+    "pending": "Contato indisponível: o número oficial do WhatsApp ainda aguarda confirmação.",
+    "message": "Olá! Conheci a Dev Cosmo Lab pelo site e gostaria de conversar sobre um projeto de desenvolvimento."
   }
 }

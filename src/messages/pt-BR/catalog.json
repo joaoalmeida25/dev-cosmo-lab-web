@@ -76,12 +76,7 @@
     "highlights": "Destaques",
     "plannedHighlights": "Destaques planejados",
     "developmentHighlights": "Destaques previstos",
-    "soon": "Em breve",
-    "development": "Em desenvolvimento",
-    "undefinedPrice": "Preço a definir",
     "free": "Gratuito",
-    "action": "Adquirir kit",
-    "actionLabel": "Adquirir {name} no checkout externo",
     "plannedNote": "Projeto em planejamento.",
     "developmentNote": "Projeto em desenvolvimento.",
     "libraryNote": "Showcase em evolução; versão pública estável ainda não publicada no npm."

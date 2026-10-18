@@ -1,3 +1,4 @@
+import { ProjectContact } from '../project-contact/project-contact.component';
 import { SolutionCard } from './components/solution-card/solution-card.component';
 import { Container } from '@/components/shared/container/container.component';
 import { HomeScene } from '../home-scene/home-scene.component';
@@ -7,8 +8,8 @@ interface ISolutionsSectionViewProps {
   eyebrow: string;
   title: string;
   description: string;
-  unavailable: string;
-  productAction: string;
+  journeyTitle: string;
+  steps: ReadonlyArray<string>;
   solutionCards: ReadonlyArray<ISolutionCard>;
 }
 
@@ -16,20 +17,20 @@ export const SolutionsSectionView = ({
   eyebrow,
   title,
   description,
-  unavailable,
-  productAction,
+  journeyTitle,
+  steps,
   solutionCards,
 }: ISolutionsSectionViewProps) => {
   return (
     <HomeScene
       scene="solutions"
-      id="solutions"
+      id="services"
       aria-labelledby="solutions-title"
       tabIndex={-1}
       className="relative scroll-mt-20 overflow-hidden py-section lg:py-section-lg"
     >
       <Container>
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,0.46fr)_minmax(0,1fr)] lg:items-center lg:gap-8">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.6fr)_minmax(0,1fr)] lg:items-center lg:gap-12 xl:gap-16">
           <div>
             <p className="text-[10px] leading-relaxed font-semibold tracking-[0.17em] text-text-accent-context uppercase md:text-[11px]">
               {eyebrow}
@@ -45,18 +46,31 @@ export const SolutionsSectionView = ({
             </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2">
             {solutionCards.map((card) => (
               <SolutionCard
                 key={card.id}
                 title={card.title}
                 description={card.description}
                 icon={card.icon}
-                isAvailable={card.isAvailable}
-                unavailable={unavailable}
-                productAction={productAction}
               />
             ))}
+          </div>
+        </div>
+        <div className="mt-7 border-t border-border pt-6">
+          <h3 className="text-lg font-semibold text-text-primary">{journeyTitle}</h3>
+          <ol className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {steps.map((step, index) => (
+              <li key={step} className="flex gap-3 text-sm text-text-secondary">
+                <span aria-hidden="true" className="font-mono text-accent">
+                  0{index + 1}
+                </span>
+                {step}
+              </li>
+            ))}
+          </ol>
+          <div className="mx-auto mt-5 max-w-sm text-center">
+            <ProjectContact placement="services" />
           </div>
         </div>
       </Container>
