@@ -1,4 +1,4 @@
-import { ArrowRight } from 'lucide-react';
+import { CirclePlay, ShoppingBag } from 'lucide-react';
 import { Button } from '@/components/ui/button/button.component';
 import type { IProductSummaryProps } from '../../product-details.types';
 
@@ -11,6 +11,7 @@ export const ProductSummary = ({
   stageNote,
   price,
   action,
+  demonstration,
   specifications,
 }: IProductSummaryProps) => (
   <div className="min-w-0 lg:pt-3">
@@ -34,18 +35,36 @@ export const ProductSummary = ({
     {price ? (
       <p className="mt-5 text-3xl font-semibold tracking-tight text-text-primary">{price}</p>
     ) : null}
-    {action ? (
-      <Button
-        href={action.href}
-        target="_blank"
-        aria-label={action.accessibleLabel}
-        variant="primary"
-        size="lg"
-        className="mt-5 w-full"
-        rightIcon={<ArrowRight aria-hidden="true" />}
-      >
-        {action.label}
-      </Button>
+    {action || demonstration ? (
+      <div className="mt-5 flex flex-col gap-3">
+        {action ? (
+          <Button
+            href={action.href}
+            target="_blank"
+            aria-label={action.accessibleLabel}
+            variant="primary"
+            size="lg"
+            className="w-full"
+            leftIcon={<ShoppingBag aria-hidden="true" />}
+          >
+            {action.label}
+          </Button>
+        ) : null}
+        {demonstration ? (
+          <Button
+            href={demonstration.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={demonstration.accessibleLabel}
+            variant="secondary"
+            size="lg"
+            className="w-full"
+            leftIcon={<CirclePlay aria-hidden="true" />}
+          >
+            {demonstration.label}
+          </Button>
+        ) : null}
+      </div>
     ) : null}
     {specifications.length ? (
       <dl className="mt-5 divide-y divide-border border-t border-border">

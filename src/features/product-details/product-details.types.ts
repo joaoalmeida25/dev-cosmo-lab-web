@@ -13,6 +13,7 @@ export interface IProductSummaryProps {
   stageNote: string | null;
   price: string | null;
   action: { href: string; label: string; accessibleLabel: string } | null;
+  demonstration: { href: string; label: string; accessibleLabel: string } | null;
   specifications: ReadonlyArray<{ label: string; value: string }>;
 }
 

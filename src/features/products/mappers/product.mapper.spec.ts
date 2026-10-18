@@ -7,6 +7,50 @@ import { mapProduct } from './product.mapper';
 
 const locales = ['pt-BR', 'en', 'es'] as const;
 
+test('demonstration preserves its HTTPS destination, specifications, access and commercial data', () => {
+  const product = mapProduct({
+    ...proposals,
+    details: { ...proposals.details, accessUrl: 'https://example.com/access' },
+  });
+
+  assert.equal(product.details?.demonstrationUrl, 'https://youtu.be/Hwl--3B_W5g');
+  assert.equal(product.details?.accessUrl, 'https://example.com/access');
+  assert.deepEqual(product.details?.specifications, mapProduct(proposals).details?.specifications);
+  assert.deepEqual(product.commercial, proposals.commercial);
+});
+
+test('products without a demonstration keep the field optional', async () => {
+  const product = mapProduct({
+    ...proposals,
+    details: { ...proposals.details, demonstrationUrl: undefined },
+  });
+
+  assert.equal(product.details?.demonstrationUrl, undefined);
+  assert.equal(mapProduct({ ...proposals, details: undefined }).details, undefined);
+  for (const slug of ['hoje-cabe', 'followup-inbox'])
+    assert.equal(
+      (await productsRepository.getProductBySlug(slug))?.details?.demonstrationUrl,
+      undefined,
+    );
+});
+
+test('demonstration rejects malformed, non-HTTPS and non-string URLs at the product boundary', () => {
+  for (const demonstrationUrl of [
+    '',
+    'not-a-url',
+    '/video',
+    'http://youtu.be/Hwl--3B_W5g',
+    'javascript:alert(1)',
+    'data:text/html,video',
+    null,
+    42,
+    {},
+  ])
+    assert.throws(() =>
+      mapProduct({ ...proposals, details: { ...proposals.details, demonstrationUrl } }),
+    );
+});
+
 test('repository serves three unique products by slug, with localized content and unchanged commercial status', async () => {
   const products = await productsRepository.getAllProducts();
   assert.equal(products.length, 3);

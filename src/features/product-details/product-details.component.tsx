@@ -56,6 +56,7 @@ export const ProductDetails = async ({ slug }: IProductDetailsProps) => {
   const checkout = product.status === 'available' ? product.commercial.checkoutUrl : null;
   const access = product.status === 'available' ? product.details?.accessUrl : undefined;
   const actionUrl = checkout ?? access;
+  const demonstrationUrl = product.details?.demonstrationUrl;
   const stageNote = product.type === 'development-library' ? catalog('card.libraryNote') : null;
 
   return (
@@ -85,6 +86,13 @@ export const ProductDetails = async ({ slug }: IProductDetailsProps) => {
               href: actionUrl,
               label: t(checkout ? 'buy' : 'access'),
               accessibleLabel: t(checkout ? 'buyLabel' : 'accessLabel', { name: product.name }),
+            }
+          : null,
+        demonstration: demonstrationUrl
+          ? {
+              href: demonstrationUrl,
+              label: t('demonstration'),
+              accessibleLabel: t('demonstrationLabel', { name: product.name }),
             }
           : null,
         specifications,

@@ -13,7 +13,7 @@ export const FinalCTA = async () => {
 
   return (
     <FinalCTAView
-      catalogHref={getPathname({ href: '/produtos', locale })}
+      catalogHref={getPathname({ href: '/products', locale })}
       eyebrow={t('eyebrow')}
       title={t('title')}
       description={t('description')}

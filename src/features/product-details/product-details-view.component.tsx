@@ -30,7 +30,7 @@ export const ProductDetailsView = ({
           <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
             <li>
               <Link
-                href="/produtos"
+                href="/products"
                 className="inline-flex min-h-6 items-center text-text-accent-context hover:underline focus-visible:outline-2 focus-visible:outline-focus-ring"
               >
                 {hero.products}

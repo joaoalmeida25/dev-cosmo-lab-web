@@ -39,7 +39,7 @@ export const FeaturedProduct = async ({ product }: IFeaturedProductProps) => {
 
   return (
     <FeaturedProductView
-      detailHref={getPathname({ href: `/produtos/${product.slug}`, locale })}
+      detailHref={getPathname({ href: `/products/${product.slug}`, locale })}
       action={t('action')}
       eyebrow={t('eyebrow')}
       illustration={t('illustration')}

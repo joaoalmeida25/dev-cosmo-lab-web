@@ -12,6 +12,8 @@
   "access": "Access product",
   "buyLabel": "Buy {name} at the external checkout (opens in a new tab)",
   "accessLabel": "Access {name} (opens in a new tab)",
+  "demonstration": "Watch demo",
+  "demonstrationLabel": "Watch demo of {name} (video opens in a new tab)",
   "gallery": {
     "region": "Product gallery",
     "previous": "Previous image",

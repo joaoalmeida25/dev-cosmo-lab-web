@@ -9,7 +9,7 @@ import { routing } from '@/i18n/routing';
 
 export const generateMetadata = async ({
   params,
-}: PageProps<'/[locale]/produtos'>): Promise<Metadata> => {
+}: PageProps<'/[locale]/products'>): Promise<Metadata> => {
   const { locale } = await params;
 
   if (!hasLocale(routing.locales, locale)) notFound();
@@ -19,13 +19,14 @@ export const generateMetadata = async ({
   return {
     title: t('title'),
     description: t('description'),
-    alternates: getLocalizedAlternates('/produtos', locale),
+    alternates: getLocalizedAlternates('/products', locale),
   };
 };
 
-const CatalogPage = async ({ searchParams }: PageProps<'/[locale]/produtos'>) => {
+const CatalogPage = async ({ searchParams }: PageProps<'/[locale]/products'>) => {
   const query = await searchParams;
   const params = new URLSearchParams();
+
   for (const [key, value] of Object.entries(query)) {
     if (typeof value === 'string') params.set(key, value);
     else if (value?.[0] !== undefined) params.set(key, value[0]);

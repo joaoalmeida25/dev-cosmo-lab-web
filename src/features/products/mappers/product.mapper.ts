@@ -231,7 +231,12 @@ export const mapProduct = (value: unknown): IProduct => {
     sourceUrl: httpsUrl(raw.sourceUrl),
     media: productMedia,
     details: details
-      ? { specifications: specifications(details.specifications), accessUrl }
+      ? {
+          specifications: specifications(details.specifications),
+          accessUrl,
+          demonstrationUrl:
+            details.demonstrationUrl === undefined ? undefined : httpsUrl(details.demonstrationUrl),
+        }
       : undefined,
     commercial: {
       priceCents,

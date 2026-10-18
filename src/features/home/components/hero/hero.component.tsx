@@ -18,7 +18,7 @@ export const Hero = async () => {
 
   return (
     <HeroView
-      catalogHref={getPathname({ href: '/produtos', locale })}
+      catalogHref={getPathname({ href: '/products', locale })}
       eyebrow={t('eyebrow')}
       description={t('description')}
       primaryAction={t('primaryAction')}

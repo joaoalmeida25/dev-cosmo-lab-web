@@ -150,7 +150,7 @@ export const CatalogBrowser = ({ products, locale, filters: parsed }: ICatalogBr
   const clearAll = () => navigate({ ...DEFAULT_CATALOG_FILTERS });
   const cards: ReadonlyArray<IProductCardPresentation> = visible.map((product) => ({
     id: product.id,
-    detailHref: product.status === 'available' ? `/produtos/${product.slug}` : null,
+    detailHref: product.status === 'available' ? `/products/${product.slug}` : null,
     name: product.name,
     subtitle: product.content.subtitle,
     description: product.content.shortDescription,

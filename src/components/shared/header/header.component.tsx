@@ -21,8 +21,8 @@ export const Header = () => {
     { key: 'home', href: '/', current: pathname === '/' },
     {
       key: 'products',
-      href: '/produtos',
-      current: pathname === '/produtos' || pathname.startsWith('/produtos/'),
+      href: '/products',
+      current: pathname === '/products' || pathname.startsWith('/products/'),
     },
     { key: 'about', href: '/#laboratory', current: false },
   ];

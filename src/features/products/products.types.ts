@@ -61,6 +61,7 @@ export interface IProduct {
   details?: {
     specifications?: IProductSpecifications;
     accessUrl?: string;
+    demonstrationUrl?: string;
   };
   commercial: {
     priceCents: number | null;
