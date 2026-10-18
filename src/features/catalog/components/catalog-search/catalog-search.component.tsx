@@ -11,6 +11,7 @@ interface ICatalogSearchProps {
   onChange: (value: string) => void;
   onClear: () => void;
 }
+
 export const CatalogSearch = ({
   inputRef,
   value,

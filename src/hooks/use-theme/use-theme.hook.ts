@@ -15,7 +15,6 @@ export const useTheme = () => {
     resolveTheme,
   );
   const theme = value;
-
   const setTheme = useCallback((nextTheme: Theme) => setValue(nextTheme), [setValue]);
 
   const toggleTheme = useCallback(() => {

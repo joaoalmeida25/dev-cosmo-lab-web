@@ -13,8 +13,11 @@ export const Home = async () => {
   const locale = hasLocale(routing.locales, requestedLocale)
     ? requestedLocale
     : routing.defaultLocale;
+
   if (!product) throw new Error('Featured product is missing');
+
   const content = product.content[locale];
+
   return (
     <HomeView
       product={{

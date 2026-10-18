@@ -37,6 +37,7 @@ interface ICatalogViewProps {
   onSort: (value: string) => void;
   onToggleFilters: () => void;
 }
+
 export const CatalogView = ({
   products,
   filters,

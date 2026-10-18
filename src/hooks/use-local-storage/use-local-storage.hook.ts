@@ -9,6 +9,7 @@ const readStorage = (key: string): string | null => {
   if (typeof window === 'undefined') return null;
 
   const pendingValue = pendingValues.get(key);
+
   if (pendingValue !== undefined) return pendingValue;
 
   try {
@@ -27,6 +28,7 @@ const parseValue = <T>(
 
   try {
     const parsedValue: unknown = JSON.parse(serializedValue);
+
     return resolveValue(parsedValue);
   } catch {
     return initialValue;
@@ -42,6 +44,7 @@ const subscribe = (onStoreChange: () => void) => {
     } else {
       pendingValues.delete(event.key);
     }
+
     onStoreChange();
   };
 
@@ -62,9 +65,7 @@ export const useLocalStorage = <T>(
   resolveValue: (value: unknown) => T,
 ) => {
   const getSnapshot = useCallback(() => readStorage(key), [key]);
-
   const serializedValue = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-
   const value = useMemo(
     () => parseValue(serializedValue, initialValue, resolveValue),
     [serializedValue, initialValue, resolveValue],
@@ -79,13 +80,13 @@ export const useLocalStorage = <T>(
         typeof nextValue === 'function'
           ? (nextValue as (previousValue: T) => T)(currentValue)
           : nextValue;
-
       let serializedValue: string | undefined;
       try {
         serializedValue = JSON.stringify(resolvedValue);
       } catch {
         return;
       }
+
       if (serializedValue === undefined) return;
 
       try {

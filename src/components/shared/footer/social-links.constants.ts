@@ -6,5 +6,5 @@ interface ISocialLink {
 
 export const SOCIAL_LINKS: Array<ISocialLink> = [
   { id: 'youtube', label: 'YouTube' },
-  { id: 'instagram', label: 'Instagram' },
+  { id: 'instagram', label: 'Instagram', href: 'https://www.instagram.com/devcosmolab/' },
 ];

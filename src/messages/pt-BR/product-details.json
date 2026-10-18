@@ -46,5 +46,7 @@
     "polyform-noncommercial": "PolyForm Noncommercial 1.0.0"
   },
   "plannedIncluded": "Recursos previstos",
-  "plannedSteps": "Funcionamento previsto"
+  "plannedSteps": "Funcionamento previsto",
+  "stepsIntroduction": "Entenda as etapas para começar e aproveitar os recursos desta solução.",
+  "faqIntroduction": "Encontre respostas para dúvidas comuns sobre esta solução."
 }

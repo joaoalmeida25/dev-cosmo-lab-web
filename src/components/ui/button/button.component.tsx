@@ -11,7 +11,6 @@ const variantClasses: Record<ButtonVariant, string> = {
   ghost:
     'border-border bg-transparent text-text-primary enabled:hover:bg-surface-hover [&[href]]:hover:bg-surface-hover',
 };
-
 const sizeClasses: Record<ButtonSize, string> = {
   sm: 'relative min-h-10 gap-2 rounded-control px-3 py-1.5 text-sm before:absolute before:-inset-y-0.5 before:inset-x-0 before:content-[""] [&_[data-button-icon]]:size-4',
   md: 'min-h-11 gap-2.5 rounded-control px-5 py-2.5 text-sm [&_[data-button-icon]]:size-4.5',
@@ -39,7 +38,6 @@ export const Button = ({
   ]
     .filter(Boolean)
     .join(' ');
-
   const content = (
     <Fragment>
       {leftIcon && (

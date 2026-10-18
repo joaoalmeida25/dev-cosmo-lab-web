@@ -28,6 +28,7 @@ const taxonomy = {
     'development-library': 'Biblioteca de desenvolvimento',
   },
 };
+
 const collection = async (): Promise<ReadonlyArray<ICatalogProduct>> =>
   (await productsRepository.getAllProducts()).map((product) => ({
     id: product.id,
@@ -42,6 +43,7 @@ const collection = async (): Promise<ReadonlyArray<ICatalogProduct>> =>
     priceCents: product.commercial.priceCents,
     currency: product.commercial.currency,
   }));
+
 const query = (patch: Partial<ICatalogFilters>): ICatalogFilters => ({
   ...DEFAULT_CATALOG_FILTERS,
   ...patch,
@@ -54,9 +56,9 @@ test('search covers names, subtitle, descriptions, category and type without acc
     ['orcamentos', 1],
     ['negociacoes', 1],
     ['GESTAO', 2],
-    ['biblioteca de desenvolvimento', 1],
-    ['', 4],
-    ['   ', 4],
+    ['biblioteca de desenvolvimento', 0],
+    ['', 3],
+    ['   ', 3],
     ['inexistente', 0],
   ] satisfies ReadonlyArray<[string, number]>) {
     assert.equal(filterCatalogProducts(products, query({ q }), taxonomy).length, count, q);
@@ -68,14 +70,14 @@ test('each category, status, type and price facet reflects the real collection',
   for (const [patch, count] of [
     [{ category: 'productivity' }, 2],
     [{ category: 'wellbeing' }, 1],
-    [{ category: 'development' }, 1],
+    [{ category: 'development' }, 0],
     [{ status: 'available' }, 1],
     [{ status: 'planned' }, 1],
-    [{ status: 'in-development' }, 2],
+    [{ status: 'in-development' }, 1],
     [{ type: 'digital-kit' }, 1],
     [{ type: 'application' }, 2],
-    [{ type: 'development-library' }, 1],
-    [{ price: 'undefined' }, 3],
+    [{ type: 'development-library' }, 0],
+    [{ price: 'undefined' }, 2],
     [{ price: 'up-to-50' }, 1],
     [{ price: 'free' }, 0],
     [{ price: '50-to-200' }, 0],
@@ -111,7 +113,7 @@ test('search and all four filters combine, reset and do not mutate source data',
       .length,
     0,
   );
-  assert.equal(filterCatalogProducts(products, DEFAULT_CATALOG_FILTERS, taxonomy).length, 4);
+  assert.equal(filterCatalogProducts(products, DEFAULT_CATALOG_FILTERS, taxonomy).length, 3);
   assert.equal(
     countCatalogFacet(
       products,
@@ -145,7 +147,7 @@ test('integer price boundaries are exclusive and null never matches free', () =>
 test('default and legacy editorial URLs put ready products first in every locale', async () => {
   const products = await collection();
   const snapshot = structuredClone(products);
-  const expected = ['propostas-em-dia', 'followup-inbox', 'neural-system-ui', 'hoje-cabe'];
+  const expected = ['propostas-em-dia', 'followup-inbox', 'hoje-cabe'];
   for (const locale of ['pt-BR', 'en', 'es']) {
     for (const params of ['', 'sort=editorial']) {
       const filters = parseCatalogQuery(new URLSearchParams(params));
@@ -182,11 +184,11 @@ test('all sorts are deterministic; unknown prices stay last in both price direct
   const products = await collection();
   assert.deepEqual(
     sortCatalogProducts(products, query({ sort: 'name-asc' }), 'pt-BR').map(({ name }) => name),
-    ['FollowUp Inbox', 'Hoje Cabe', 'Neural System UI', 'Propostas em Dia'],
+    ['FollowUp Inbox', 'Hoje Cabe', 'Propostas em Dia'],
   );
   assert.deepEqual(
     sortCatalogProducts(products, query({ sort: 'name-desc' }), 'pt-BR').map(({ name }) => name),
-    ['Propostas em Dia', 'Neural System UI', 'Hoje Cabe', 'FollowUp Inbox'],
+    ['Propostas em Dia', 'Hoje Cabe', 'FollowUp Inbox'],
   );
   const [base] = products;
   assert.ok(base);

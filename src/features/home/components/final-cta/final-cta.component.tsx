@@ -10,6 +10,7 @@ export const FinalCTA = async () => {
     ? requestedLocale
     : routing.defaultLocale;
   const t = await getTranslations('home.finalCta');
+
   return (
     <FinalCTAView
       catalogHref={getPathname({ href: '/produtos', locale })}

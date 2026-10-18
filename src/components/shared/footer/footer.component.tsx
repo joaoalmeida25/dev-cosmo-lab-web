@@ -4,6 +4,7 @@ import { FooterView } from './footer-view.component';
 
 export const Footer = async () => {
   const t = await getTranslations('common');
+
   return (
     <FooterView
       description={t('footer.description')}

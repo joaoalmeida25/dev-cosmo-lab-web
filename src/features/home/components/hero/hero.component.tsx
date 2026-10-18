@@ -15,6 +15,7 @@ export const Hero = async () => {
     { id: 'productivity', label: t('benefits.productivity') },
     { id: 'evolution', label: t('benefits.evolution') },
   ];
+
   return (
     <HeroView
       catalogHref={getPathname({ href: '/produtos', locale })}

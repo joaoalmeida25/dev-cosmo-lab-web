@@ -8,9 +8,11 @@ interface IProjectContactProps {
 
 export const ProjectContact = async ({ placement }: IProjectContactProps) => {
   const t = await getTranslations('home.contact');
+
   return (
     <ProjectContactView
       href={buildWhatsAppUrl(process.env.DEVCOSMO_WHATSAPP_NUMBER, t('message'))}
+      primary={placement === 'services'}
       label={t(placement)}
       pending={t('pending')}
     />

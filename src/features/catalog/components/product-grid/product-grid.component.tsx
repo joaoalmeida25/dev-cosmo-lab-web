@@ -4,6 +4,7 @@ import type { IProductCardPresentation } from '@/features/products/components/pr
 interface IProductGridProps {
   products: ReadonlyArray<IProductCardPresentation>;
 }
+
 export const ProductGrid = ({ products }: IProductGridProps) => (
   <div className="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3">
     {products.map((product) => (

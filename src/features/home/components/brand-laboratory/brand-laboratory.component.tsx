@@ -24,6 +24,7 @@ export const BrandLaboratory = async () => {
       description: t('pillars.evolve.description'),
     },
   ];
+
   return (
     <BrandLaboratoryView
       eyebrow={t('eyebrow')}

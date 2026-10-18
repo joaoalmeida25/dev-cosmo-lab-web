@@ -5,6 +5,7 @@ import { productsRepository } from '@/features/products/repositories/products.re
 import { CatalogHero } from './components/catalog-hero/catalog-hero.component';
 import type { ICatalogFilters } from './catalog.types';
 import { CatalogBrowser } from './catalog-browser.component';
+import { Fragment } from 'react';
 
 interface ICatalogProps {
   filters: ICatalogFilters;
@@ -32,12 +33,13 @@ export const Catalog = async ({ filters }: ICatalogProps) => {
     priceCents: product.commercial.priceCents,
     currency: product.commercial.currency,
   }));
+
   return (
-    <>
+    <Fragment>
       <CatalogHero />
       <NextIntlClientProvider messages={{ catalog: messages.catalog }}>
         <CatalogBrowser filters={filters} products={localizedProducts} locale={locale} />
       </NextIntlClientProvider>
-    </>
+    </Fragment>
   );
 };

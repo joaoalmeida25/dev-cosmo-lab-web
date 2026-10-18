@@ -1,13 +1,15 @@
 import { Button } from '@/components/ui/button/button.component';
 interface IProjectContactViewProps {
   href: string | null;
+  primary: boolean;
   label: string;
   pending: string;
 }
-export const ProjectContactView = ({ href, label, pending }: IProjectContactViewProps) => (
+
+export const ProjectContactView = ({ href, primary, label, pending }: IProjectContactViewProps) => (
   <div className="flex max-w-sm flex-col gap-2">
     {href ? (
-      <Button href={href} size="lg" variant="secondary">
+      <Button href={href} size="lg" variant={primary ? 'primary' : 'secondary'}>
         {label}
       </Button>
     ) : (

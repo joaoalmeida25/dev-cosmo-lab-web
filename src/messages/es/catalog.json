@@ -67,8 +67,8 @@
   },
   "sorts": {
     "editorial": "Listos primero",
-    "name-asc": "Nombre A–Z",
-    "name-desc": "Nombre Z–A",
+    "name-asc": "Nombre A-Z",
+    "name-desc": "Nombre Z-A",
     "price-asc": "Menor precio",
     "price-desc": "Mayor precio"
   },

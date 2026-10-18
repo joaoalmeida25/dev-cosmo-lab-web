@@ -7,6 +7,7 @@ interface ICatalogErrorViewProps {
   retry: string;
   onRetry: () => void;
 }
+
 export const CatalogErrorView = ({
   title,
   description,

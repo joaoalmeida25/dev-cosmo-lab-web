@@ -4,6 +4,7 @@ interface ISolutionCardProps {
   description: string;
   icon: LucideIcon;
 }
+
 export const SolutionCard = ({ title, description, icon: Icon }: ISolutionCardProps) => (
   <article className="h-full rounded-card border border-border bg-surface/40 p-4 md:p-5 shadow-card transition-colors hover:border-accent/40 motion-reduce:transition-none">
     <span className="flex size-10 items-center justify-center rounded-xl bg-icon-surface text-accent">

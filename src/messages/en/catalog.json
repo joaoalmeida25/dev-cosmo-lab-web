@@ -67,8 +67,8 @@
   },
   "sorts": {
     "editorial": "Ready first",
-    "name-asc": "Name A–Z",
-    "name-desc": "Name Z–A",
+    "name-asc": "Name A-Z",
+    "name-desc": "Name Z-A",
     "price-asc": "Lowest price",
     "price-desc": "Highest price"
   },

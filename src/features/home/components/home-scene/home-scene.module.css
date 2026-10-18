@@ -1,5 +1,3 @@
-/* Keep the lower arc independent of section height and translated content.
-   Both masks cover the original scene: no solid patch replaces its artwork. */
 .scene {
   --curve-depth: clamp(24px, 4.5vw, 72px);
 
@@ -16,29 +14,21 @@
   mask-repeat: no-repeat;
   mask-composite: add;
 }
-
-/* Earlier scenes must paint above the next background in the overlap. */
 .hero {
   z-index: 3;
 }
 
 .solutions {
   z-index: 2;
-  /* Preserve the soft tint without exposing the overlapping Laboratory artwork. */
   background-color: color-mix(in srgb, var(--background-soft) 35%, var(--background));
 }
 
 .laboratory {
   z-index: 1;
 }
-
-/* Recover the overlap in the next section's existing whitespace. The next
-   content keeps its original position and remains clear of the curved edge. */
 .scene + section {
   padding-top: calc(5rem + clamp(24px, 4.5vw, 72px));
 }
-
-/* Only the Hero-to-featured transition uses the compact content spacing. */
 .hero + section:global(#featured-product) {
   padding-top: calc(3rem + clamp(24px, 4.5vw, 72px));
 }

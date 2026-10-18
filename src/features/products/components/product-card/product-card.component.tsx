@@ -6,6 +6,7 @@ import type { IProductCardPresentation } from './product-card.types';
 interface IProductCardProps {
   product: IProductCardPresentation;
 }
+
 export const ProductCard = ({ product }: IProductCardProps) => {
   const classes =
     'flex h-full min-w-0 flex-col rounded-card border border-border bg-surface/40 p-2 shadow-card';
@@ -85,6 +86,7 @@ export const ProductCard = ({ product }: IProductCardProps) => {
       </div>
     </>
   );
+
   return product.detailHref ? (
     <Link
       href={product.detailHref}

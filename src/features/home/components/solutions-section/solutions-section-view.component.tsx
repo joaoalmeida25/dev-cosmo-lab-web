@@ -1,3 +1,4 @@
+import { ProfessionalCredibility } from './components/professional-credibility/professional-credibility.component';
 import { ProjectContact } from '../project-contact/project-contact.component';
 import { SolutionCard } from './components/solution-card/solution-card.component';
 import { Container } from '@/components/shared/container/container.component';
@@ -57,6 +58,7 @@ export const SolutionsSectionView = ({
             ))}
           </div>
         </div>
+        <ProfessionalCredibility />
         <div className="mt-7 border-t border-border pt-6">
           <h3 className="text-lg font-semibold text-text-primary">{journeyTitle}</h3>
           <ol className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

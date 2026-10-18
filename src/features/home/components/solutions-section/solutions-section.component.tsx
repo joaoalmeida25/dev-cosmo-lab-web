@@ -31,6 +31,7 @@ export const SolutionsSection = async () => {
       description: t('cards.maintenance.description'),
     },
   ];
+
   return (
     <SolutionsSectionView
       eyebrow={t('eyebrow')}

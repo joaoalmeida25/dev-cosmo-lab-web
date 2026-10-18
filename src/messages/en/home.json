@@ -58,6 +58,14 @@
       "needs": "Needs assessment",
       "proposal": "Tailored proposal",
       "development": "Development after approval"
+    },
+    "credibility": {
+      "eyebrow": "BEHIND THE LAB",
+      "title": "Software engineering backed by real experience.",
+      "description": "Dev Cosmo Lab brings creativity and professional experience together to build digital solutions. Meet the software engineer behind the projects.",
+      "experience": "7+ years of professional experience.",
+      "expertise": "Experience in Full Stack development.",
+      "action": "Meet the developer"
     }
   },
   "laboratory": {

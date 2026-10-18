@@ -50,15 +50,17 @@ export const CatalogBrowser = ({ products, locale, filters: parsed }: ICatalogBr
 
   useEffect(() => {
     if (pending || navigationHashRef.current === null) return;
+
     const hash = navigationHashRef.current;
     navigationHashRef.current = null;
+
     if (window.location.hash === hash) return;
-    // Next 16.3 can append a fragment already held by its initial route cache.
-    // Correct only the fragment after real router navigation; keep Next history state.
+
     const url = new URL(window.location.href);
     url.hash = hash;
     window.history.replaceState(window.history.state, '', url.href);
   }, [pending, parsed]);
+
   const categories = Object.fromEntries(
     PRODUCT_CATEGORIES.map((id) => [id, t(`categories.${id}`)]),
   );
@@ -74,7 +76,12 @@ export const CatalogBrowser = ({ products, locale, filters: parsed }: ICatalogBr
       key: 'category',
       label: t('groups.category'),
       selected: optimistic.category,
-      options: ['all', ...PRODUCT_CATEGORIES].map((value) => ({
+      options: [
+        'all',
+        ...PRODUCT_CATEGORIES.filter((value) =>
+          products.some((product) => product.category === value),
+        ),
+      ].map((value) => ({
         value,
         label: t(`categories.${value}`),
         count: countCatalogFacet(products, optimistic, 'category', value, taxonomy),
@@ -94,7 +101,10 @@ export const CatalogBrowser = ({ products, locale, filters: parsed }: ICatalogBr
       key: 'type',
       label: t('groups.type'),
       selected: optimistic.type,
-      options: ['all', ...PRODUCT_TYPES].map((value) => ({
+      options: [
+        'all',
+        ...PRODUCT_TYPES.filter((value) => products.some((product) => product.type === value)),
+      ].map((value) => ({
         value,
         label: t(`productTypes.${value}`),
         count: countCatalogFacet(products, optimistic, 'type', value, taxonomy),
@@ -111,6 +121,7 @@ export const CatalogBrowser = ({ products, locale, filters: parsed }: ICatalogBr
       })),
     },
   ];
+
   const navigate = (next: ICatalogFilters, replace = false) => {
     setResultsHeight(resultsRef.current?.getBoundingClientRect().height);
     startFeedback();
@@ -124,15 +135,18 @@ export const CatalogBrowser = ({ products, locale, filters: parsed }: ICatalogBr
       );
     });
   };
+
   const selectFilter = (key: CatalogFilterKey, value: string) => {
     const params = new URLSearchParams(serializeCatalogQuery(optimistic));
     params.set(key, value);
     navigate(parseCatalogQuery(params));
   };
+
   const clearSearch = () => {
     navigate({ ...optimistic, q: '' });
     searchInputRef.current?.focus();
   };
+
   const clearAll = () => navigate({ ...DEFAULT_CATALOG_FILTERS });
   const cards: ReadonlyArray<IProductCardPresentation> = visible.map((product) => ({
     id: product.id,
@@ -175,8 +189,10 @@ export const CatalogBrowser = ({ products, locale, filters: parsed }: ICatalogBr
     .map((group) => {
       const label =
         group.options.find((option) => option.value === group.selected)?.label ?? group.label;
+
       return { key: group.key, label, removeLabel: t('interface.removeFilter', { label }) };
     });
+
   return (
     <CatalogView
       products={cards}

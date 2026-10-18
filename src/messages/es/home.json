@@ -58,6 +58,14 @@
       "needs": "Análisis de necesidades",
       "proposal": "Propuesta personalizada",
       "development": "Desarrollo tras la aprobación"
+    },
+    "credibility": {
+      "eyebrow": "DETRÁS DEL LABORATORIO",
+      "title": "Ingeniería de software con experiencia real.",
+      "description": "Dev Cosmo Lab combina creatividad y experiencia profesional para desarrollar soluciones digitales. Conoce al ingeniero de software detrás de los proyectos.",
+      "experience": "7+ años de experiencia profesional.",
+      "expertise": "Experiencia en desarrollo Full Stack.",
+      "action": "Conocer al desarrollador"
     }
   },
   "laboratory": {

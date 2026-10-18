@@ -6,7 +6,6 @@ import { hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { DEFAULT_THEME, THEME_STORAGE_KEY } from '@/constants/theme.constants';
 import { routing } from '@/i18n/routing';
-import { SITE_URL } from '@/constants/site.constants';
 import { AppShell } from '@/components/shared/app-shell/app-shell.component';
 import '@/styles/globals.css';
 
@@ -14,14 +13,12 @@ const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
 });
-
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
   icons: {
     icon: '/favicon.ico',
   },

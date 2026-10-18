@@ -18,8 +18,10 @@ export const ProductDetails = async ({ slug }: IProductDetailsProps) => {
     getTranslations('productDetails'),
     getTranslations('catalog'),
   ]);
+
   if (!product || product.status !== 'available' || !hasLocale(routing.locales, requestedLocale))
     notFound();
+
   const content = product.content[requestedLocale];
   const gallery: ReadonlyArray<IProductGalleryItem> = product.media.gallery.map((src, index) => ({
     src,
@@ -38,8 +40,11 @@ export const ProductDetails = async ({ slug }: IProductDetailsProps) => {
     { label: t('specifications.category'), value: catalog(`categories.${product.category}`) },
     ...specificationKeys.flatMap((key) => {
       const value = specs?.[key];
+
       if (value === undefined || (Array.isArray(value) && !value.length)) return [];
+
       const values = typeof value === 'string' ? [value] : value;
+
       return [
         {
           label: t(`specifications.${key}`),
@@ -52,6 +57,7 @@ export const ProductDetails = async ({ slug }: IProductDetailsProps) => {
   const access = product.status === 'available' ? product.details?.accessUrl : undefined;
   const actionUrl = checkout ?? access;
   const stageNote = product.type === 'development-library' ? catalog('card.libraryNote') : null;
+
   return (
     <ProductDetailsView
       hero={{
@@ -98,8 +104,10 @@ export const ProductDetails = async ({ slug }: IProductDetailsProps) => {
       includedIntroduction={content.details?.includedIntroduction}
       materials={content.materials}
       stepsTitle={t(product.status === 'available' ? 'steps' : 'plannedSteps')}
+      stepsIntroduction={t('stepsIntroduction')}
       steps={content.details?.steps ?? []}
       faqTitle={t('faq')}
+      faqIntroduction={t('faqIntroduction')}
       faq={content.details?.faq ?? []}
     />
   );

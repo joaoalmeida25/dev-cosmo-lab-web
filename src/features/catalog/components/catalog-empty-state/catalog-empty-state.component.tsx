@@ -7,6 +7,7 @@ interface ICatalogEmptyStateProps {
   action: string;
   onClear: () => void;
 }
+
 export const CatalogEmptyState = ({
   title,
   description,

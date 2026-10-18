@@ -36,6 +36,7 @@ export const FeaturedProduct = async ({ product }: IFeaturedProductProps) => {
       description: t('benefits.materials.description'),
     },
   ];
+
   return (
     <FeaturedProductView
       detailHref={getPathname({ href: `/produtos/${product.slug}`, locale })}

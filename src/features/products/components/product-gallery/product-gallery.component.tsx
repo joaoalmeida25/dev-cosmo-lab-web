@@ -13,8 +13,10 @@ export const ProductGallery = ({ images, labels }: IProductGalleryProps) => {
   const [index, setIndex] = useState(0);
   const imageId = useId();
   const select = (next: number) => setIndex((next + images.length) % images.length);
+
   const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (images.length <= 1) return;
+
     switch (event.key) {
       case 'ArrowLeft':
         select(index - 1);
@@ -33,6 +35,7 @@ export const ProductGallery = ({ images, labels }: IProductGalleryProps) => {
     }
     event.preventDefault();
   };
+
   return (
     <ProductGalleryView
       images={images}

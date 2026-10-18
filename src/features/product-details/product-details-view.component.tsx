@@ -17,8 +17,10 @@ export const ProductDetailsView = ({
   includedIntroduction,
   materials,
   stepsTitle,
+  stepsIntroduction,
   steps,
   faqTitle,
+  faqIntroduction,
   faq,
 }: IProductDetailsViewProps) => (
   <>
@@ -73,14 +75,25 @@ export const ProductDetailsView = ({
         </ProductDetailSection>
       ) : null}
       {steps.length ? (
-        <ProductDetailSection id="product-steps" title={stepsTitle}>
-          <ol className="space-y-4">
+        <ProductDetailSection
+          id="product-steps"
+          title={stepsTitle}
+          introduction={stepsIntroduction}
+          layout="stacked"
+        >
+          <ol className="grid min-w-0 grid-cols-[minmax(0,1fr)] gap-x-10 gap-y-4 md:grid-cols-[repeat(2,minmax(0,1fr))]">
             {steps.map((step, index) => (
-              <li key={step.title} className="flex gap-4">
-                <span aria-hidden="true" className="text-lg font-semibold text-accent">
+              <li
+                key={step.title}
+                className="grid min-w-0 grid-cols-[2rem_minmax(0,1fr)] content-start items-baseline gap-x-3 border-b border-border/60 pb-4 last:border-b-0 last:pb-0 md:[&:nth-last-child(2):nth-child(odd)]:border-b-0 md:[&:nth-last-child(2):nth-child(odd)]:pb-0"
+              >
+                <span
+                  aria-hidden="true"
+                  className="text-lg leading-relaxed font-semibold text-accent tabular-nums"
+                >
                   {String(index + 1).padStart(2, '0')}
                 </span>
-                <div>
+                <div className="min-w-0 wrap-anywhere">
                   <h3 className="text-sm leading-relaxed font-medium text-text-primary">
                     {step.title}
                   </h3>
@@ -96,7 +109,7 @@ export const ProductDetailsView = ({
         </ProductDetailSection>
       ) : null}
       {faq.length ? (
-        <ProductDetailSection id="product-faq" title={faqTitle}>
+        <ProductDetailSection id="product-faq" title={faqTitle} introduction={faqIntroduction}>
           <ProductFaq items={faq} />
         </ProductDetailSection>
       ) : null}

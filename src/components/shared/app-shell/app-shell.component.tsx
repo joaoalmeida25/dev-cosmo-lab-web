@@ -11,6 +11,7 @@ interface IAppShellProps {
 
 export const AppShell = async ({ children, locale }: IAppShellProps) => {
   const [messages, t] = await Promise.all([getMessages(), getTranslations('common.accessibility')]);
+
   return (
     <NextIntlClientProvider locale={locale} messages={{ common: messages.common }}>
       <AppShellView skipToContent={t('skipToContent')}>{children}</AppShellView>

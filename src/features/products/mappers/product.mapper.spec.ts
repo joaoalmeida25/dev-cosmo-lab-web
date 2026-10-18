@@ -7,10 +7,10 @@ import { mapProduct } from './product.mapper';
 
 const locales = ['pt-BR', 'en', 'es'] as const;
 
-test('repository serves four unique products by slug, with localized content and unchanged commercial status', async () => {
+test('repository serves three unique products by slug, with localized content and unchanged commercial status', async () => {
   const products = await productsRepository.getAllProducts();
-  assert.equal(products.length, 4);
-  assert.equal(new Set(products.map(({ slug }) => slug)).size, 4);
+  assert.equal(products.length, 3);
+  assert.equal(new Set(products.map(({ slug }) => slug)).size, 3);
   for (const product of products) {
     assert.deepEqual(await productsRepository.getProductBySlug(product.slug), product);
     for (const locale of locales) {
@@ -21,6 +21,7 @@ test('repository serves four unique products by slug, with localized content and
       assert.ok(content.details?.seo?.title.includes(product.name));
       assert.equal(content.details?.seo?.description, content.shortDescription);
     }
+
     if (product.status !== 'available') {
       assert.equal(product.commercial.priceCents, null);
       assert.equal(product.commercial.checkoutUrl, null);
@@ -32,8 +33,12 @@ test('repository serves four unique products by slug, with localized content and
   assert.equal(kit?.commercial.priceCents, 2990);
   assert.equal(kit?.commercial.checkoutUrl, 'https://pay.kiwify.com.br/zA4x9hJ');
   assert.equal((await productsRepository.getProductBySlug('hoje-cabe'))?.status, 'planned');
-  for (const slug of ['followup-inbox', 'neural-system-ui'])
-    assert.equal((await productsRepository.getProductBySlug(slug))?.status, 'in-development');
+  assert.equal(
+    (await productsRepository.getProductBySlug('followup-inbox'))?.status,
+    'in-development',
+  );
+  assert.equal(kit?.status, 'available');
+  assert.equal(await productsRepository.getProductBySlug('neural-system-ui'), null);
 });
 
 test('media separates cover, featured and ordered gallery without theme-specific or legacy fields', async () => {
@@ -53,6 +58,7 @@ test('media separates cover, featured and ordered gallery without theme-specific
     const paths = [product.media.cover, product.media.featured, ...product.media.gallery];
     for (const path of paths) {
       if (!path) continue;
+
       const bytes = readFileSync(`public${path}`);
       assert.equal(bytes.toString('ascii', 0, 4), 'RIFF');
       assert.equal(bytes.toString('ascii', 8, 12), 'WEBP');
@@ -62,6 +68,7 @@ test('media separates cover, featured and ordered gallery without theme-specific
         product.content[locale].details?.galleryAlts.length,
         product.media.gallery.length,
       );
+
     if (product.slug !== kit.slug)
       assert.deepEqual(product.media, { cover: null, featured: null, gallery: [] });
   }
@@ -140,7 +147,7 @@ test('mapper accepts optional media and detail sections without inventing empty 
   assert.equal(access.details?.accessUrl, 'https://example.com/access');
 });
 
-test('all four products contain localized included scope, documented steps and at most five corresponding FAQs', async () => {
+test('all three products contain localized included scope, documented steps and at most five corresponding FAQs', async () => {
   for (const product of await productsRepository.getAllProducts()) {
     for (const locale of locales) {
       const content = product.content[locale];
@@ -181,10 +188,19 @@ test('specifications reuse category and include only confirmed product attribute
     license: undefined,
   });
   assert.equal(kit.details?.specifications && 'category' in kit.details.specifications, false);
-  const library = await productsRepository.getProductBySlug('neural-system-ui');
-  assert.equal(library?.details?.specifications?.platform, 'web');
-  assert.equal(library?.details?.specifications?.license, 'polyform-noncommercial');
-  assert.deepEqual(library?.details?.specifications?.compatibility, ['webgl']);
+  const library = mapProduct({
+    ...proposals,
+    details: {
+      specifications: {
+        platform: 'web',
+        license: 'polyform-noncommercial',
+        compatibility: ['webgl'],
+      },
+    },
+  });
+  assert.equal(library.details?.specifications?.platform, 'web');
+  assert.equal(library.details?.specifications?.license, 'polyform-noncommercial');
+  assert.deepEqual(library.details?.specifications?.compatibility, ['webgl']);
   for (const slug of ['hoje-cabe', 'followup-inbox'])
     assert.equal(
       (await productsRepository.getProductBySlug(slug))?.details?.specifications,

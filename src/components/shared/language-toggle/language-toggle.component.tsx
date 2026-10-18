@@ -54,8 +54,7 @@ export const LanguageToggle = () => {
     setIsOpen(false);
 
     const href = `${pathname}${window.location.search}${window.location.hash}`;
-    // A document navigation avoids Next 16.3 duplicating fragments when returning
-    // to a cached locale. Resolve the canonical prefix with next-intl first.
+
     window.location.replace(getPathname({ href, locale: nextLocale }));
   };
 

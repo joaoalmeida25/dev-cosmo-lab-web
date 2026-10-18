@@ -14,7 +14,6 @@ export const normalizeCatalogText = (text: string): string =>
     .toLowerCase()
     .trim();
 
-// Integer cent boundaries are exhaustive and mutually exclusive; null is never free.
 export const matchesPriceRange = (price: number | null, range: PriceRange): boolean => {
   switch (range) {
     case 'all':
@@ -41,6 +40,7 @@ export const filterCatalogProducts = (
   },
 ): Array<ICatalogProduct> => {
   const query = normalizeCatalogText(filters.q);
+
   return products.filter((product) => {
     const searchable = [
       product.name,
@@ -50,6 +50,7 @@ export const filterCatalogProducts = (
       taxonomy.categories[product.category],
       taxonomy.types[product.type],
     ].join(' ');
+
     return (
       (!query || normalizeCatalogText(searchable).includes(query)) &&
       (filters.category === 'all' || product.category === filters.category) &&
@@ -72,6 +73,7 @@ export const sortCatalogProducts = (
   locale: string,
 ): Array<ICatalogProduct> => {
   const collator = new Intl.Collator(locale, { sensitivity: 'base', numeric: true });
+
   return [...products].sort((a, b) => {
     const tie = a.editorialOrder - b.editorialOrder || a.id.localeCompare(b.id);
     switch (filters.sort) {
@@ -82,7 +84,9 @@ export const sortCatalogProducts = (
       case 'price-asc':
       case 'price-desc': {
         if (a.priceCents === null) return b.priceCents === null ? tie : 1;
+
         if (b.priceCents === null) return -1;
+
         return (
           (filters.sort === 'price-asc'
             ? a.priceCents - b.priceCents
@@ -106,11 +110,14 @@ export const countCatalogFacet = (
   },
 ): number => {
   const candidates = filterCatalogProducts(products, { ...filters, [key]: 'all' }, taxonomy);
+
   if (key === 'price') {
     const range = PRICE_RANGES.find((candidate) => candidate === value);
+
     return range
       ? candidates.filter((product) => matchesPriceRange(product.priceCents, range)).length
       : 0;
   }
+
   return candidates.filter((product) => value === 'all' || product[key] === value).length;
 };

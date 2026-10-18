@@ -17,7 +17,6 @@
 }
 
 @media (max-width: 639px) {
-  /* The existing dark mobile composition keeps its desktop gradient. */
   :global(:root:not([data-theme='dark'])) .scene {
     --hero-overlay: linear-gradient(
       180deg,

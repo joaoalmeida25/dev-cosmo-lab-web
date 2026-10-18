@@ -5,6 +5,7 @@ interface IProductDetailSectionProps {
   title: string;
   introduction?: string;
   children: ReactNode;
+  layout?: 'split' | 'stacked';
 }
 
 export const ProductDetailSection = ({
@@ -12,10 +13,11 @@ export const ProductDetailSection = ({
   title,
   introduction,
   children,
+  layout = 'split',
 }: IProductDetailSectionProps) => (
   <section
     aria-labelledby={id}
-    className="grid gap-5 border-t border-border py-7 md:grid-cols-[2fr_3fr] md:gap-7 md:py-9"
+    className={`grid gap-5 border-t border-border py-7 md:gap-7 md:py-9 ${layout === 'split' ? 'md:grid-cols-[2fr_3fr]' : ''}`}
   >
     <div>
       <h2
@@ -25,11 +27,19 @@ export const ProductDetailSection = ({
         {title}
       </h2>
       {introduction ? (
-        <p className="mt-4 max-w-85 text-base leading-relaxed text-text-secondary">
+        <p
+          className={`mt-3 text-base leading-relaxed text-text-secondary ${layout === 'stacked' ? 'max-w-2xl' : 'max-w-85'}`}
+        >
           {introduction}
         </p>
       ) : null}
     </div>
-    <div className="min-w-0 md:border-l md:border-border md:pl-7">{children}</div>
+    <div
+      className={
+        layout === 'stacked' ? 'min-w-0 max-w-5xl' : 'min-w-0 md:border-l md:border-border md:pl-7'
+      }
+    >
+      {children}
+    </div>
   </section>
 );

@@ -4,6 +4,7 @@ import { CatalogHeroView } from './catalog-hero-view.component';
 
 export const CatalogHero = async () => {
   const t = await getTranslations('catalog.hero');
+
   return (
     <CatalogHeroView
       eyebrow={t('eyebrow')}

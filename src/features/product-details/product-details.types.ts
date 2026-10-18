@@ -25,7 +25,9 @@ export interface IProductDetailsViewProps {
   includedIntroduction?: string;
   materials: ReadonlyArray<string>;
   stepsTitle: string;
+  stepsIntroduction: string;
   steps: ReadonlyArray<IProductStep>;
   faqTitle: string;
+  faqIntroduction: string;
   faq: ReadonlyArray<IProductFaqItem>;
 }

@@ -11,6 +11,7 @@ interface ICatalogFiltersProps {
   onSelect: (key: CatalogFilterKey, value: string) => void;
   onClear: () => void;
 }
+
 export const CatalogFilters = ({
   isOpen,
   onToggle,

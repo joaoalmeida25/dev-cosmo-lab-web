@@ -28,6 +28,7 @@ export const DEFAULT_CATALOG_FILTERS: ICatalogFilters = {
   price: 'all',
   sort: 'editorial',
 };
+
 const select = <T extends string>(
   value: string | null,
   options: ReadonlyArray<T>,
@@ -45,11 +46,18 @@ export const parseCatalogQuery = (params: URLSearchParams): ICatalogFilters => (
 
 export const serializeCatalogQuery = (filters: ICatalogFilters): string => {
   const params = new URLSearchParams();
+
   if (filters.q) params.set('q', filters.q);
+
   if (filters.category !== 'all') params.set('category', filters.category);
+
   if (filters.status !== 'all') params.set('status', filters.status);
+
   if (filters.type !== 'all') params.set('type', filters.type);
+
   if (filters.price !== 'all') params.set('price', filters.price);
+
   if (filters.sort !== 'editorial') params.set('sort', filters.sort);
+
   return params.toString();
 };

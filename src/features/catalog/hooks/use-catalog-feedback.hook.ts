@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-// Keep fast local updates perceptible without delaying navigation or controls.
 const MINIMUM_FEEDBACK_MS = 220;
 const MAXIMUM_FEEDBACK_MS = 6000;
 
@@ -15,6 +14,7 @@ export const useCatalogFeedback = (pending: boolean) => {
   useEffect(
     () => () => {
       if (minimumTimer.current !== null) clearTimeout(minimumTimer.current);
+
       if (maximumTimer.current !== null) clearTimeout(maximumTimer.current);
     },
     [],
@@ -22,7 +22,9 @@ export const useCatalogFeedback = (pending: boolean) => {
 
   const startFeedback = () => {
     if (minimumTimer.current !== null) clearTimeout(minimumTimer.current);
+
     if (maximumTimer.current !== null) clearTimeout(maximumTimer.current);
+
     setMinimumActive(true);
     setExpired(false);
     minimumTimer.current = setTimeout(() => setMinimumActive(false), MINIMUM_FEEDBACK_MS);

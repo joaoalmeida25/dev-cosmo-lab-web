@@ -2,9 +2,6 @@
 
 @custom-variant light (&:where([data-theme='light'], [data-theme='light'] *));
 @custom-variant theme-ready (&:where([data-theme-ready='true'], [data-theme-ready='true'] *));
-
-/* Phase 2 palette and primary states approved in docs/design/phase-2-decisions.md.
-   Secondary/accent text and decorative borders retain contextual restrictions. */
 :root,
 :root[data-theme='dark'] {
   color-scheme: dark;
@@ -37,7 +34,6 @@
   --text-primary: #12172b;
   --text-secondary: #656f86;
   --accent: #6665dd;
-  /* Approved contextual accent for text over artwork/soft surfaces. */
   --text-accent-context: #5656c8;
   --primary: #6264df;
   --primary-foreground: #ffffff;
@@ -52,9 +48,6 @@
   --photo-card: color-mix(in srgb, var(--surface) 84%, transparent);
   --photo-card-border: color-mix(in srgb, var(--border) 82%, transparent);
 }
-
-/* Provisional aliases and interaction/effect fallbacks: no approved values in handoff.
-   Reuse the documented palette; do not introduce additional brand shades. */
 :root {
   --background-soft: var(--primary-soft);
   --surface-hover: var(--primary-soft);
@@ -101,17 +94,11 @@
   --color-hero-gradient-from: var(--hero-gradient-from);
   --color-hero-gradient-to: var(--hero-gradient-to);
   --color-ambient-glow: var(--ambient-glow);
-
-  /* Approved pill controls and default card radius. */
   --radius-control: 9999px;
   --radius-card: 16px;
-
-  /* Shared Home rhythm and media framing; color/CTA tokens stay unchanged. */
   --spacing-section: 5rem;
   --spacing-section-lg: 6rem;
   --radius-media: 1.5rem;
-
-  /* Shadows remain provisional. */
   --shadow-editorial:
     0 24px 64px -32px color-mix(in srgb, var(--text-primary) 14%, transparent),
     inset 0 1px 0 color-mix(in srgb, var(--text-primary) 4%, transparent);
@@ -126,9 +113,6 @@
     scroll-behavior: smooth;
     scrollbar-gutter: stable;
   }
-
-  /* Reveal content only once the critical Next Script has applied the saved theme.
-     The layout's noscript fallback keeps the default dark page usable without JS. */
   :root:not([data-theme-ready]) body {
     visibility: hidden;
   }
@@ -139,9 +123,6 @@
     color: var(--text-primary);
   }
 }
-
-/* The root gutter already reserves the viewport scrollbar. Avoid reserving it
-   again through react-remove-scroll's body margin when a Radix portal opens. */
 @supports (scrollbar-gutter: stable) {
   html body[data-scroll-locked] {
     margin-right: 0 !important;
