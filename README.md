@@ -121,10 +121,4 @@ restaura os atributos do tema antes da pintura nas navegações de idioma. O con
 é revelado após essa seleção, com fallback dark visível sem JavaScript. Não há
 reinserção manual de script durante a navegação. Os assets públicos permanecem intactos; a otimização é feita
 pelo Next em runtime. Não há backend ou configuração de deploy.
-
-## Origem técnica
-
-Bootstrap a partir dos arquivos versionados de
-[joaoalmeida25/portfolio](https://github.com/joaoalmeida25/portfolio), branch `main`,
-commit `0763a6b8f9e07c95fd521f7f82d81320dfad0f81`.
 O histórico Git é novo e independente. O repositório de origem permanece intacto.
