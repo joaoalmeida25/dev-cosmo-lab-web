@@ -2,7 +2,7 @@ import type { Locale } from 'next-intl';
 import { getPathname } from './navigation';
 import { routing } from './routing';
 
-export const METADATA_BASE = new URL('https://devcosmolab.vercel.app');
+export const METADATA_BASE = new URL('https://devcosmolab.com');
 
 export const OPEN_GRAPH_IMAGE = {
   url: new URL('/assets/devcosmo/home/dark/hero-1200.webp', METADATA_BASE).href,
