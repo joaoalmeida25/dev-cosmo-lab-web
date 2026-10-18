@@ -14,15 +14,7 @@ export const Brand = () => {
           width={1254}
           height={1254}
           sizes="36px"
-          className="h-full w-full object-contain light:hidden"
-        />
-        <Image
-          src="/assets/devcosmo/brand/orbit-symbol-light-surface.png"
-          alt=""
-          width={1254}
-          height={1254}
-          sizes="36px"
-          className="hidden h-full w-full object-contain light:block"
+          className="h-full w-full object-contain"
         />
       </span>
       <span className="text-[10px] font-semibold tracking-[0.2em] whitespace-nowrap text-text-primary md:text-[11px]">

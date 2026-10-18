@@ -3,7 +3,7 @@ import { hasLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Home } from '@/features/home/home.component';
-import { getLocalizedAlternates } from '@/i18n/metadata';
+import { getLocalizedAlternates, OPEN_GRAPH_IMAGE } from '@/i18n/metadata';
 import { routing } from '@/i18n/routing';
 
 export const generateMetadata = async ({ params }: PageProps<'/[locale]'>): Promise<Metadata> => {
@@ -12,11 +12,21 @@ export const generateMetadata = async ({ params }: PageProps<'/[locale]'>): Prom
   if (!hasLocale(routing.locales, locale)) notFound();
 
   const t = await getTranslations({ locale, namespace: 'metadata.home' });
+  const title = t('title');
+  const description = t('description');
+  const alternates = getLocalizedAlternates('/', locale);
 
   return {
-    title: t('title'),
-    description: t('description'),
-    alternates: getLocalizedAlternates('/', locale),
+    title,
+    description,
+    alternates,
+    openGraph: {
+      title,
+      description,
+      url: alternates.canonical,
+      type: 'website',
+      images: [OPEN_GRAPH_IMAGE],
+    },
   };
 };
 

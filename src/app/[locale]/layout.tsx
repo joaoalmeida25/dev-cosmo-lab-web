@@ -6,6 +6,7 @@ import { hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { DEFAULT_THEME, THEME_STORAGE_KEY } from '@/constants/theme.constants';
 import { routing } from '@/i18n/routing';
+import { METADATA_BASE } from '@/i18n/metadata';
 import { AppShell } from '@/components/shared/app-shell/app-shell.component';
 import '@/styles/globals.css';
 
@@ -19,6 +20,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: METADATA_BASE,
   icons: {
     icon: '/favicon.ico',
   },

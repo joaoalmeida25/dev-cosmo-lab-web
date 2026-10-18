@@ -4,7 +4,7 @@ import { hasLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Catalog } from '@/features/catalog/catalog.component';
-import { getLocalizedAlternates } from '@/i18n/metadata';
+import { getLocalizedAlternates, OPEN_GRAPH_IMAGE } from '@/i18n/metadata';
 import { routing } from '@/i18n/routing';
 
 export const generateMetadata = async ({
@@ -15,11 +15,21 @@ export const generateMetadata = async ({
   if (!hasLocale(routing.locales, locale)) notFound();
 
   const t = await getTranslations({ locale, namespace: 'metadata.catalog' });
+  const title = t('title');
+  const description = t('description');
+  const alternates = getLocalizedAlternates('/products', locale);
 
   return {
-    title: t('title'),
-    description: t('description'),
-    alternates: getLocalizedAlternates('/products', locale),
+    title,
+    description,
+    alternates,
+    openGraph: {
+      title,
+      description,
+      url: alternates.canonical,
+      type: 'website',
+      images: [OPEN_GRAPH_IMAGE],
+    },
   };
 };
 

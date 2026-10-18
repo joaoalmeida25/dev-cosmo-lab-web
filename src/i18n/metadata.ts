@@ -1,24 +1,32 @@
-import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
 import { getPathname } from './navigation';
 import { routing } from './routing';
 
+export const METADATA_BASE = new URL('https://devcosmolab.vercel.app');
+
+export const OPEN_GRAPH_IMAGE = {
+  url: new URL('/assets/devcosmo/home/dark/hero-1200.webp', METADATA_BASE).href,
+  width: 1200,
+  height: 675,
+};
+
 export const getLocalizedAlternates = (
   href: string,
   locale: Locale,
-): NonNullable<Metadata['alternates']> => {
+): { canonical: string; languages: Record<string, string> } => {
   const languages = Object.fromEntries(
     routing.locales.map((supportedLocale) => [
       supportedLocale,
-      getPathname({ href, locale: supportedLocale }),
+      new URL(getPathname({ href, locale: supportedLocale }), METADATA_BASE).href,
     ]),
   );
 
   return {
-    canonical: getPathname({ href, locale }),
+    canonical: new URL(getPathname({ href, locale }), METADATA_BASE).href,
     languages: {
       ...languages,
-      'x-default': getPathname({ href, locale: routing.defaultLocale }),
+      'x-default': new URL(getPathname({ href, locale: routing.defaultLocale }), METADATA_BASE)
+        .href,
     },
   };
 };
