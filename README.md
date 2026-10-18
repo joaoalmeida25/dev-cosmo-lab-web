@@ -1,36 +1,156 @@
 # Dev Cosmo Lab Web
 
-Website institucional e futura vitrine de produtos digitais da **Dev Cosmo Lab**.
-Uma única aplicação Next.js, sem backend próprio, banco de dados, autenticação ou CMS.
+A **Dev Cosmo Lab** é uma iniciativa autoral de tecnologia dedicada à criação de produtos digitais,
+ao desenvolvimento de software sob medida e ao compartilhamento de conhecimento. Este repositório
+contém a plataforma web desenvolvida para traduzir essa identidade em uma experiência digital moderna,
+conectando apresentação da marca, catálogo de produtos e oportunidades comerciais.
 
-## Status
+**Website oficial:** [devcosmolab.com](https://devcosmolab.com)
 
-Fase 3: Home Cosmic Observatory implementada, aguardando revisão visual da Thread 6
-e homologação da Thread 2. A página está disponível em três idiomas, com Hero,
-produto em destaque, soluções, laboratório e CTA final. Header, Footer, temas e
-controles da Fase 2 foram reaproveitados. Catálogo e detalhes de produtos pertencem às próximas fases.
-Não há integração de checkout ou deploy configurado.
+## Sobre o projeto
 
-O domínio oficial ainda não foi definido. `src/constants/site.constants.ts` utiliza
-`http://localhost:3000` exclusivamente como base local de metadados. Essa configuração
-deve ser substituída antes de qualquer publicação. A marca utiliza os derivados do
-handoff, com variantes dark/light.
-O favicon oficial está em `public/favicon.ico`, compartilhado pelos três idiomas.
+A plataforma estabelece a presença digital da Dev Cosmo Lab e materializa sua identidade
+**Cosmic Minimal Premium**. Sua proposta é reunir produtos digitais, serviços e conteúdo tecnológico
+em uma base arquitetural consistente, equilibrando uma experiência premium com manutenção sustentável
+e espaço para evolução.
 
-## Stack
+## Funcionalidades
 
-- Next.js 16.3.5 e React 19.2.8.
-- TypeScript 5.9.3 com modo strict.
-- Tailwind CSS 4.3.3 e tokens semânticos.
-- next-intl 4.14.5.
-- ESLint 9 e Prettier 3.
-- npm com `package-lock.json` versão 3.
+### Home
 
-## Runtime e instalação
+- Hero com linguagem visual Cosmic Observatory e apresentação da marca.
+- Produto em destaque, com acesso aos detalhes.
+- Serviços de software sob medida e credibilidade profissional, com link para o portfólio do autor.
+- Seção sobre o laboratório e chamadas para conhecer produtos ou iniciar uma conversa comercial.
 
-Utilize **Node.js 24** e **npm 11** no desenvolvimento e no CI.
-A versão de desenvolvimento registrada em `.nvmrc` é **24.19.0**.
-As versões das dependências devem ser reproduzidas pelo lockfile.
+### Catálogo de produtos
+
+- Busca textual e filtros por categoria, disponibilidade, tipo de produto e faixa de preço.
+- Ordenação editorial, por nome ou por preço.
+- Identificação de produtos disponíveis, em desenvolvimento e em planejamento.
+- Filtros e navegação adaptados a desktop e mobile, com estado refletido na URL.
+
+### Detalhes do produto
+
+- Galeria de imagens, apresentação e especificações.
+- Recursos incluídos, etapas de utilização e perguntas frequentes.
+- Compra por checkout externo da Kiwify, aberto em nova aba.
+- Demonstração em vídeo quando configurada nos dados do produto.
+
+As páginas de detalhes são públicas somente para produtos disponíveis. Produtos em desenvolvimento
+ou planejamento aparecem no catálogo, sem oferta pública de acesso ou aquisição.
+
+### Experiência da aplicação
+
+- Internacionalização em PT-BR, inglês e espanhol.
+- Temas dark/light e layout responsivo.
+- Design System com componentes reutilizáveis e tokens semânticos.
+- SEO localizado, URLs canônicas, hreflang e Open Graph.
+- Contato comercial por WhatsApp quando há um número válido configurado.
+- Link para o [Instagram da Dev Cosmo Lab](https://www.instagram.com/devcosmolab/).
+
+## Stack tecnológica
+
+| Tecnologia        | Versão / uso                              |
+| ----------------- | ----------------------------------------- |
+| Next.js           | 16.4.2, com App Router                    |
+| React / React DOM | 19.3.1                                    |
+| TypeScript        | 5.9.x, com modo strict                    |
+| Tailwind CSS      | 4, com tokens semânticos                  |
+| next-intl         | 4, para traduções e roteamento localizado |
+| Radix UI          | Primitivo Select                          |
+| Lucide React      | Ícones                                    |
+| ESLint / Prettier | Análise estática e formatação             |
+| Node.js / npm     | 24 / 11                                   |
+| Vercel            | Hospedagem                                |
+
+As versões e faixas de dependências estão em [package.json](package.json). O
+[package-lock.json](package-lock.json) registra as versões resolvidas para instalação com `npm ci`.
+
+## Arquitetura
+
+A aplicação utiliza o **Next.js App Router**, com Server Components como padrão e Client Components
+para interações, estado e APIs do navegador. A organização por features mantém cada parte da
+experiência próxima de seus componentes, contratos, utilitários e testes.
+
+A separação **Controller/View** segue o [AGENTS.md](AGENTS.md): controllers preparam dados, traduções
+e comportamento; views recebem propriedades de apresentação. Componentes puramente visuais podem
+permanecer em um único arquivo. Os contratos são definidos em TypeScript, com validação nas fronteiras.
+
+```text
+src/
+├── app/[locale]/          # Layout, metadata e páginas localizadas
+│   ├── page.tsx           # Home
+│   └── products/          # Catálogo e detalhes em [slug]/page.tsx
+├── components/
+│   ├── shared/            # Brand, Header, Footer, Container e controles
+│   └── ui/                # Primitivos Button e Select
+├── constants/             # Configuração de tema
+├── features/
+│   ├── home/              # Seções da Home e contato comercial
+│   ├── catalog/           # Busca, filtros, ordenação e estados do catálogo
+│   ├── products/          # Contratos, JSONs, mapper, repositório e componentes de produto
+│   └── product-details/   # Composição da página e resumo do produto
+├── hooks/                 # Tema e persistência local
+├── i18n/                  # Roteamento, carregamento de mensagens e metadata
+├── messages/              # Catálogos pt-BR, en e es
+├── styles/                # Tailwind, estilos globais e tokens semânticos
+├── types/                 # Contratos compartilhados de tema
+└── proxy.ts               # Resolução de idioma com next-intl
+```
+
+Os produtos são definidos em [src/features/products/data](src/features/products/data). O repositório
+existente lê esses dados e os valida pelo mapper antes de disponibilizá-los à aplicação, incluindo
+taxonomia, informações comerciais, URLs e referências de mídia.
+
+A plataforma tem arquitetura front-end, com renderização no servidor pelo Next.js. Não possui backend
+próprio, banco de dados, autenticação ou CMS. Compra, demonstração e contato direcionam a serviços
+externos; não há checkout processado pela própria aplicação.
+
+## Internacionalização e rotas
+
+O `next-intl` utiliza `pt-BR` como idioma padrão sem prefixo, inglês em `/en` e espanhol em `/es`.
+A troca de idioma preserva caminho, parâmetros de consulta e fragmento da URL.
+
+| Idioma | Home  | Catálogo       | Propostas em Dia                |
+| ------ | ----- | -------------- | ------------------------------- |
+| PT-BR  | `/`   | `/products`    | `/products/propostas-em-dia`    |
+| EN     | `/en` | `/en/products` | `/en/products/propostas-em-dia` |
+| ES     | `/es` | `/es/products` | `/es/products/propostas-em-dia` |
+
+O segmento `products` é utilizado nos três idiomas. Produtos indisponíveis ou slugs inexistentes
+retornam 404 ao tentar acessar seus detalhes. A configuração está em
+[src/i18n/routing.ts](src/i18n/routing.ts), integrada ao [proxy](src/proxy.ts).
+
+## Identidade visual e experiência
+
+A identidade **Cosmic Minimal Premium** utiliza a linguagem **Cosmic Observatory** para conectar
+marca, produtos e serviços. Os temas dark e light compartilham componentes e tokens; a preferência
+visual é persistida em `localStorage`, com dark como padrão.
+
+O layout se adapta a diferentes tamanhos de tela, com assets responsivos e otimizados pelo Next.js
+quando aplicável. A interface utiliza motion sutil, foco visível e regras para
+`prefers-reduced-motion`. Os assets públicos ficam em [public/assets/devcosmo](public/assets/devcosmo),
+e os tokens semânticos em [src/styles/globals.css](src/styles/globals.css).
+
+## SEO e compartilhamento
+
+A Metadata API nativa do Next.js define títulos e descrições localizados, canonical, hreflang e
+Open Graph para Home, catálogo e detalhes de produtos disponíveis. Os detalhes reutilizam o SEO
+localizado dos dados do produto, com fallback para nome e descrição curta.
+
+O domínio configurado para metadata é **https://devcosmolab.com**. As URLs canônicas e alternativas
+são geradas pelo helper de [src/i18n/metadata.ts](src/i18n/metadata.ts), respeitando o roteamento do
+`next-intl`.
+
+A imagem de compartilhamento utilizada é
+[`hero-1200.webp`](public/assets/devcosmo/home/dark/hero-1200.webp), com dimensões reais de
+**1200 × 675 px**, compartilhada por Home, catálogo e detalhes nesta versão.
+
+## Ambiente e execução local
+
+Requisitos: **Node.js 24** e **npm 11**, conforme os `engines` do projeto. O arquivo
+[.nvmrc](.nvmrc) registra Node.js 24.19.0.
 
 ```bash
 nvm use
@@ -38,87 +158,44 @@ npm ci
 npm run dev
 ```
 
-Se não utilizar nvm, selecione o runtime equivalente pelo seu gerenciador de Node.
-A aplicação estará disponível em `http://localhost:3000`.
-O bootstrap não exige variáveis de ambiente.
+Se não utilizar nvm, selecione uma versão compatível pelo seu gerenciador de Node.js. O servidor
+de desenvolvimento fica disponível em [http://localhost:3000](http://localhost:3000).
 
-## Scripts
+### Contato comercial
 
-| Comando                | Finalidade                                                |
-| ---------------------- | --------------------------------------------------------- |
-| `npm run dev`          | Servidor de desenvolvimento                               |
-| `npm run build`        | Build de produção e verificação de tipos pelo Next.js     |
-| `npm start`            | Servir o build localmente                                 |
-| `npm run lint`         | Verificação ESLint                                        |
-| `npm run typecheck`    | Gerar tipos de rotas do Next.js e executar `tsc --noEmit` |
-| `npm run format:check` | Verificar formatação                                      |
-| `npm run format`       | Formatar arquivos do projeto                              |
+A variável opcional `DEVCOSMO_WHATSAPP_NUMBER` recebe um número internacional com código do país,
+composto apenas por dígitos, sem `+`, espaços ou pontuação. A validação aceita de 8 a 15 dígitos,
+com o primeiro diferente de zero.
 
-Antes de concluir alterações, execute `format:check`, `lint`, `typecheck` e `build`.
-A primeira geração de fontes pelo `next/font/google` pode exigir acesso à rede.
+Configure-a em um arquivo `.env.local` na raiz para habilitar os links de contato comercial. A
+aplicação monta o endereço do WhatsApp com a mensagem localizada. Sem um número válido, o contato
+correspondente fica indisponível. Não versione o arquivo nem seus valores.
 
-## Estrutura inicial
+Variáveis utilizadas no build devem ser configuradas separadamente no provedor de hospedagem;
+o `.env.local` não configura o ambiente publicado. A geração de fontes por `next/font/google`
+também pode exigir acesso à rede durante o build.
 
-```text
-src/
-├── app/[locale]/          # Layout e Home localizada
-├── components/           # Shell compartilhado, controles de idioma/tema e Button
-├── constants/            # Base local do site e configuração de tema
-├── features/home/        # Hero, destaque, soluções, laboratório e CTA
-├── features/products/    # Dados e contrato mínimo do produto
-├── hooks/                # Persistência local e tema
-├── i18n/                 # Roteamento, mensagens e metadados localizados
-├── messages/             # pt-BR, en e es
-├── styles/               # Tailwind, estilos globais e tokens
-├── types/                # Contrato de tema
-└── proxy.ts              # Resolução de idioma
-```
+## Scripts e qualidade
 
-Componentes seguem as convenções de `AGENTS.md`: pastas próprias, arquivos em
-kebab-case, exports nomeados e Client Components somente onde há interação.
-Não foram mantidos componentes ou assets pessoais sem uso imediato.
+| Comando                | Responsabilidade                                         |
+| ---------------------- | -------------------------------------------------------- |
+| `npm run dev`          | Iniciar o servidor de desenvolvimento                    |
+| `npm run build`        | Gerar o build de produção e verificar tipos pelo Next.js |
+| `npm run start`        | Servir um build de produção previamente gerado           |
+| `npm run lint`         | Executar a análise estática com ESLint                   |
+| `npm run typecheck`    | Gerar tipos de rotas e executar `tsc --noEmit`           |
+| `npm run format`       | Formatar os arquivos com Prettier                        |
+| `npm run format:check` | Verificar a formatação sem modificar arquivos            |
 
-## Internacionalização
+Para alterações na aplicação, execute `format:check`, `lint`, `typecheck` e `build`, além dos checks
+de diff e testes relevantes previstos no [AGENTS.md](AGENTS.md). Há testes co-localizados para regras
+do catálogo, validação dos produtos, contato e resumo do produto; não existe um script npm `test`.
 
-O next-intl oferece `pt-BR` como idioma padrão sem prefixo (`/`), inglês em `/en`
-e espanhol em `/es`. A troca de idioma preserva caminho, query e hash.
-Os namespaces atuais são `common`, `home`, `products` e `metadata`, com a mesma estrutura
-nos três idiomas. Apenas as mensagens comuns necessárias aos controles são
-enviadas pelo provider ao cliente.
+## Deploy
 
-## Temas
+A V1 está publicada na **Vercel**, com website oficial em [devcosmolab.com](https://devcosmolab.com).
+O código está no [repositório GitHub](https://github.com/joaoalmeida25/dev-cosmo-lab-web).
 
-Dark é o tema padrão. A preferência dark/light é salva em `localStorage` com a chave
-`dev-cosmo-lab-theme` e aplicada em `data-theme` no elemento HTML. O script inicial
-e o hook usam a mesma constante. A paleta e os estados do CTA preservam a homologação
-da Fase 2, enquanto os overlays usam aliases semânticos próprios da nova composição.
-
-## Fundação visual
-
-Consulte `design-handoff/devcosmo/` antes de qualquer implementação visual. Os mockups
-finais aprovados têm prioridade, seguidos pelas especificações, assets e manifesto.
-Respeite as substituições finais explícitas documentadas no handoff.
-Os arquivos do handoff foram preservados; mockups não são assets de produção.
-
-O shell em `src/app/[locale]/layout.tsx` mantém Header, um único `main` e Footer.
-Brand, Container e Section são compartilhados. Os controles interativos e o
-bootstrap do tema delimitam os Client Components. O Header inclui navegação por
-âncoras e menu mobile. YouTube e Instagram aparecem no Footer sem ação até que suas
-URLs oficiais sejam documentadas; demais destinos não confirmados são omitidos. A fonte
-Geist foi mantida conforme a homologação anterior.
-
-A Home utiliza as artes Cosmic Observatory aprovadas e CTAs para as âncoras reais
-`#featured-product`, `#solutions` e `#laboratory`. Preço, compra e ação de detalhes foram omitidos
-até a confirmação dos destinos comerciais. A arte do kit é identificada como ilustrativa.
-
-As seções continuam Server Components. `MotionReveal` é um wrapper cliente leve
-para entrada única em viewport com IntersectionObserver/Web Animations, sem biblioteca
-de motion. Conteúdo sem JS permanece visível; movimento reduzido e foco por teclado
-cancelam a revelação. `ThemedArtwork` usa `getImageProps` e CSS
-`image-set` para baixar somente a arte do tema ativo após a seleção da preferência.
-`ThemeBootstrap` usa `next/script` com `beforeInteractive` no documento inicial e
-restaura os atributos do tema antes da pintura nas navegações de idioma. O conteúdo
-é revelado após essa seleção, com fallback dark visível sem JavaScript. Não há
-reinserção manual de script durante a navegação. Os assets públicos permanecem intactos; a otimização é feita
-pelo Next em runtime. Não há backend ou configuração de deploy.
-O histórico Git é novo e independente. O repositório de origem permanece intacto.
+O build de produção é gerado por `npm run build`. Configure as variáveis de ambiente aplicáveis
+também na Vercel e utilize Node.js 24 e npm 11 no ambiente de build. As regras de contribuição,
+aprovação e publicação estão no [AGENTS.md](AGENTS.md).
