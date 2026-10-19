@@ -95,8 +95,6 @@
   },
   "contact": {
     "services": "Conversar sobre un presupuesto",
-    "final": "Conversar sobre un proyecto",
-    "pending": "Contacto no disponible: el número oficial de WhatsApp está pendiente de confirmación.",
-    "message": "¡Hola! Conocí Dev Cosmo Lab a través del sitio y me gustaría conversar sobre un proyecto de desarrollo."
+    "final": "Conversar sobre un proyecto"
   }
 }

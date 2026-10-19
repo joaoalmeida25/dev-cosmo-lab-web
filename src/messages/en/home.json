@@ -95,8 +95,6 @@
   },
   "contact": {
     "services": "Discuss a quote",
-    "final": "Discuss a project",
-    "pending": "Contact unavailable: our official WhatsApp number is awaiting confirmation.",
-    "message": "Hello! I found Dev Cosmo Lab through the website and would like to discuss a development project."
+    "final": "Discuss a project"
   }
 }

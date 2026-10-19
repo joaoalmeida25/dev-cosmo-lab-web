@@ -1,0 +1,122 @@
+{
+  "brand": "DEV COSMO LAB",
+  "launcher": "Request a quote",
+  "title": "Request a quote",
+  "welcome": {
+    "title": "Shall we get started?",
+    "description": "Tell us a little about your project. We’ll organize the essential information to understand your needs and prepare a tailored proposal.",
+    "start": "Start request"
+  },
+  "actions": {
+    "close": "Close",
+    "back": "Back",
+    "review": "Back to review",
+    "next": "Continue",
+    "save": "Save and review",
+    "send": "Send request",
+    "restart": "Restart request"
+  },
+  "progress": "Step {current} of {total}",
+  "progressLabel": "Request progress",
+  "notProvided": "Prefer not to say",
+  "steps": {
+    "service": {
+      "title": "Which service do you need? *",
+      "otherLabel": "Which service are you looking for? *"
+    },
+    "need": {
+      "title": "What are your goals and what do you need to build?",
+      "label": "Describe your needs *",
+      "placeholder": "Describe your project, its context and main requirements…",
+      "counter": "{current} / {max} characters"
+    },
+    "details": {
+      "title": "Timeline and budget",
+      "hint": "These details are optional and help provide context for your request.",
+      "deadline": "Estimated timeline · optional",
+      "budget": "Estimated budget · optional",
+      "budgetHint": "Indicative ranges for context, without any price or timeline commitment."
+    },
+    "contact": {
+      "title": "How can we contact you?",
+      "hint": "Enter your name and email so we can respond to your request.",
+      "name": "Full name *",
+      "email": "Email *"
+    },
+    "review": {
+      "title": "Review your request",
+      "hint": "Check your details. You can edit any step before finishing your review."
+    }
+  },
+  "deadlineOptions": {
+    "flexible": "Flexible timeline",
+    "within-month": "Within 1 month",
+    "one-to-three-months": "1 to 3 months",
+    "over-three-months": "More than 3 months"
+  },
+  "budgetOptions": {
+    "under-5000": "Up to R$5,000",
+    "5000-15000": "R$5,000 to R$15,000",
+    "over-15000": "Over R$15,000",
+    "to-discuss": "To be discussed"
+  },
+  "review": {
+    "service": "Service",
+    "need": "Needs",
+    "details": "Timeline and budget",
+    "contact": "Contact",
+    "name": "Name",
+    "email": "Email",
+    "deadline": "Timeline",
+    "budget": "Budget",
+    "edit": "Edit {section}",
+    "editAction": "Edit"
+  },
+  "errors": {
+    "serviceRequired": "Select a service to continue.",
+    "needShort": "Describe your needs using at least {min} characters.",
+    "needLong": "Use no more than {max} characters.",
+    "nameInvalid": "Enter your full name, with at least two letters.",
+    "nameLong": "Use no more than {nameMax} characters for your name.",
+    "emailInvalid": "Enter a valid email address, such as name@example.com.",
+    "otherServiceShort": "Describe the service using at least {otherMin} characters.",
+    "otherServiceLong": "Use no more than {otherMax} characters for the service."
+  },
+  "discard": {
+    "title": "Discard your answers?",
+    "description": "Your entered details will be deleted. This cannot be undone.",
+    "cancel": "Keep filling in",
+    "close": "Discard and close",
+    "restart": "Discard and restart"
+  },
+  "submission": {
+    "sending": {
+      "title": "Sending request…",
+      "description": "Wait for confirmation that your request was sent.",
+      "action": "Sending…"
+    },
+    "success": {
+      "title": "Request received",
+      "description": "Receipt of your request has been confirmed.",
+      "action": "Close"
+    },
+    "error": {
+      "title": "Could not send request",
+      "description": "Your details have been preserved. Check your connection and try again.",
+      "action": "Try again"
+    },
+    "errors": {
+      "rejected": "The service did not accept your request. Your details have been preserved. Return to the review to check the fields or try again.",
+      "rate-limit": "The service has reached a submission limit. Your details have been preserved. Wait before trying again.",
+      "unconfirmed": "We could not confirm delivery. Your details have been preserved. The request may have been received; check before resending to avoid duplicates.",
+      "spam": "Your request could not be validated. Return to the review and check your details before trying again.",
+      "invalid": "Some fields are invalid. Return to the review and check your details before sending."
+    }
+  },
+  "privacy": {
+    "notice": "We'll use your name, email address and project details to review your request and reply by email."
+  },
+  "services": {
+    "others": "Other"
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "brand": "DEV COSMO LAB",
+  "launcher": "Solicitar orçamento",
+  "title": "Solicitar orçamento",
+  "welcome": {
+    "title": "Vamos começar?",
+    "description": "Conte um pouco sobre seu projeto. Vamos organizar as informações essenciais para entender sua necessidade e preparar uma proposta personalizada.",
+    "start": "Iniciar solicitação"
+  },
+  "actions": {
+    "close": "Fechar",
+    "back": "Voltar",
+    "review": "Voltar à revisão",
+    "next": "Continuar",
+    "save": "Salvar e revisar",
+    "send": "Enviar solicitação",
+    "restart": "Reiniciar solicitação"
+  },
+  "progress": "Etapa {current} de {total}",
+  "progressLabel": "Progresso da solicitação",
+  "notProvided": "Prefiro não informar",
+  "steps": {
+    "service": {
+      "title": "Qual serviço você precisa? *",
+      "otherLabel": "Qual serviço você procura? *"
+    },
+    "need": {
+      "title": "Quais são seus objetivos e o que você precisa desenvolver?",
+      "label": "Descrição da necessidade *",
+      "placeholder": "Descreva seu projeto, o contexto e os principais requisitos…",
+      "counter": "{current} / {max} caracteres"
+    },
+    "details": {
+      "title": "Prazo e orçamento",
+      "hint": "Estas informações são opcionais e ajudam a contextualizar o pedido.",
+      "deadline": "Prazo estimado · opcional",
+      "budget": "Orçamento estimado · opcional",
+      "budgetHint": "Faixas indicativas para contextualização, sem compromisso de preço ou prazo."
+    },
+    "contact": {
+      "title": "Como podemos entrar em contato?",
+      "hint": "Informe seu nome e e-mail para podermos responder à solicitação.",
+      "name": "Nome completo *",
+      "email": "E-mail *"
+    },
+    "review": {
+      "title": "Revise sua solicitação",
+      "hint": "Confira os dados. Você pode editar qualquer etapa antes de concluir a revisão."
+    }
+  },
+  "deadlineOptions": {
+    "flexible": "Prazo flexível",
+    "within-month": "Até 1 mês",
+    "one-to-three-months": "De 1 a 3 meses",
+    "over-three-months": "Mais de 3 meses"
+  },
+  "budgetOptions": {
+    "under-5000": "Até R$ 5.000",
+    "5000-15000": "De R$ 5.000 a R$ 15.000",
+    "over-15000": "Acima de R$ 15.000",
+    "to-discuss": "A definir em conjunto"
+  },
+  "review": {
+    "service": "Serviço",
+    "need": "Necessidade",
+    "details": "Prazo e orçamento",
+    "contact": "Contato",
+    "name": "Nome",
+    "email": "E-mail",
+    "deadline": "Prazo",
+    "budget": "Orçamento",
+    "edit": "Editar {section}",
+    "editAction": "Editar"
+  },
+  "errors": {
+    "serviceRequired": "Selecione um serviço para continuar.",
+    "needShort": "Descreva sua necessidade com pelo menos {min} caracteres.",
+    "needLong": "Use no máximo {max} caracteres.",
+    "nameInvalid": "Informe seu nome completo, com pelo menos duas letras.",
+    "nameLong": "Use no máximo {nameMax} caracteres no nome.",
+    "emailInvalid": "Informe um e-mail válido, como nome@exemplo.com.",
+    "otherServiceShort": "Informe o serviço com pelo menos {otherMin} caracteres.",
+    "otherServiceLong": "Use no máximo {otherMax} caracteres para o serviço."
+  },
+  "discard": {
+    "title": "Descartar suas respostas?",
+    "description": "As informações preenchidas serão apagadas. Esta ação não pode ser desfeita.",
+    "cancel": "Continuar preenchendo",
+    "close": "Descartar e fechar",
+    "restart": "Descartar e reiniciar"
+  },
+  "submission": {
+    "sending": {
+      "title": "Enviando solicitação…",
+      "description": "Aguarde a confirmação do envio.",
+      "action": "Enviando…"
+    },
+    "success": {
+      "title": "Solicitação recebida",
+      "description": "O recebimento da solicitação foi confirmado.",
+      "action": "Fechar"
+    },
+    "error": {
+      "title": "Não foi possível enviar",
+      "description": "Seus dados foram preservados. Verifique a conexão e tente novamente.",
+      "action": "Tentar novamente"
+    },
+    "errors": {
+      "rejected": "O serviço não aceitou a solicitação. Seus dados foram preservados. Volte à revisão para conferir os campos ou tente novamente.",
+      "rate-limit": "O serviço atingiu um limite de envios. Seus dados foram preservados. Aguarde antes de tentar novamente.",
+      "unconfirmed": "Não foi possível confirmar o envio. Seus dados foram preservados. A solicitação pode ter sido recebida; confirme antes de reenviar para evitar duplicidade.",
+      "spam": "Não foi possível validar a solicitação. Volte à revisão e confira os dados antes de tentar novamente.",
+      "invalid": "Há campos inválidos. Volte à revisão e confira os dados antes de enviar."
+    }
+  },
+  "privacy": {
+    "notice": "Usaremos seu nome, e-mail e as informações do projeto para analisar sua solicitação e responder por e-mail."
+  },
+  "services": {
+    "others": "Outros"
+  }
+}

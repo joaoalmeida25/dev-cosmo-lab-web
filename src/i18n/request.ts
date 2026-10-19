@@ -9,12 +9,13 @@ export default getRequestConfig(async () => {
 
   if (!hasLocale(routing.locales, locale)) notFound();
 
-  const [common, home, metadata, catalog, productDetails] = await Promise.all([
+  const [common, home, metadata, catalog, productDetails, commercialChat] = await Promise.all([
     import(`../messages/${locale}/common.json`),
     import(`../messages/${locale}/home.json`),
     import(`../messages/${locale}/metadata.json`),
     import(`../messages/${locale}/catalog.json`),
     import(`../messages/${locale}/product-details.json`),
+    import(`../messages/${locale}/commercial-chat.json`),
   ]);
 
   return {
@@ -25,6 +26,7 @@ export default getRequestConfig(async () => {
       metadata: metadata.default,
       catalog: catalog.default,
       productDetails: productDetails.default,
+      commercialChat: commercialChat.default,
     },
   };
 });

@@ -46,7 +46,7 @@ ou planejamento aparecem no catálogo, sem oferta pública de acesso ou aquisiç
 - Temas dark/light e layout responsivo.
 - Design System com componentes reutilizáveis e tokens semânticos.
 - SEO localizado, URLs canônicas, hreflang e Open Graph.
-- Contato comercial por WhatsApp quando há um número válido configurado.
+- Solicitação comercial por formulário guiado, com três idiomas e envio via Formspree quando configurado.
 - Link para o [Instagram da Dev Cosmo Lab](https://www.instagram.com/devcosmolab/).
 
 ## Stack tecnológica
@@ -163,13 +163,14 @@ de desenvolvimento fica disponível em [http://localhost:3000](http://localhost:
 
 ### Contato comercial
 
-A variável opcional `DEVCOSMO_WHATSAPP_NUMBER` recebe um número internacional com código do país,
-composto apenas por dígitos, sem `+`, espaços ou pontuação. A validação aceita de 8 a 15 dígitos,
-com o primeiro diferente de zero.
+Os CTAs comerciais abrem a mesma instância do Chat Comercial Premium. O fluxo pode ser
+validado localmente sem enviar dados. A submissão requer um endpoint Formspree válido
+em `DEVCOSMO_FORMSPREE_ENDPOINT`. Configure apenas o endpoint público confirmado em
+`.env.local`, sem versionar o arquivo. Sem endpoint válido, o envio fica desabilitado.
+A revisão informa a finalidade do uso dos dados e o processamento pelo Formspree.
 
-Configure-a em um arquivo `.env.local` na raiz para habilitar os links de contato comercial. A
-aplicação monta o endereço do WhatsApp com a mensagem localizada. Sem um número válido, o contato
-correspondente fica indisponível. Não versione o arquivo nem seus valores.
+A ativação operacional também exige validação do formulário e teste real autorizado,
+com confirmação de recebimento. A integração local não equivale à publicação.
 
 Variáveis utilizadas no build devem ser configuradas separadamente no provedor de hospedagem;
 o `.env.local` não configura o ambiente publicado. A geração de fontes por `next/font/google`

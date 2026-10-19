@@ -1,0 +1,122 @@
+{
+  "brand": "DEV COSMO LAB",
+  "launcher": "Solicitar presupuesto",
+  "title": "Solicitar presupuesto",
+  "welcome": {
+    "title": "¿Empezamos?",
+    "description": "Cuéntanos un poco sobre tu proyecto. Organizaremos la información esencial para entender tu necesidad y preparar una propuesta personalizada.",
+    "start": "Iniciar solicitud"
+  },
+  "actions": {
+    "close": "Cerrar",
+    "back": "Volver",
+    "review": "Volver a la revisión",
+    "next": "Continuar",
+    "save": "Guardar y revisar",
+    "send": "Enviar solicitud",
+    "restart": "Reiniciar solicitud"
+  },
+  "progress": "Paso {current} de {total}",
+  "progressLabel": "Progreso de la solicitud",
+  "notProvided": "Prefiero no informar",
+  "steps": {
+    "service": {
+      "title": "¿Qué servicio necesitas? *",
+      "otherLabel": "¿Qué servicio buscas? *"
+    },
+    "need": {
+      "title": "¿Cuáles son tus objetivos y qué necesitas desarrollar?",
+      "label": "Descripción de la necesidad *",
+      "placeholder": "Describe tu proyecto, su contexto y los requisitos principales…",
+      "counter": "{current} / {max} caracteres"
+    },
+    "details": {
+      "title": "Plazo y presupuesto",
+      "hint": "Estos datos son opcionales y ayudan a contextualizar la solicitud.",
+      "deadline": "Plazo estimado · opcional",
+      "budget": "Presupuesto estimado · opcional",
+      "budgetHint": "Rangos orientativos para contextualizar, sin compromiso de precio o plazo."
+    },
+    "contact": {
+      "title": "¿Cómo podemos contactarte?",
+      "hint": "Introduce tu nombre y correo para que podamos responder a la solicitud.",
+      "name": "Nombre completo *",
+      "email": "Correo electrónico *"
+    },
+    "review": {
+      "title": "Revisa tu solicitud",
+      "hint": "Comprueba los datos. Puedes editar cualquier paso antes de terminar la revisión."
+    }
+  },
+  "deadlineOptions": {
+    "flexible": "Plazo flexible",
+    "within-month": "Hasta 1 mes",
+    "one-to-three-months": "De 1 a 3 meses",
+    "over-three-months": "Más de 3 meses"
+  },
+  "budgetOptions": {
+    "under-5000": "Hasta R$5.000",
+    "5000-15000": "De R$5.000 a R$15.000",
+    "over-15000": "Más de R$15.000",
+    "to-discuss": "A definir en conjunto"
+  },
+  "review": {
+    "service": "Servicio",
+    "need": "Necesidad",
+    "details": "Plazo y presupuesto",
+    "contact": "Contacto",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "deadline": "Plazo",
+    "budget": "Presupuesto",
+    "edit": "Editar {section}",
+    "editAction": "Editar"
+  },
+  "errors": {
+    "serviceRequired": "Selecciona un servicio para continuar.",
+    "needShort": "Describe tu necesidad con al menos {min} caracteres.",
+    "needLong": "Usa como máximo {max} caracteres.",
+    "nameInvalid": "Introduce tu nombre completo, con al menos dos letras.",
+    "nameLong": "Usa como máximo {nameMax} caracteres en el nombre.",
+    "emailInvalid": "Introduce un correo válido, como nombre@ejemplo.com.",
+    "otherServiceShort": "Describe el servicio con al menos {otherMin} caracteres.",
+    "otherServiceLong": "Usa como máximo {otherMax} caracteres para el servicio."
+  },
+  "discard": {
+    "title": "¿Descartar tus respuestas?",
+    "description": "Se borrarán los datos introducidos. Esta acción no se puede deshacer.",
+    "cancel": "Seguir completando",
+    "close": "Descartar y cerrar",
+    "restart": "Descartar y reiniciar"
+  },
+  "submission": {
+    "sending": {
+      "title": "Enviando solicitud…",
+      "description": "Espera la confirmación del envío.",
+      "action": "Enviando…"
+    },
+    "success": {
+      "title": "Solicitud recibida",
+      "description": "Se ha confirmado la recepción de tu solicitud.",
+      "action": "Cerrar"
+    },
+    "error": {
+      "title": "No se pudo enviar",
+      "description": "Tus datos se han conservado. Comprueba la conexión e inténtalo de nuevo.",
+      "action": "Intentar de nuevo"
+    },
+    "errors": {
+      "rejected": "El servicio no aceptó la solicitud. Tus datos se han conservado. Vuelve a la revisión para comprobar los campos o inténtalo de nuevo.",
+      "rate-limit": "El servicio ha alcanzado un límite de envíos. Tus datos se han conservado. Espera antes de volver a intentarlo.",
+      "unconfirmed": "No se pudo confirmar el envío. Tus datos se han conservado. La solicitud puede haberse recibido; compruébalo antes de reenviarla para evitar duplicados.",
+      "spam": "No se pudo validar la solicitud. Vuelve a la revisión y comprueba los datos antes de intentarlo de nuevo.",
+      "invalid": "Hay campos no válidos. Vuelve a la revisión y comprueba los datos antes de enviar."
+    }
+  },
+  "privacy": {
+    "notice": "Usaremos tu nombre, correo electrónico y los datos del proyecto para analizar tu solicitud y responder por correo electrónico."
+  },
+  "services": {
+    "others": "Otros"
+  }
+}
