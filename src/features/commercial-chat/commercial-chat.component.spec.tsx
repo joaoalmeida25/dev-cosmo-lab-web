@@ -146,13 +146,33 @@ test('invalid fields render red labels and borders and show feedback before thei
         title={messages.steps.service.title}
         options={[{ value: 'sites', label: 'Sites' }]}
         value=""
-        error={messages.errors.serviceRequired}
         otherService={null}
         onChange={() => undefined}
       />,
     );
-    assert.match(service, /id="chat-service-error"/);
-    assert.match(service, /border-rose-500/);
+    assert.ok(!service.includes('chat-service-error'));
+    assert.ok(!service.includes('border-rose-500'));
+    assert.ok(!service.includes('data-chat-invalid'));
+
+    const otherService = renderToStaticMarkup(
+      <ServiceStep
+        title={messages.steps.service.title}
+        options={[{ value: 'others', label: messages.services.others }]}
+        value="others"
+        otherService={{
+          label: messages.steps.service.otherLabel,
+          value: '',
+          maxLength: 120,
+          error: messages.errors.otherServiceShort.replace('{otherMin}', '2'),
+          onChange: () => undefined,
+        }}
+        onChange={() => undefined}
+      />,
+    );
+    assert.match(otherService, /id="chat-other-service-error"/);
+    assert.match(otherService, /id="chat-other-service"[^>]*aria-invalid="true"/);
+    assert.match(otherService, /border-rose-500/);
+    assert.ok(!otherService.includes('chat-service-error'));
   }
 });
 

@@ -273,7 +273,6 @@ export const CommercialChat = ({
           }
           options={services}
           value={answers.service}
-          error={errorLabel(errors.service)}
           onChange={(value) => dispatch({ type: 'service', value })}
         />
       );
@@ -408,7 +407,10 @@ export const CommercialChat = ({
       content={content}
       submissionStatus={state.submission.status}
       canSubmit={Boolean(submissionConfig)}
-      disableContinue={state.validatedStep === screen && Object.keys(errors).length > 0}
+      disableContinue={
+        (screen === 'service' && !answers.service) ||
+        (state.validatedStep === screen && Object.keys(errors).length > 0)
+      }
       onHoneypotChange={(value) => {
         honeypotRef.current = value;
       }}
