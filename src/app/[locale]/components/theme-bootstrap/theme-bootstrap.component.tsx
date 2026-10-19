@@ -13,7 +13,9 @@ export const ThemeBootstrap = ({ script, locale }: IThemeBootstrapProps) => {
   const { theme, isHydrated } = useTheme();
 
   useLayoutEffect(() => {
-    if (!isHydrated) return;
+    if (!isHydrated) {
+      return;
+    }
 
     document.documentElement.dataset.theme = theme;
     document.documentElement.style.colorScheme = theme;

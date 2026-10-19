@@ -36,6 +36,7 @@ export const ProductGalleryView = ({
         <Image
           src={current.src}
           alt={current.alt}
+          loading="eager"
           fill
           unoptimized
           sizes="(min-width: 1440px) 720px, (min-width: 1024px) 55vw, 100vw"

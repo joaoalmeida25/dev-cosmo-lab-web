@@ -87,7 +87,8 @@ src/
 │   └── ui/                # Primitivos Button e Select
 ├── constants/             # Configuração de tema
 ├── features/
-│   ├── home/              # Seções da Home e contato comercial
+│   ├── home/              # Seções da Home e CTAs comerciais
+│   ├── commercial-chat/   # Fluxo comercial guiado e integração Formspree
 │   ├── catalog/           # Busca, filtros, ordenação e estados do catálogo
 │   ├── products/          # Contratos, JSONs, mapper, repositório e componentes de produto
 │   └── product-details/   # Composição da página e resumo do produto
@@ -140,7 +141,7 @@ Open Graph para Home, catálogo e detalhes de produtos disponíveis. Os detalhes
 localizado dos dados do produto, com fallback para nome e descrição curta.
 
 O domínio configurado para metadata é **https://devcosmolab.com**. As URLs canônicas e alternativas
-são geradas pelo helper de [src/i18n/metadata.ts](src/i18n/metadata.ts), respeitando o roteamento do
+são geradas pelo helper de [src/i18n/metadata/metadata.util.ts](src/i18n/metadata/metadata.util.ts), respeitando o roteamento do
 `next-intl`.
 
 A imagem de compartilhamento utilizada é
@@ -178,19 +179,49 @@ também pode exigir acesso à rede durante o build.
 
 ## Scripts e qualidade
 
-| Comando                | Responsabilidade                                         |
-| ---------------------- | -------------------------------------------------------- |
-| `npm run dev`          | Iniciar o servidor de desenvolvimento                    |
-| `npm run build`        | Gerar o build de produção e verificar tipos pelo Next.js |
-| `npm run start`        | Servir um build de produção previamente gerado           |
-| `npm run lint`         | Executar a análise estática com ESLint                   |
-| `npm run typecheck`    | Gerar tipos de rotas e executar `tsc --noEmit`           |
-| `npm run format`       | Formatar os arquivos com Prettier                        |
-| `npm run format:check` | Verificar a formatação sem modificar arquivos            |
+| Comando                   | Responsabilidade                                         |
+| ------------------------- | -------------------------------------------------------- |
+| `npm run dev`             | Iniciar o servidor de desenvolvimento                    |
+| `npm run build`           | Gerar o build de produção e verificar tipos pelo Next.js |
+| `npm run start`           | Servir um build de produção previamente gerado           |
+| `npm run lint`            | Executar a análise estática com ESLint                   |
+| `npm run typecheck`       | Gerar tipos de rotas e executar `tsc --noEmit`           |
+| `npm run format`          | Formatar os arquivos com Prettier                        |
+| `npm run format:check`    | Verificar a formatação sem modificar arquivos            |
+| `npm run test:unit`       | Executar Vitest em modo não interativo                   |
+| `npm run test:unit:watch` | Executar Vitest durante o desenvolvimento                |
+| `npm run test:coverage`   | Gerar V8 e exigir 100% por arquivo nos módulos de lógica |
+| `npm run prepare`         | Instalar os hooks locais do Husky                        |
 
-Para alterações na aplicação, execute `format:check`, `lint`, `typecheck` e `build`, além dos checks
-de diff e testes relevantes previstos no [AGENTS.md](AGENTS.md). Há testes co-localizados para regras
-do catálogo, validação dos produtos, contato e resumo do produto; não existe um script npm `test`.
+Para alterações na aplicação, execute `typecheck`, `lint`, `format:check`, `test:unit`,
+`test:coverage` e `build`, além dos checks de diff previstos no [AGENTS.md](AGENTS.md).
+O padrão oficial é **Vitest + React Testing Library**: cada unidade mantém seu spec ao lado da
+implementação; casos utilizam `Should` e comentários Given/When/Then. Utilitários, mappers,
+services e repositórios executam em Node; componentes e hooks usam jsdom.
+
+A cobertura V8 inclui também arquivos não executados. Os módulos de lógica (`*.hook.ts`,
+`*.service.ts`, `*.mapper.ts`, `*.util.ts`, `*.repository.ts`) exigem 100% de statements, branches,
+functions e lines por arquivo. O percentual global continua mostrando componentes de servidor,
+fronteiras Next.js e apresentação; não equivale à cobertura da lógica nem à homologação visual.
+Veja a [matriz de cobertura](docs/qa/code-quality-2026-10-19/coverage-matrix.md) e o
+[relatório da refatoração](docs/qa/code-quality-2026-10-19/report.md).
+
+O `npm ci` executa `prepare` e instala o pre-commit somente neste repositório. O hook executa
+`typecheck` → `lint` → `format:check` → `test:unit`, interrompendo no primeiro erro, sem alterar
+ou adicionar arquivos. Para verificar a ordem e a interrupção sem criar commit:
+
+```bash
+node scripts/verify-pre-commit.mjs
+git hook run pre-commit
+```
+
+Vitest é o único runner de testes. Não mantenha infraestrutura de automação de navegador.
+Cada componente independente deve ter um spec próprio; o Controller é testado através de sua View.
+Given/When/Then devem descrever o cenário e separar preparação, ação e assertions.
+O setup rejeita `fetch` inesperado e os testes de entrega usam somente respostas simuladas.
+O relatório local V8 fica em `coverage/` (ignorado pelo Git). A matriz distingue teste direto,
+contrato via Controller e execução indireta. Aparência, modal nativo e celular exigem revisão manual.
+Após atualizar testes, regenere a matriz com `node scripts/update-coverage-matrix.mjs`.
 
 ## Deploy
 

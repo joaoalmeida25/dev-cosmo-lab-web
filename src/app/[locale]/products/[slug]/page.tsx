@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { ProductDetails } from '@/features/product-details/product-details.component';
-import { productsRepository } from '@/features/products/repositories/products.repository';
-import { getLocalizedAlternates, OPEN_GRAPH_IMAGE } from '@/i18n/metadata';
+import { productsRepository } from '@/features/products/repositories/products/products.repository';
+import { getLocalizedAlternates, OPEN_GRAPH_IMAGE } from '@/i18n/metadata/metadata.util';
 import { routing } from '@/i18n/routing';
 
 export const generateMetadata = async ({
@@ -11,11 +11,15 @@ export const generateMetadata = async ({
 }: PageProps<'/[locale]/products/[slug]'>): Promise<Metadata> => {
   const { locale, slug } = await params;
 
-  if (!hasLocale(routing.locales, locale)) notFound();
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
 
   const product = await productsRepository.getProductBySlug(slug);
 
-  if (!product || product.status !== 'available') notFound();
+  if (!product || product.status !== 'available') {
+    notFound();
+  }
 
   const content = product.content[locale];
   const title = content.details?.seo?.title ?? product.name;

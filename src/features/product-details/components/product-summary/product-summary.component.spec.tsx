@@ -1,6 +1,5 @@
-import assert from 'node:assert/strict';
-import { test } from 'node:test';
-import { renderToStaticMarkup } from 'react-dom/server';
+import { render, screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
 import en from '@/messages/en/product-details.json';
 import es from '@/messages/es/product-details.json';
 import pt from '@/messages/pt-BR/product-details.json';
@@ -29,54 +28,97 @@ const summary: IProductSummaryProps = {
   specifications: [{ label: pt.specifications.format, value: pt.values['digital-files'] }],
 };
 
-test('demonstration uses the product URL, a localized accessible name and a safe new tab', () => {
-  for (const messages of [pt, en, es]) {
-    const accessibleLabel = messages.demonstrationLabel.replace('{name}', proposals.name);
-    const html = renderToStaticMarkup(
-      <ProductSummary
-        {...summary}
-        demonstration={{
-          href: proposals.details.demonstrationUrl,
-          label: messages.demonstration,
-          accessibleLabel,
-        }}
-      />,
+describe('ProductSummary - Unit Test', () => {
+  it.each([pt, en, es])(
+    'Should preserve localized demonstration names, action order and safe new tabs for locale %#',
+    (messages) => {
+      // Given: approved kit content, confirmed checkout and the localized demonstration action.
+      const accessibleLabel = messages.demonstrationLabel.replace('{name}', proposals.name);
+      const demonstration = {
+        href: proposals.details.demonstrationUrl,
+        label: messages.demonstration,
+        accessibleLabel,
+      };
+
+      // When: rendering the real product summary with both commercial actions.
+      const { container } = render(<ProductSummary {...summary} demonstration={demonstration} />);
+      const buy = screen.getByRole('link', { name: summary.action?.accessibleLabel });
+      const demo = screen.getByRole('link', { name: accessibleLabel });
+      const specifications = container.querySelector('dl');
+
+      // Then: purchase precedes demonstration, both have icons and the demonstration precedes specifications.
+      expect(screen.getAllByRole('link')).toEqual([buy, demo]);
+      expect(buy).toHaveAttribute('href', proposals.commercial.checkoutUrl);
+      expect(demo).toHaveAttribute('href', proposals.details.demonstrationUrl);
+      expect(demo).toHaveAttribute('target', '_blank');
+      expect(demo).toHaveAttribute('rel', 'noopener noreferrer');
+      expect(demo).toHaveTextContent(messages.demonstration);
+      expect(buy.querySelector('svg')).toHaveAttribute('aria-hidden', 'true');
+      expect(demo.querySelector('svg')).toHaveAttribute('aria-hidden', 'true');
+      expect(
+        specifications &&
+          demo.compareDocumentPosition(specifications) & Node.DOCUMENT_POSITION_FOLLOWING,
+      ).toBeTruthy();
+      expect(screen.getByText('R$ 29,90')).toBeInTheDocument();
+    },
+  );
+
+  it('Should retain purchase, price and specifications when demonstration is absent', () => {
+    // Given: the approved kit summary without a demonstration destination.
+    const props = { ...summary, demonstration: null };
+
+    // When: rendering this optional-action state.
+    render(<ProductSummary {...props} />);
+
+    // Then: only the confirmed purchase remains, alongside the price and file format.
+    expect(screen.getAllByRole('link')).toHaveLength(1);
+    expect(screen.getByRole('link', { name: summary.action?.accessibleLabel })).toHaveAttribute(
+      'href',
+      proposals.commercial.checkoutUrl,
     );
-    const links = Array.from(html.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/g), (match) => match[0]);
+    expect(
+      screen.queryByRole('link', { name: summary.demonstration?.accessibleLabel }),
+    ).not.toBeInTheDocument();
+    expect(screen.getByText('R$ 29,90')).toBeInTheDocument();
+    expect(screen.getByText(pt.values['digital-files'])).toBeInTheDocument();
+  });
 
-    assert.equal(links.length, 2);
-    assert.match(links[0] ?? '', /lucide-shopping-bag/);
-    assert.match(links[1] ?? '', /lucide-circle-play/);
-    assert.ok((links[0] ?? '').indexOf('<svg') < (links[0] ?? '').lastIndexOf(pt.buy));
-    assert.ok(
-      (links[1] ?? '').indexOf('<svg') < (links[1] ?? '').lastIndexOf(messages.demonstration),
-    );
-    assert.ok(links[0]?.includes(`href="${proposals.commercial.checkoutUrl}"`));
-    assert.ok(links[1]?.includes(`href="${proposals.details.demonstrationUrl}"`));
-    assert.ok(links[1]?.includes(`aria-label="${accessibleLabel}"`));
-    assert.ok(links[1]?.includes(messages.demonstration));
-    assert.match(links[1] ?? '', /target="_blank"/);
-    assert.match(links[1] ?? '', /rel="noopener noreferrer"/);
-    assert.ok(html.indexOf(proposals.details.demonstrationUrl) < html.indexOf('<dl'));
-    assert.ok(html.includes(summary.price ?? ''));
-  }
-});
+  it('Should preserve demonstration without inventing an unavailable purchase action', () => {
+    // Given: a summary with a confirmed demonstration but no commercial destination.
+    const props = { ...summary, action: null };
 
-test('without a demonstration the commercial CTA, price and specifications remain available', () => {
-  const html = renderToStaticMarkup(<ProductSummary {...summary} demonstration={null} />);
+    // When: rendering the demonstration-only state.
+    render(<ProductSummary {...props} />);
 
-  assert.equal(Array.from(html.matchAll(/<a\b/g)).length, 1);
-  assert.ok(html.includes(`href="${proposals.commercial.checkoutUrl}"`));
-  assert.ok(html.includes(pt.buy));
-  assert.ok(html.includes(summary.price ?? ''));
-  assert.ok(html.includes(pt.values['digital-files']));
-  assert.ok(!html.includes(proposals.details.demonstrationUrl));
-});
+    // Then: no buy link appears and the single destination remains the approved demonstration.
+    expect(screen.getAllByRole('link')).toHaveLength(1);
+    expect(
+      screen.getByRole('link', { name: summary.demonstration?.accessibleLabel }),
+    ).toHaveAttribute('href', proposals.details.demonstrationUrl);
+    expect(
+      screen.queryByRole('link', { name: summary.action?.accessibleLabel }),
+    ).not.toBeInTheDocument();
+  });
 
-test('a demonstration does not invent a commercial action', () => {
-  const html = renderToStaticMarkup(<ProductSummary {...summary} action={null} />);
+  it('Should show supplied stage guidance without price, specifications or fictional actions', () => {
+    // Given: an unavailable product presentation with all optional commercial fields absent.
+    const props = {
+      ...summary,
+      price: null,
+      action: null,
+      demonstration: null,
+      specifications: [],
+      stageNote: 'Scope and availability are still being defined.',
+    };
 
-  assert.equal(Array.from(html.matchAll(/<a\b/g)).length, 1);
-  assert.ok(html.includes(`href="${proposals.details.demonstrationUrl}"`));
-  assert.ok(!html.includes(proposals.commercial.checkoutUrl));
+    // When: rendering this explicitly noncommercial state.
+    const { container } = render(<ProductSummary {...props} />);
+
+    // Then: guidance remains visible and no empty specification list or commercial link is created.
+    expect(screen.getByText(props.stageNote)).toBeInTheDocument();
+    expect(screen.queryByRole('link')).not.toBeInTheDocument();
+    expect(screen.queryByText('R$ 29,90')).not.toBeInTheDocument();
+    expect(container.querySelector('dl')).not.toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: props.name })).toHaveProperty('tagName', 'H2');
+  });
 });

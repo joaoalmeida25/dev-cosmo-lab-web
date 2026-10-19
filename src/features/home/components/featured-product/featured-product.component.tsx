@@ -15,6 +15,7 @@ export const FeaturedProduct = async ({ product }: IFeaturedProductProps) => {
   const locale = hasLocale(routing.locales, requestedLocale)
     ? requestedLocale
     : routing.defaultLocale;
+
   const t = await getTranslations('home.featured');
   const benefits = [
     {

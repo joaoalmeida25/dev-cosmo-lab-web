@@ -99,12 +99,7 @@ export const CommercialChatView = ({
         </header>
         {discard ? (
           <div className={`${styles.body} flex flex-col [justify-content:safe_center]`}>
-            <h2
-              id="chat-title"
-              data-chat-heading
-              tabIndex={-1}
-              className="text-2xl leading-tight font-semibold text-text-primary"
-            >
+            <h2 id="chat-title" className="text-2xl leading-tight font-semibold text-text-primary">
               {discard.title}
             </h2>
             <p id="chat-description" className="mt-4 text-sm leading-relaxed text-text-secondary">
@@ -145,12 +140,7 @@ export const CommercialChatView = ({
               loading="eager"
               className="mx-auto mb-7 size-22 shrink-0 object-contain"
             />
-            <h2
-              id="chat-title"
-              data-chat-heading
-              tabIndex={-1}
-              className="text-2xl leading-tight font-semibold text-text-primary"
-            >
+            <h2 id="chat-title" className="text-2xl leading-tight font-semibold text-text-primary">
               {labels.welcomeTitle}
             </h2>
             <p id="chat-description" className="mt-4 text-base leading-relaxed text-text-secondary">
@@ -160,6 +150,7 @@ export const CommercialChatView = ({
               variant="primary"
               size="lg"
               onClick={onStart}
+              data-chat-initial-action
               rightIcon={<ArrowRight aria-hidden="true" />}
               className="mt-7 w-full rounded-xl"
             >

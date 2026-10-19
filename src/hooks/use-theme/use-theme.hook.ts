@@ -14,6 +14,7 @@ export const useTheme = () => {
     DEFAULT_THEME,
     resolveTheme,
   );
+
   const theme = value;
   const setTheme = useCallback((nextTheme: Theme) => setValue(nextTheme), [setValue]);
 
@@ -22,7 +23,9 @@ export const useTheme = () => {
   }, [setValue]);
 
   useEffect(() => {
-    if (!isHydrated) return;
+    if (!isHydrated) {
+      return;
+    }
 
     document.documentElement.dataset.theme = theme;
     document.documentElement.style.colorScheme = theme;

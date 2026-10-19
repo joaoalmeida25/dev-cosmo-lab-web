@@ -8,26 +8,26 @@ import {
   PRODUCT_STATUSES,
   PRODUCT_TYPES,
 } from '../products/products.constants';
-import type { IProductCardPresentation } from '../products/components/product-card/product-card.types';
 import {
   CATALOG_SORTS,
   DEFAULT_CATALOG_FILTERS,
   PRICE_RANGES,
   parseCatalogQuery,
   serializeCatalogQuery,
-} from './utils/catalog-query.util';
+} from './utils/catalog-query/catalog-query.util';
 import {
   countCatalogFacet,
   filterCatalogProducts,
   sortCatalogProducts,
-} from './utils/catalog-engine.util';
+} from './utils/catalog-engine/catalog-engine.util';
 import type {
   CatalogFilterKey,
   ICatalogBrowserProps,
   ICatalogFilters,
   IFilterGroup,
 } from './catalog.types';
-import { useCatalogFeedback } from './hooks/use-catalog-feedback.hook';
+import { useCatalogFeedback } from './hooks/use-catalog-feedback/use-catalog-feedback.hook';
+import { mapCatalogCard } from './mappers/catalog-card/catalog-card.mapper';
 import { CatalogView } from './catalog-view.component';
 
 export const CatalogBrowser = ({ products, locale, filters: parsed }: ICatalogBrowserProps) => {
@@ -39,6 +39,7 @@ export const CatalogBrowser = ({ products, locale, filters: parsed }: ICatalogBr
     !hasPrices && parsed.sort.startsWith('price-')
       ? { ...parsed, sort: DEFAULT_CATALOG_FILTERS.sort }
       : parsed;
+
   const [optimistic, setOptimistic] = useOptimistic(filters);
   const [pending, startTransition] = useTransition();
   const { updating, startFeedback } = useCatalogFeedback(pending);
@@ -49,12 +50,16 @@ export const CatalogBrowser = ({ products, locale, filters: parsed }: ICatalogBr
   const navigationHashRef = useRef<string | null>(null);
 
   useEffect(() => {
-    if (pending || navigationHashRef.current === null) return;
+    if (pending || navigationHashRef.current === null) {
+      return;
+    }
 
     const hash = navigationHashRef.current;
     navigationHashRef.current = null;
 
-    if (window.location.hash === hash) return;
+    if (window.location.hash === hash) {
+      return;
+    }
 
     const url = new URL(window.location.href);
     url.hash = hash;
@@ -64,6 +69,7 @@ export const CatalogBrowser = ({ products, locale, filters: parsed }: ICatalogBr
   const categories = Object.fromEntries(
     PRODUCT_CATEGORIES.map((id) => [id, t(`categories.${id}`)]),
   );
+
   const types = Object.fromEntries(PRODUCT_TYPES.map((id) => [id, t(`productTypes.${id}`)]));
   const taxonomy = { categories, types };
   const visible = sortCatalogProducts(
@@ -71,6 +77,7 @@ export const CatalogBrowser = ({ products, locale, filters: parsed }: ICatalogBr
     optimistic,
     locale,
   );
+
   const groups: ReadonlyArray<IFilterGroup> = [
     {
       key: 'category',
@@ -148,42 +155,8 @@ export const CatalogBrowser = ({ products, locale, filters: parsed }: ICatalogBr
   };
 
   const clearAll = () => navigate({ ...DEFAULT_CATALOG_FILTERS });
-  const cards: ReadonlyArray<IProductCardPresentation> = visible.map((product) => ({
-    id: product.id,
-    detailHref: product.status === 'available' ? `/products/${product.slug}` : null,
-    name: product.name,
-    subtitle: product.content.subtitle,
-    description: product.content.shortDescription,
-    highlights: product.content.highlights,
-    highlightsLabel: t(
-      product.status === 'available'
-        ? 'card.highlights'
-        : product.status === 'planned'
-          ? 'card.plannedHighlights'
-          : 'card.developmentHighlights',
-    ),
-    category: categories[product.category],
-    type: types[product.type],
-    status: t(`statuses.${product.status}`),
-    stageNote:
-      product.type === 'development-library'
-        ? t('card.libraryNote')
-        : product.status === 'planned'
-          ? t('card.plannedNote')
-          : product.status === 'in-development'
-            ? t('card.developmentNote')
-            : null,
-    cover: product.cover,
-    imageAlt: product.content.imageAlt,
-    priceLabel:
-      product.priceCents === null
-        ? null
-        : product.priceCents === 0
-          ? t('card.free')
-          : new Intl.NumberFormat(locale, { style: 'currency', currency: product.currency }).format(
-              product.priceCents / 100,
-            ),
-  }));
+  const cards = visible.map((product) => mapCatalogCard(product, locale, t, categories, types));
+
   const activeFilters = groups
     .filter((group) => group.selected !== 'all')
     .map((group) => {

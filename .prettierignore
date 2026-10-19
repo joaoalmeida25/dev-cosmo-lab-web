@@ -8,3 +8,6 @@ package-lock.json
 # Preserve the original design handoff documentation and references byte for byte.
 docs/design/
 design-handoff/
+
+# Generated test tooling artifacts
+.husky/_/

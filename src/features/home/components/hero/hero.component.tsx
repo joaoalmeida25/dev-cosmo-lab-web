@@ -9,6 +9,7 @@ export const Hero = async () => {
   const locale = hasLocale(routing.locales, requestedLocale)
     ? requestedLocale
     : routing.defaultLocale;
+
   const t = await getTranslations('home.hero');
   const benefits = [
     { id: 'solutions', label: t('benefits.solutions') },

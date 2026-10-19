@@ -10,6 +10,7 @@ interface IProductCardProps {
 export const ProductCard = ({ product }: IProductCardProps) => {
   const classes =
     'flex h-full min-w-0 flex-col rounded-card border border-border bg-surface/40 p-2 shadow-card';
+
   const content = (
     <>
       <div className="relative aspect-4/3 overflow-hidden rounded-xl border border-border/65 bg-primary-soft">

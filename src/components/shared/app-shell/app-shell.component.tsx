@@ -5,7 +5,7 @@ import type { SupportedLocale } from '@/i18n/locale.types';
 import { AppShellView } from './app-shell-view.component';
 import { CommercialChat } from '@/features/commercial-chat/commercial-chat.component';
 import { CHAT_SERVICE_IDS } from '@/features/commercial-chat/commercial-chat.constants';
-import { getChatSubmissionConfig } from '@/features/commercial-chat/utils/commercial-chat-config.util';
+import { getChatSubmissionConfig } from '@/features/commercial-chat/utils/commercial-chat-config/commercial-chat-config.util';
 
 interface IAppShellProps {
   children: ReactNode;

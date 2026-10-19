@@ -205,8 +205,8 @@ Test **observable behavior and meaningful rules**, not implementation details or
 - Controller/component specs should exercise behavior through the public component. Do not write separate View specs by default for purely presentational output.
 - Test domain rules, parsers, URL builders, data mapping, persistence, important side effects and boundary validations when meaningful.
 - Reuse fixtures/builders; keep feature-specific fixtures near the feature.
-- If a test runner is absent, **do not install one unilaterally**. Report missing automated coverage and propose the minimal setup for an explicitly authorized task.
-- Critical acceptance flows may use Playwright or the project's existing browser tooling when available. Validate routes, locales, theme, anchors, responsive layout and accessibility as relevant.
+- Use the installed Vitest + React Testing Library setup. Dependency installation still requires task authorization.
+- Vitest + React Testing Library are the only official test infrastructure. Do not introduce end-to-end or browser automation infrastructure. Native browser behavior and responsive/visual acceptance are manual checks, documented separately from unit tests.
 - For visual changes, compare real screenshots to approved mockups at the requested viewports. Keep visual review separate from technical validation.
 
 ### Existing required commands
@@ -215,12 +215,14 @@ Test **observable behavior and meaningful rules**, not implementation details or
 npm run format:check
 npm run lint
 npm run typecheck
+npm run test:unit
+npm run test:coverage
 npm run build
 git diff --check
 git diff --cached --check
 ```
 
-Run all four npm checks for non-trivial application changes. Run targeted tests and browser QA when available and relevant. For docs-only changes, Git diff checks may suffice; report which checks were not run and why.
+Run all six npm checks for non-trivial application changes. Run targeted unit tests and document any manual QA still required. For docs-only changes, Git diff checks may suffice; report which checks were not run and why.
 
 Do not suppress lint/TypeScript errors, modify snapshots merely to hide regressions or report tests as passed without execution.
 
@@ -230,7 +232,7 @@ Do not suppress lint/TypeScript errors, modify snapshots merely to hide regressi
 - When replacing a component or feature, remove proven dead files, unused imports, stale translations, obsolete references and obsolete tests **only after** confirming no remaining consumers.
 - Preserve public component contracts or update all consumers and tests together.
 - Avoid speculative abstractions, duplicated UI primitives, unnecessary memoization, comments that simply narrate code, over-defensive guards and pass-through Controllers.
-- Write self-explanatory names; use comments **only** to explain non-obvious constraints, architectural reasons, browser quirks, safety guarantees or otherwise unexpressible intent.
+- Write self-explanatory names; production comments explain only non-obvious constraints, architectural reasons, browser quirks or safety guarantees. Tests explicitly use the structural Given/When/Then comments required below.
 - Do not delete design handoffs, historical QA, or other staged materials as “cleanup” without reviewing their provenance and obtaining authorization when needed.
 - A Controller/View refactor must preserve HTML semantics, CSS/theme behavior, server/client boundaries, SEO, a11y, locales and user interaction.
 
@@ -242,7 +244,7 @@ Official workflow:
 
 **Implementation → Validation → Review → Adjustments → Approval → Commit → Push → Next phase**.
 
-- Every finished phase should receive a reviewed commit and be pushed to the authorized GitHub repository **before the next phase**, after explicit approval.
+- Delivery phases require an explicitly approved commit and push. Incremental implementation, refactoring and QA steps within one authorized task continue without Git actions or intermediate approvals.
 - **Never create a commit, push, deploy, delete large file sets, configure hosting or change commercial settings without explicit authorization.** Approval of code or design alone is not blanket authorization for these actions.
 - Do not assume the Git author is correct from the remote alone; verify Git identity before an authorized commit.
 - Keep staged, unstaged, and untracked changes intact unless instructed otherwise. Do not run destructive Git commands on an unknown worktree.
@@ -280,3 +282,52 @@ For code-review-only requests, do not edit code. For plans or proposals, disting
 - [ ] Correct semantics, keyboard behavior, focus and reduced motion.
 - [ ] Relevant tests, quality scripts and visual QA completed or limitations disclosed.
 - [ ] No unrelated scope changes, unauthorized Git actions or deployment.
+
+## 16. Code Readability and Formatting
+
+These rules apply permanently to every agent and contributor.
+
+- Organize files as imports → interfaces/types → constants → focused helpers → component/hook/service.
+- Inside components/hooks, group state and refs → derived values → effects → behavioral handlers → view-ready props → return. Follow dependency order when a hook needs an earlier value.
+- Separate conceptually different calculations, guards, conditions, loops, effects and returns with blank lines. Group related declarations; do not mechanically separate every constant.
+- Always use braces in conditions and loops, including short guards. Never place a conditional and its return or mutation on one line; use one statement per line.
+- Name complex rules and boolean conditions meaningfully. Avoid deeply nested ternaries, long inline JSX callbacks and mixing validation, transformation and side effects.
+- Prettier owns layout: two spaces, semicolons, single quotes, trailing commas, LF, arrow parentheses and a suggested width of 100. ESLint adds semantic spacing and braces without competing with Prettier.
+- Preserve Controller/View boundaries and use genuinely responsible helpers, never empty wrappers or arbitrary extraction just to reduce line counts.
+
+## 17. Test Architecture
+
+- Vitest is the only unit test runner; use React Testing Library, jest-dom and user-event for component behavior. No parallel Jest or node:test suite.
+- Each behavior-owning component, hook, service, repository, mapper, parser or utility owns a descriptive directory. Implementation and `*.component.spec.tsx`, `*.hook.spec.ts`, `*.service.spec.ts`, `*.repository.spec.ts`, `*.mapper.spec.ts` or `*.util.spec.ts` live together.
+- Every independent component must own its co-located `*.component.spec.tsx`, including independent visual components and asynchronous Controllers. Test Controllers through their rendered Views. Do not add separate specs for pure Views by default. Independent visual primitives have their public semantic contract tested directly.
+- Use `describe('UnitName - Unit Test', ...)` and `it('Should ...', ...)` for every case. Nested describes may group scenarios.
+- Every case has scenario-specific `// Given`, `// When`, `// Then` comments, separated by blank lines: executable setup, action and assertions. Never reuse generic phase summaries, put comments between a loop declaration and its braces, or mix Then assertions into When. These structural test comments are an explicit exception to the production comment restriction.
+- Prefer role/label queries, `userEvent.setup()`, `renderHook()`, `vi.fn()` and `vi.mock()`. Mock integration boundaries, not the implementation under test. Keep fixtures local; share helpers only when actually reused.
+- Cover happy paths, boundaries, alternatives, invalid/empty input, async loading/success/error, dependency failures, recovery, cancellation, duplicates, persistence and accessibility as relevant to the unit.
+- Never send a real Formspree POST in automated tests. The shared setup rejects unexpected fetches; each HTTP test supplies its own mock.
+- jsdom stubs isolate application focus decisions, not native modal/animation/layout APIs. Never claim that unit stubs validate physical mobile devices or native keyboards. Native behavior and visual verification remain manual responsibilities.
+- Do not render async Server Components as unresolved promises in RTL. Unit-test their orchestration with explicit server-boundary mocks, await their returned synchronous View before rendering, and extract meaningful pure rules only when appropriate. Document that streaming, request context and framework routing are not exercised. Do not add browser automation to compensate.
+- V8 coverage includes eligible source files even when unexecuted. Aim for 100% statements, branches, functions and lines for measurable logic, with per-file checks. Never hide difficult logic with broad exclusions. Document exact technical exceptions and compensating tests in the coverage matrix.
+
+## 18. Quality Gates
+
+- Before a commit: `npm run typecheck`, `npm run lint`, `npm run format:check`, `npm run test:unit`. Husky runs these commands sequentially and stops on the first failure.
+- The hook never fixes files, stages files, commits, pushes or runs interactive tests. `npm ci` installs the project-local hook through `prepare`; do not configure global Git hooks.
+- Completion of a non-trivial refactor also requires `npm run test:coverage`, `npm run build`, `git diff --check` and `git diff --cached --check`.
+- Fix every lint warning and error, formatting divergence, type error and failing test. Never increase limits or add suppressions just to pass.
+- Associate coverage units explicitly with their own specs. Import reachability and a nonzero percentage are not proof of direct behavior tests; distinguish direct specs, indirect execution and missing tests.
+- Keep the coverage inventory current: unit, implementation, spec, rules, scenarios, measured metrics and real limitations. Distinguish technical validation from visual approval and operational publication.
+
+## 19. Regression Prevention
+
+Every future implementation must respect readability rules, include or update complete behavior tests, cover relevant alternatives and failures, pass the quality gates and preserve approved architecture/product/visual contracts. Review keyboard/focus behavior, locale and theme changes, responsive output, URL safety and integration boundaries when affected. Add a regression test for each corrected bug. Any technical test exception must state its reason and compensating verification; a passing build alone is never evidence of visual fidelity.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+## This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

@@ -6,7 +6,7 @@ import { hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { DEFAULT_THEME, THEME_STORAGE_KEY } from '@/constants/theme.constants';
 import { routing } from '@/i18n/routing';
-import { METADATA_BASE } from '@/i18n/metadata';
+import { METADATA_BASE } from '@/i18n/metadata/metadata.util';
 import { AppShell } from '@/components/shared/app-shell/app-shell.component';
 import '@/styles/globals.css';
 
@@ -14,6 +14,7 @@ const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
 });
+
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
@@ -31,8 +32,12 @@ const themeScript = `(() => {
 
   try {
     const savedTheme = JSON.parse(window.localStorage.getItem(${JSON.stringify(THEME_STORAGE_KEY)}) ?? 'null');
-    if (savedTheme === 'dark' || savedTheme === 'light') theme = savedTheme;
-  } catch {}
+    if (savedTheme === 'dark' || savedTheme === 'light') {
+      theme = savedTheme;
+    }
+  } catch {
+    // Browser privacy settings can block persistence; keep the default theme.
+  }
 
   document.documentElement.dataset.theme = theme;
   document.documentElement.style.colorScheme = theme;
@@ -46,7 +51,9 @@ export const generateStaticParams = () => {
 const RootLayout = async ({ children }: LayoutProps<'/[locale]'>) => {
   const locale = await getLocale();
 
-  if (!hasLocale(routing.locales, locale)) notFound();
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
 
   return (
     <html

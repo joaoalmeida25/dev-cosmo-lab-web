@@ -7,7 +7,9 @@ import { routing } from './routing';
 export default getRequestConfig(async () => {
   const locale = await getLocale();
 
-  if (!hasLocale(routing.locales, locale)) notFound();
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
 
   const [common, home, metadata, catalog, productDetails, commercialChat] = await Promise.all([
     import(`../messages/${locale}/common.json`),

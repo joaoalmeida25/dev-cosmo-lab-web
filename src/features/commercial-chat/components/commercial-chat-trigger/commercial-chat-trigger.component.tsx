@@ -14,5 +14,6 @@ export const CommercialChatTrigger = ({ label, variant }: ICommercialChatTrigger
   const open = (event: MouseEvent<HTMLButtonElement>) => {
     event.currentTarget.dispatchEvent(new Event(COMMERCIAL_CHAT_OPEN_EVENT, { bubbles: true }));
   };
+
   return <CommercialChatTriggerView label={label} variant={variant} onOpen={open} />;
 };

@@ -1,17 +1,8 @@
 'use client';
 
-import {
-  useEffect,
-  useReducer,
-  useRef,
-  type MouseEvent,
-  type FormEvent,
-  type SyntheticEvent,
-  type ReactNode,
-  type KeyboardEvent,
-} from 'react';
+import { useEffect, useReducer, useRef, type FormEvent, type ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
-import { COMMERCIAL_CHAT_OPEN_EVENT } from './commercial-chat.constants';
+import { useCommercialChatDialog } from './hooks/use-commercial-chat-dialog/use-commercial-chat-dialog.hook';
 import { CommercialChatView } from './commercial-chat-view.component';
 import { ServiceStep } from './components/service-step/service-step.component';
 import { NeedStep } from './components/need-step/need-step.component';
@@ -19,7 +10,7 @@ import { ProjectDetailsStep } from './components/project-details-step/project-de
 import { ContactStep } from './components/contact-step/contact-step.component';
 import { ReviewStep } from './components/review-step/review-step.component';
 import { SubmissionStatus } from './components/submission-status/submission-status.component';
-import { createCommercialChatSubmission } from './services/submit-commercial-chat.service';
+import { createCommercialChatSubmission } from './services/submit-commercial-chat/submit-commercial-chat.service';
 import {
   CHAT_STEPS,
   EMAIL_MAX_LENGTH,
@@ -30,7 +21,7 @@ import {
   OTHER_SERVICE_MIN_LENGTH,
   OTHER_SERVICE_MAX_LENGTH,
   commercialChatReducer,
-} from './utils/commercial-chat-flow.util';
+} from './utils/commercial-chat-flow/commercial-chat-flow.util';
 import type {
   ICommercialChatProps,
   IChatOption,
@@ -48,6 +39,7 @@ const DEADLINES: ReadonlyArray<Deadline> = [
   'one-to-three-months',
   'over-three-months',
 ];
+
 const BUDGETS: ReadonlyArray<Budget> = [
   'unspecified',
   'under-5000',
@@ -63,27 +55,35 @@ export const CommercialChat = ({
 }: ICommercialChatProps) => {
   const t = useTranslations('commercialChat');
   const [state, dispatch] = useReducer(commercialChatReducer, INITIAL_CHAT_STATE);
-  const dialogRef = useRef<HTMLDialogElement>(null);
-  const launcherRef = useRef<HTMLElement>(null);
+  const { dialogRef, open, requestClose, cancel, containFocus } = useCommercialChatDialog(
+    state,
+    dispatch,
+  );
+
   const honeypotRef = useRef('');
   const submitRequestRef = useRef<ReturnType<typeof createCommercialChatSubmission> | null>(null);
+
   if (submitRequestRef.current === null) {
     submitRequestRef.current = createCommercialChatSubmission();
   }
+
   const { answers, errors, screen, discardIntent } = state;
   const progress = CHAT_STEPS.findIndex((step) => step === screen) + 1;
   const deadlineOptions: ReadonlyArray<IChatOption<Deadline>> = DEADLINES.map((value) => ({
     value,
     label: value === 'unspecified' ? t('notProvided') : t(`deadlineOptions.${value}`),
   }));
+
   const budgetOptions: ReadonlyArray<IChatOption<Budget>> = BUDGETS.map((value) => ({
     value,
     label: value === 'unspecified' ? t('notProvided') : t(`budgetOptions.${value}`),
   }));
+
   const fieldLabels = (step: 'details' | 'contact' | 'review') => ({
     title: t(`steps.${step}.title`),
     hint: t(`steps.${step}.hint`),
   });
+
   const errorLabel = (error: ChatValidationError | undefined) =>
     error
       ? t(`errors.${error}`, {
@@ -94,146 +94,32 @@ export const CommercialChat = ({
           otherMax: OTHER_SERVICE_MAX_LENGTH,
         })
       : undefined;
+
   const edit = (step: EditableChatStep) => dispatch({ type: 'edit', step });
 
   useEffect(() => {
-    const openFromTrigger = (event: Event) => {
-      if (dialogRef.current?.open || !(event.target instanceof HTMLElement)) return;
-      launcherRef.current = event.target;
-      dispatch({ type: 'open' });
-    };
-    document.addEventListener(COMMERCIAL_CHAT_OPEN_EVENT, openFromTrigger);
-    return () => document.removeEventListener(COMMERCIAL_CHAT_OPEN_EVENT, openFromTrigger);
-  }, []);
-
-  useEffect(() => {
-    if (!state.isOpen) honeypotRef.current = '';
-    if (!state.isOpen) return;
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-    if (!dialog.open) dialog.showModal();
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    const viewport = window.visualViewport;
-    let focusFrame = 0;
-    const updateViewport = () => {
-      dialog.dataset.compact = String((viewport?.height ?? window.innerHeight) < 520);
-      dialog.style.setProperty(
-        '--chat-viewport-height',
-        `${viewport?.height ?? window.innerHeight}px`,
-      );
-      dialog.style.setProperty('--chat-viewport-top', `${viewport?.offsetTop ?? 0}px`);
-      cancelAnimationFrame(focusFrame);
-      focusFrame = requestAnimationFrame(() => {
-        const active = document.activeElement;
-        if (
-          active instanceof HTMLElement &&
-          dialog.contains(active) &&
-          active.matches('input, textarea, select')
-        ) {
-          active.scrollIntoView({ block: 'nearest' });
-        }
-      });
-    };
-    updateViewport();
-    window.addEventListener('resize', updateViewport);
-    viewport?.addEventListener('resize', updateViewport);
-    viewport?.addEventListener('scroll', updateViewport);
-    return () => {
-      cancelAnimationFrame(focusFrame);
-      window.removeEventListener('resize', updateViewport);
-      viewport?.removeEventListener('resize', updateViewport);
-      viewport?.removeEventListener('scroll', updateViewport);
-      document.body.style.overflow = previousOverflow;
-      dialog.style.removeProperty('--chat-viewport-height');
-      dialog.style.removeProperty('--chat-viewport-top');
-      delete dialog.dataset.compact;
-      if (dialog.open) dialog.close();
-      launcherRef.current?.focus({ preventScroll: true });
-    };
+    if (!state.isOpen) {
+      honeypotRef.current = '';
+    }
   }, [state.isOpen]);
 
-  useEffect(() => {
-    if (!state.isOpen || state.transition === 'idle') return;
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-    dialog.focus({ preventScroll: true });
-    const transition = state.transition;
-    let cancelled = false;
-
-    Promise.allSettled(dialog.getAnimations().map((animation) => animation.finished)).then(() => {
-      if (!cancelled) dispatch({ type: transition === 'closing' ? 'finish-close' : 'finish-open' });
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, [state.isOpen, state.transition]);
-
-  useEffect(() => {
-    if (!state.isOpen || state.transition !== 'idle') return;
-    const dialog = dialogRef.current;
-    const target =
-      dialog?.querySelector<HTMLElement>(
-        '[data-chat-safe-action], [aria-invalid="true"], [data-chat-invalid="true"]',
-      ) ?? dialog?.querySelector<HTMLElement>('[data-chat-heading]');
-    target?.focus();
-    const body = dialog?.querySelector<HTMLElement>('[data-chat-body]');
-    if (body && !dialog?.querySelector('[aria-invalid="true"]')) body.scrollTop = 0;
-  }, [
-    state.isOpen,
-    state.transition,
-    screen,
-    discardIntent,
-    state.validationAttempt,
-    state.submission.status,
-  ]);
-
-  const open = (event: MouseEvent<HTMLButtonElement>) => {
-    if (state.isOpen) return;
-    launcherRef.current = event.currentTarget;
-    dispatch({ type: 'open' });
-  };
-  const requestClose = () => dispatch({ type: discardIntent ? 'cancel-discard' : 'request-close' });
-  const cancel = (event: SyntheticEvent<HTMLDialogElement>) => {
-    event.preventDefault();
-    if (state.transition === 'idle') requestClose();
-  };
-  const containFocus = (event: KeyboardEvent<HTMLDialogElement>) => {
-    if (event.key !== 'Tab') return;
-    if (state.transition !== 'idle') {
-      event.preventDefault();
-      return;
-    }
-    const controls = Array.from(
-      event.currentTarget.querySelectorAll<HTMLElement>(
-        'button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex="0"]',
-      ),
-    ).filter((element) => element.tabIndex >= 0 && element.getClientRects().length > 0);
-    const first = controls[0];
-    const last = controls[controls.length - 1];
-    if (!first || !last) {
-      event.preventDefault();
-      return;
-    }
-    if (event.shiftKey && document.activeElement === first) {
-      event.preventDefault();
-      last.focus();
-    } else if (!event.shiftKey && document.activeElement === last) {
-      event.preventDefault();
-      first.focus();
-    }
-  };
   const submit = async () => {
     if (
       !submissionConfig ||
       !submitRequestRef.current ||
       state.submission.status === 'sending' ||
       state.submission.status === 'success'
-    )
+    ) {
       return;
+    }
+
     const nextState = commercialChatReducer(state, { type: 'submit' });
     dispatch({ type: 'submit' });
-    if (nextState.submission.status !== 'sending') return;
+
+    if (nextState.submission.status !== 'sending') {
+      return;
+    }
+
     const result = await submitRequestRef.current(submissionConfig, {
       answers,
       locale,
@@ -243,18 +129,28 @@ export const CommercialChat = ({
       budgetLabel: budgetOptions.find((option) => option.value === answers.budget)?.label ?? '',
       honeypot: honeypotRef.current,
     });
-    if (result.status === 'success') dispatch({ type: 'submission-success' });
-    else if (result.status === 'error')
+
+    if (result.status === 'success') {
+      dispatch({ type: 'submission-success' });
+    } else if (result.status === 'error') {
       dispatch({ type: 'submission-error', reason: result.reason });
+    }
   };
+
   const continueFlow = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (screen === 'review') void submit();
-    else dispatch({ type: 'next' });
+
+    if (screen === 'review') {
+      void submit();
+    } else {
+      dispatch({ type: 'next' });
+    }
   };
+
   const back = () => (screen === 'service' ? requestClose() : dispatch({ type: 'back' }));
 
   let content: ReactNode = null;
+
   switch (screen) {
     case 'service':
       content = (
@@ -304,11 +200,17 @@ export const CommercialChat = ({
           budgetOptions={budgetOptions}
           onDeadlineChange={(value) => {
             const option = deadlineOptions.find((entry) => entry.value === value);
-            if (option) dispatch({ type: 'deadline', value: option.value });
+
+            if (option) {
+              dispatch({ type: 'deadline', value: option.value });
+            }
           }}
           onBudgetChange={(value) => {
             const option = budgetOptions.find((entry) => entry.value === value);
-            if (option) dispatch({ type: 'budget', value: option.value });
+
+            if (option) {
+              dispatch({ type: 'budget', value: option.value });
+            }
           }}
         />
       );
@@ -382,6 +284,7 @@ export const CommercialChat = ({
           onEdit: () => edit('contact'),
         },
       ];
+
       content = (
         <ReviewStep
           labels={fieldLabels('review')}

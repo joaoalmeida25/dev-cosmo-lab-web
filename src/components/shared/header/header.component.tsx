@@ -16,6 +16,7 @@ export const Header = () => {
     openMenu: t('navigation.openMenu'),
     closeMenu: t('navigation.closeMenu'),
   };
+
   const pathname = usePathname();
   const navigationItems: ReadonlyArray<IHeaderNavigationItem> = [
     { key: 'home', href: '/', current: pathname === '/' },
@@ -26,6 +27,7 @@ export const Header = () => {
     },
     { key: 'about', href: '/#laboratory', current: false },
   ];
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -34,9 +36,13 @@ export const Header = () => {
   useEffect(() => {
     const updateHeader = () => {
       setIsScrolled((current) => {
-        if (!current && window.scrollY >= 96) return true;
+        if (!current && window.scrollY >= 96) {
+          return true;
+        }
 
-        if (current && window.scrollY <= 64) return false;
+        if (current && window.scrollY <= 64) {
+          return false;
+        }
 
         return current;
       });
@@ -49,12 +55,16 @@ export const Header = () => {
   }, []);
 
   useEffect(() => {
-    if (!isMenuOpen) return;
+    if (!isMenuOpen) {
+      return;
+    }
 
     firstMobileLinkRef.current?.focus();
 
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key !== 'Escape') return;
+      if (event.key !== 'Escape') {
+        return;
+      }
 
       setIsMenuOpen(false);
       menuButtonRef.current?.focus();

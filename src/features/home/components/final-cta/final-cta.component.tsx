@@ -9,6 +9,7 @@ export const FinalCTA = async () => {
   const locale = hasLocale(routing.locales, requestedLocale)
     ? requestedLocale
     : routing.defaultLocale;
+
   const t = await getTranslations('home.finalCta');
 
   return (

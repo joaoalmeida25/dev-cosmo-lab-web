@@ -19,6 +19,7 @@ export const LanguageToggle = () => {
   const locale = hasLocale(routing.locales, requestedLocale)
     ? requestedLocale
     : routing.defaultLocale;
+
   const pathname = usePathname();
   const optionsId = useId();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -27,11 +28,14 @@ export const LanguageToggle = () => {
   const currentLanguage = t(`names.${locale}`);
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen) {
+      return;
+    }
 
     const handlePointerDown = (event: PointerEvent) => {
-      if (event.target instanceof Node && !containerRef.current?.contains(event.target))
+      if (event.target instanceof Node && !containerRef.current?.contains(event.target)) {
         setIsOpen(false);
+      }
     };
 
     const handleKeyDown = (event: KeyboardEvent) => {

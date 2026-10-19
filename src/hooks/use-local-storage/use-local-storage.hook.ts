@@ -6,11 +6,11 @@ const LOCAL_STORAGE_CHANGE_EVENT = 'dev-cosmo-lab-local-storage-change';
 const pendingValues = new Map<string, string>();
 
 const readStorage = (key: string): string | null => {
-  if (typeof window === 'undefined') return null;
-
   const pendingValue = pendingValues.get(key);
 
-  if (pendingValue !== undefined) return pendingValue;
+  if (pendingValue !== undefined) {
+    return pendingValue;
+  }
 
   try {
     return window.localStorage.getItem(key);
@@ -24,7 +24,9 @@ const parseValue = <T>(
   initialValue: T,
   resolveValue: (value: unknown) => T,
 ): T => {
-  if (serializedValue == null) return initialValue;
+  if (serializedValue === null || serializedValue === undefined) {
+    return initialValue;
+  }
 
   try {
     const parsedValue: unknown = JSON.parse(serializedValue);
@@ -36,8 +38,6 @@ const parseValue = <T>(
 };
 
 const subscribe = (onStoreChange: () => void) => {
-  if (typeof window === 'undefined') return () => {};
-
   const onStorage = (event: StorageEvent) => {
     if (event.key === null) {
       pendingValues.clear();
@@ -73,21 +73,27 @@ export const useLocalStorage = <T>(
 
   const setValue = useCallback(
     (nextValue: SetStateAction<T>) => {
-      if (typeof window === 'undefined') return;
+      if (typeof window === 'undefined') {
+        return;
+      }
 
       const currentValue = parseValue(readStorage(key), initialValue, resolveValue);
       const resolvedValue =
         typeof nextValue === 'function'
           ? (nextValue as (previousValue: T) => T)(currentValue)
           : nextValue;
+
       let serializedValue: string | undefined;
+
       try {
         serializedValue = JSON.stringify(resolvedValue);
       } catch {
         return;
       }
 
-      if (serializedValue === undefined) return;
+      if (serializedValue === undefined) {
+        return;
+      }
 
       try {
         window.localStorage.setItem(key, serializedValue);

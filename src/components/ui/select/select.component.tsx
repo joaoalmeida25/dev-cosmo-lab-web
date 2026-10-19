@@ -7,7 +7,9 @@ export const Select = <T extends string>({ onValueChange, options, ...props }: I
   const selectOption = (value: string) => {
     const option = options.find((candidate) => candidate.value === value);
 
-    if (option && !option.disabled) onValueChange(option.value);
+    if (option && !option.disabled) {
+      onValueChange(option.value);
+    }
   };
 
   return (
