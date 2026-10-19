@@ -130,9 +130,7 @@ export const useCommercialChatDialog = (state: IChatState, dispatch: Dispatch<Ch
     const target =
       dialog?.querySelector<HTMLElement>(
         '[data-chat-safe-action], [aria-invalid="true"], [data-chat-invalid="true"]',
-      ) ??
-      dialog?.querySelector<HTMLElement>('[data-chat-initial-action]') ??
-      dialog;
+      ) ?? dialog;
 
     target?.focus({ preventScroll: true });
     const body = dialog?.querySelector<HTMLElement>('[data-chat-body]');

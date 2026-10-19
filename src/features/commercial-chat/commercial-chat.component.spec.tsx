@@ -55,7 +55,9 @@ const testConfig = { endpoint: 'https://formspree.io/f/testform' };
 const startChat = async (user: ReturnType<typeof userEvent.setup>) => {
   await user.click(screen.getByRole('button', { name: pt.launcher }));
   const start = await screen.findByRole('button', { name: pt.welcome.start });
-  await waitFor(() => expect(start).toHaveFocus());
+  await waitFor(() =>
+    expect(screen.getByRole('dialog')).toHaveAttribute('data-transition', 'idle'),
+  );
   await user.click(start);
 };
 
@@ -304,7 +306,7 @@ describe('CommercialChat - Unit Test', () => {
 // Controller interaction coverage complements the inherited server-markup contracts.
 describe('CommercialChat - Unit Test', () => {
   it.each(locales)(
-    'Should open from the launcher with a safe initial action in $locale',
+    'Should open from the launcher with neutral dialog focus in $locale',
     async ({ locale, messages }) => {
       // Given: a localized controller and no configured endpoint.
       const user = userEvent.setup();
@@ -316,9 +318,11 @@ describe('CommercialChat - Unit Test', () => {
       const dialog = await screen.findByRole('dialog');
       await waitFor(() => expect(dialog).toHaveAttribute('data-transition', 'idle'));
 
-      // Then: focus is on the start button, never the title or an editable field.
+      // Then: only the dialog receives technical focus, without selecting a title or control.
       expect(dialog).toHaveAccessibleName(messages.welcome.title);
-      expect(screen.getByRole('button', { name: messages.welcome.start })).toHaveFocus();
+      expect(dialog).toHaveFocus();
+      expect(dialog).toHaveAttribute('tabindex', '-1');
+      expect(screen.getByRole('button', { name: messages.welcome.start })).not.toHaveFocus();
       expect(screen.getByRole('heading', { name: messages.welcome.title })).not.toHaveAttribute(
         'tabindex',
       );
@@ -343,16 +347,20 @@ describe('CommercialChat - Unit Test', () => {
     await user.click(trigger);
     const dialog = await screen.findByRole('dialog');
     await waitFor(() => expect(dialog).toHaveAttribute('data-transition', 'idle'));
+    const initialFocus = document.activeElement;
+    const selection = window.getSelection()?.toString();
     fireEvent(dialog, new Event('cancel', { cancelable: true }));
 
     // Then: the modal closes, unlocks scrolling and returns focus to its invoker.
     await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
+    expect(initialFocus).toBe(dialog);
+    expect(selection).toBe('');
     expect(trigger).toHaveFocus();
     expect(document.body.style.overflow).toBe('');
   });
 
-  it('Should wrap Tab and Shift+Tab inside the open modal', async () => {
-    // Given: visible modal controls (jsdom does not calculate client rectangles).
+  it('Should enter and wrap modal controls with Tab and Shift+Tab from neutral dialog focus', async () => {
+    // Given: a welcome dialog with technical focus and visible controls (jsdom has no layout).
     const user = userEvent.setup();
     vi.spyOn(HTMLElement.prototype, 'getClientRects').mockReturnValue({
       length: 1,
@@ -362,16 +370,26 @@ describe('CommercialChat - Unit Test', () => {
     renderLocalized(<CommercialChat locale="pt-BR" services={services} />);
     await user.click(screen.getByRole('button', { name: pt.launcher }));
     const start = await screen.findByRole('button', { name: pt.welcome.start });
-    await waitFor(() => expect(start).toHaveFocus());
+    const dialog = screen.getByRole('dialog');
+    await waitFor(() => expect(dialog).toHaveAttribute('data-transition', 'idle'));
+    const initialFocus = document.activeElement;
 
-    // When: tabbing beyond the last control and backwards before the first.
+    // When: tabbing from the dialog, wrapping backwards, then forwards and backwards from the dialog.
     await user.tab();
     const close = screen.getByRole('button', { name: pt.actions.close });
     const forwardFocus = document.activeElement;
     await user.tab({ shift: true });
+    const reverseFocus = document.activeElement;
+    await user.tab();
+    const wrappedFocus = document.activeElement;
+    dialog.focus();
+    await user.tab({ shift: true });
 
-    // Then: the start button receives focus again, without reaching the launcher.
+    // Then: focus enters the first or last control and wraps without reaching the launcher.
+    expect(initialFocus).toBe(dialog);
     expect(forwardFocus).toBe(close);
+    expect(reverseFocus).toBe(start);
+    expect(wrappedFocus).toBe(close);
     expect(start).toHaveFocus();
   });
 
@@ -559,7 +577,7 @@ describe('CommercialChat - Unit Test', () => {
     expect(post).toHaveBeenCalledTimes(2);
   });
 
-  it('Should restart from review only after confirmation and without sending', async () => {
+  it('Should restore neutral welcome dialog focus after a confirmed restart without sending', async () => {
     // Given: a completed review whose endpoint is configured.
     const user = userEvent.setup();
     renderLocalized(
@@ -571,9 +589,11 @@ describe('CommercialChat - Unit Test', () => {
     await user.click(screen.getByRole('button', { name: pt.actions.restart }));
     await user.click(screen.getByRole('button', { name: pt.discard.restart }));
 
-    // Then: the welcome screen returns and delivery has never been attempted.
+    // Then: welcome returns with technical focus on the dialog and no selection or delivery.
     expect(screen.getByRole('dialog')).toHaveAccessibleName(pt.welcome.title);
-    expect(screen.getByRole('button', { name: pt.welcome.start })).toHaveFocus();
+    expect(screen.getByRole('dialog')).toHaveFocus();
+    expect(screen.getByRole('button', { name: pt.welcome.start })).not.toHaveFocus();
+    expect(window.getSelection()?.toString()).toBe('');
     expect(fetch).not.toHaveBeenCalled();
   });
 });

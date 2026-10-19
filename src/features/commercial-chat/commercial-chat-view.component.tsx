@@ -150,7 +150,6 @@ export const CommercialChatView = ({
               variant="primary"
               size="lg"
               onClick={onStart}
-              data-chat-initial-action
               rightIcon={<ArrowRight aria-hidden="true" />}
               className="mt-7 w-full rounded-xl"
             >

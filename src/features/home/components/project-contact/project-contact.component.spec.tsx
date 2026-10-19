@@ -57,8 +57,8 @@ describe('ProjectContact - Unit Test', () => {
 
       // When: the visitor opens this CTA, waits for entrance and closes the empty request.
       await user.click(trigger);
-      const start = await screen.findByRole('button', { name: t('welcome.start') });
-      await waitFor(() => expect(start).toHaveFocus());
+      const dialog = await screen.findByRole('dialog');
+      await waitFor(() => expect(dialog).toHaveAttribute('data-transition', 'idle'));
       const initialFocus = document.activeElement;
       const title = screen.getByRole('heading', { name: t('welcome.title') });
       const titleTabIndex = title.getAttribute('tabindex');
@@ -66,8 +66,8 @@ describe('ProjectContact - Unit Test', () => {
       await user.click(screen.getByRole('button', { name: t('actions.close') }));
       await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
 
-      // Then: the safe action received focus, the heading was not selected and focus returned to this CTA.
-      expect(initialFocus).toBe(start);
+      // Then: only the dialog received technical focus, with no title selection, before returning to this CTA.
+      expect(initialFocus).toBe(dialog);
       expect(titleTabIndex).toBeNull();
       expect(selection).toBe('');
       expect(trigger).toHaveFocus();

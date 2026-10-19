@@ -45,6 +45,72 @@ const Harness = ({
 };
 
 describe('UseCommercialChatDialog - Unit Test', () => {
+  it('Should retain technical dialog focus during opening and after automatic control focus from showModal', async () => {
+    // Given: a modal stub that focuses its first button, modeling an automatic browser focus decision.
+    const dispatch = vi.fn();
+    let automaticFocus: Element | null = null;
+    const show = vi.spyOn(HTMLDialogElement.prototype, 'showModal').mockImplementation(function (
+      this: HTMLDialogElement,
+    ) {
+      this.setAttribute('open', '');
+      this.querySelector('button')?.focus();
+      automaticFocus = document.activeElement;
+    });
+
+    const { rerender } = render(<Harness state={INITIAL_CHAT_STATE} dispatch={dispatch} />);
+    const dialog = screen.getByRole('dialog', { hidden: true });
+    const focus = vi.spyOn(dialog, 'focus');
+
+    // When: the entrance starts and the Controller later completes the opening transition.
+    rerender(<Harness state={{ ...openState, transition: 'opening' }} dispatch={dispatch} />);
+    const openingFocus = document.activeElement;
+    await act(async () => {});
+    rerender(<Harness state={openState} dispatch={dispatch} />);
+
+    // Then: both opening effects override the automatic button focus with a non-scrolling dialog target.
+    expect(show).toHaveBeenCalledTimes(1);
+    expect(automaticFocus).toBe(screen.getByRole('button', { name: 'Close' }));
+    expect(openingFocus).toBe(dialog);
+    expect(dialog).toHaveFocus();
+    expect(focus).toHaveBeenLastCalledWith({ preventScroll: true });
+    expect(window.getSelection()?.toString()).toBe('');
+    expect(dispatch).toHaveBeenCalledWith({ type: 'finish-open' });
+  });
+
+  it.each(['aria-invalid', 'data-chat-invalid', 'safe-action'])(
+    'Should preserve targeted focus for %s after a validation or discard transition',
+    (marker) => {
+      // Given: a closed host whose next screen contains an invalid field and optionally a safe discard action.
+      const dispatch = vi.fn();
+      const { rerender } = render(<Harness state={INITIAL_CHAT_STATE} dispatch={dispatch} />);
+      const field = screen.getByLabelText('Project');
+      const close = screen.getByRole('button', { name: 'Close', hidden: true });
+      field.setAttribute(marker === 'safe-action' ? 'aria-invalid' : marker, 'true');
+
+      if (marker === 'safe-action') {
+        close.setAttribute('data-chat-safe-action', '');
+      }
+
+      const state: IChatState = {
+        ...openState,
+        screen: 'need',
+        validationAttempt: 1,
+        discardIntent: marker === 'safe-action' ? 'close' : null,
+      };
+
+      const target = marker === 'safe-action' ? close : field;
+      const focus = vi.spyOn(target, 'focus');
+
+      // When: the Controller presents the validation result or discard confirmation in its idle state.
+      rerender(<Harness state={state} dispatch={dispatch} />);
+
+      // Then: error correction or the safe discard action retains priority over neutral dialog focus.
+      expect(target).toHaveFocus();
+      expect(focus).toHaveBeenCalledWith({ preventScroll: true });
+      expect(dispatch).not.toHaveBeenCalled();
+    },
+  );
+
   it('Should tolerate an absent dialog host during opening and navigation', () => {
     // Given: lifecycle state arriving before any dialog ref is attached.
     const dispatch = vi.fn();
