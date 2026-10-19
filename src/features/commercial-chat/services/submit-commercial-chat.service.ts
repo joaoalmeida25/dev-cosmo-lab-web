@@ -51,7 +51,7 @@ export const createCommercialChatSubmission = () => {
       body.set('budget', request.budgetLabel);
       body.set('locale', request.locale);
       body.set('_gotcha', request.honeypot);
-      body.set('_subject', 'Dev Cosmo Lab — Commercial request');
+      body.set('_subject', '[DevCosmoLab] - Solicitação de Orçamento');
 
       const response = await fetch(config.endpoint, {
         method: 'POST',

@@ -43,7 +43,7 @@ test('submission sends only the intended fields to Formspree, with no credential
       budget: request.budgetLabel,
       locale: 'en',
       _gotcha: '',
-      _subject: 'Dev Cosmo Lab — Commercial request',
+      _subject: '[DevCosmoLab] - Solicitação de Orçamento',
     });
     return Response.json({ next: 'https://formspree.io/thanks' });
   });
