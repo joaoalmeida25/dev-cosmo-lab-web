@@ -28,6 +28,7 @@ export const CommercialChatView = ({
   submissionContent,
   submissionStatus = 'idle',
   canSubmit = false,
+  disableContinue = false,
   onHoneypotChange,
   onOpen,
   onClose,
@@ -234,6 +235,7 @@ export const CommercialChatView = ({
                       variant="primary"
                       size="lg"
                       type="submit"
+                      disabled={disableContinue}
                       rightIcon={<ArrowRight aria-hidden="true" />}
                       className="rounded-xl"
                     >

@@ -59,6 +59,7 @@ export interface IChatState {
   editing: boolean;
   discardIntent: 'close' | 'restart' | null;
   validationAttempt: number;
+  validatedStep: ChatStep | null;
   submission: ChatSubmissionState;
 }
 
@@ -135,6 +136,7 @@ export interface ICommercialChatViewProps {
   submissionContent?: ReactNode;
   submissionStatus?: ChatSubmissionState['status'];
   canSubmit?: boolean;
+  disableContinue?: boolean;
   onHoneypotChange?: (value: string) => void;
   onOpen: MouseEventHandler<HTMLButtonElement>;
   onClose: () => void;

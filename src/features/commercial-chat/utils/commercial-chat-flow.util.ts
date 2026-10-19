@@ -39,6 +39,7 @@ export const INITIAL_CHAT_STATE: IChatState = {
   editing: false,
   discardIntent: null,
   validationAttempt: 0,
+  validatedStep: null,
   submission: { status: 'idle' },
 };
 
@@ -113,6 +114,7 @@ export const commercialChatReducer = (state: IChatState, action: ChatAction): IC
             ...state,
             screen: step,
             errors,
+            validatedStep: step,
             submission: { status: 'idle' },
             validationAttempt: state.validationAttempt + 1,
           };
@@ -140,10 +142,12 @@ export const commercialChatReducer = (state: IChatState, action: ChatAction): IC
     case 'need':
     case 'name':
     case 'email': {
-      const errors = { ...state.errors };
-      delete errors[action.type];
-      if (action.type === 'service') delete errors.otherService;
-      return { ...state, answers: { ...state.answers, [action.type]: action.value }, errors };
+      const answers = { ...state.answers, [action.type]: action.value };
+      const errors =
+        state.validatedStep === state.screen
+          ? validateChatStep(state.screen, answers)
+          : state.errors;
+      return { ...state, answers, errors };
     }
     case 'deadline':
     case 'budget':
@@ -158,7 +162,12 @@ export const commercialChatReducer = (state: IChatState, action: ChatAction): IC
         return state;
       const errors = validateChatStep(state.screen, state.answers);
       if (Object.keys(errors).length)
-        return { ...state, errors, validationAttempt: state.validationAttempt + 1 };
+        return {
+          ...state,
+          errors,
+          validatedStep: state.screen,
+          validationAttempt: state.validationAttempt + 1,
+        };
       const answers =
         state.screen === 'contact'
           ? { ...state.answers, name: state.answers.name.trim(), email: state.answers.email.trim() }
@@ -171,17 +180,20 @@ export const commercialChatReducer = (state: IChatState, action: ChatAction): IC
           : (CHAT_STEPS[CHAT_STEPS.indexOf(state.screen) + 1] ?? 'review'),
         editing: false,
         errors: {},
+        validatedStep: null,
       };
     }
     case 'back': {
       if (!state.isOpen || state.discardIntent) return state;
       if (state.editing) return commercialChatReducer(state, { type: 'next' });
       const index = CHAT_STEPS.findIndex((step) => step === state.screen);
-      return index > 0 ? { ...state, screen: CHAT_STEPS[index - 1], errors: {} } : state;
+      return index > 0
+        ? { ...state, screen: CHAT_STEPS[index - 1], errors: {}, validatedStep: null }
+        : state;
     }
     case 'edit':
       return state.isOpen && state.screen === 'review' && !state.discardIntent
-        ? { ...state, screen: action.step, editing: true, errors: {} }
+        ? { ...state, screen: action.step, editing: true, errors: {}, validatedStep: null }
         : state;
     case 'request-close':
     case 'request-restart': {

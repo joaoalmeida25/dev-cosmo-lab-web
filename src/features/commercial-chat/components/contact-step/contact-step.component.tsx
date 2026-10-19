@@ -41,9 +41,21 @@ export const ContactStep = ({
     </p>
     <div className="mt-7 grid gap-6">
       <div>
-        <label htmlFor="chat-name" className="mb-2 block text-sm font-medium text-text-primary">
+        <label
+          htmlFor="chat-name"
+          className={`mb-2 block text-sm font-medium ${nameError ? 'text-rose-400 light:text-rose-700' : 'text-text-primary'}`}
+        >
           {nameLabel}
         </label>
+        {nameError ? (
+          <p
+            id="chat-name-error"
+            role="alert"
+            className="mb-2 text-xs leading-relaxed font-medium text-rose-400 light:text-rose-700"
+          >
+            {nameError}
+          </p>
+        ) : null}
         <input
           id="chat-name"
           name="name"
@@ -55,22 +67,25 @@ export const ContactStep = ({
           onChange={(event) => onNameChange(event.currentTarget.value)}
           aria-invalid={nameError ? true : undefined}
           aria-describedby={nameError ? 'chat-name-error' : 'chat-contact-hint'}
-          className="min-h-12 w-full rounded-xl border border-border bg-surface px-3.5 py-3 text-base text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+          className={`min-h-12 w-full scroll-mt-20 rounded-xl border bg-surface px-3.5 py-3 text-base text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring ${nameError ? 'border-rose-500 focus-visible:border-rose-500 focus-visible:outline-rose-500' : 'border-border'}`}
         />
-        {nameError ? (
-          <p
-            id="chat-name-error"
-            role="alert"
-            className="mt-2 text-sm font-medium text-text-primary"
-          >
-            {nameError}
-          </p>
-        ) : null}
       </div>
       <div>
-        <label htmlFor="chat-email" className="mb-2 block text-sm font-medium text-text-primary">
+        <label
+          htmlFor="chat-email"
+          className={`mb-2 block text-sm font-medium ${emailError ? 'text-rose-400 light:text-rose-700' : 'text-text-primary'}`}
+        >
           {emailLabel}
         </label>
+        {emailError ? (
+          <p
+            id="chat-email-error"
+            role="alert"
+            className="mb-2 text-xs leading-relaxed font-medium text-rose-400 light:text-rose-700"
+          >
+            {emailError}
+          </p>
+        ) : null}
         <input
           id="chat-email"
           name="email"
@@ -85,17 +100,8 @@ export const ContactStep = ({
           onChange={(event) => onEmailChange(event.currentTarget.value)}
           aria-invalid={emailError ? true : undefined}
           aria-describedby={emailError ? 'chat-email-error' : 'chat-contact-hint'}
-          className="min-h-12 w-full rounded-xl border border-border bg-surface px-3.5 py-3 text-base text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+          className={`min-h-12 w-full scroll-mt-20 rounded-xl border bg-surface px-3.5 py-3 text-base text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring ${emailError ? 'border-rose-500 focus-visible:border-rose-500 focus-visible:outline-rose-500' : 'border-border'}`}
         />
-        {emailError ? (
-          <p
-            id="chat-email-error"
-            role="alert"
-            className="mt-2 text-sm font-medium text-text-primary"
-          >
-            {emailError}
-          </p>
-        ) : null}
       </div>
     </div>
   </section>

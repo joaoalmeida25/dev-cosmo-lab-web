@@ -85,6 +85,90 @@ test('need validation checks trimmed minimum and the explicit maximum without ch
   assert.equal(state.answers.need, need);
 });
 
+test('after an invalid attempt, errors track current input and prevent advancing until valid', () => {
+  let state = act(
+    { ...INITIAL_CHAT_STATE, isOpen: true, screen: 'need', answers: validAnswers },
+    { type: 'need', value: 'curto' },
+  );
+  assert.deepEqual(state.errors, {});
+  assert.equal(state.validatedStep, null);
+
+  state = act(state, { type: 'next' });
+  assert.equal(state.screen, 'need');
+  assert.equal(state.errors.need, 'needShort');
+  assert.equal(state.validatedStep, 'need');
+
+  state = act(state, { type: 'need', value: 'ainda curto' });
+  assert.equal(state.errors.need, 'needShort');
+
+  state = act(state, { type: 'need', value: 'Um texto válido que descreve o projeto.' });
+  assert.deepEqual(state.errors, {});
+  assert.equal(state.validatedStep, 'need');
+
+  state = act(state, { type: 'need', value: 'curto novamente' });
+  assert.equal(state.errors.need, 'needShort');
+
+  state = act(state, { type: 'need', value: validAnswers.need }, { type: 'next' });
+  assert.equal(state.screen, 'details');
+  assert.deepEqual(state.errors, {});
+  assert.equal(state.validatedStep, null);
+});
+
+test('service and contact invalid attempts recover only after every required field is valid', () => {
+  let service = act(INITIAL_CHAT_STATE, { type: 'open' }, { type: 'start' }, { type: 'next' });
+  assert.equal(service.errors.service, 'serviceRequired');
+
+  service = act(service, { type: 'service', value: 'others' });
+  assert.equal(service.errors.service, undefined);
+  assert.equal(service.errors.otherService, 'otherServiceShort');
+  service = act(service, { type: 'otherService', value: 'X' });
+  assert.equal(service.errors.otherService, 'otherServiceShort');
+  service = act(service, { type: 'otherService', value: 'UX Design' }, { type: 'next' });
+  assert.equal(service.screen, 'need');
+  assert.equal(service.validatedStep, null);
+
+  let contact = act({ ...INITIAL_CHAT_STATE, isOpen: true, screen: 'contact' }, { type: 'next' });
+  assert.equal(contact.errors.name, 'nameInvalid');
+  assert.equal(contact.errors.email, 'emailInvalid');
+  contact = act(contact, { type: 'name', value: 'Pessoa Teste' });
+  assert.equal(contact.errors.name, undefined);
+  assert.equal(contact.errors.email, 'emailInvalid');
+  contact = act(contact, { type: 'email', value: 'invalid' });
+  assert.equal(contact.errors.email, 'emailInvalid');
+  contact = act(contact, { type: 'email', value: 'teste@example.com' });
+  assert.deepEqual(contact.errors, {});
+  assert.equal(contact.validatedStep, 'contact');
+  contact = act(contact, { type: 'next' });
+  assert.equal(contact.screen, 'review');
+  assert.equal(contact.validatedStep, null);
+});
+
+test('going back or reopening an edit clears the validation lock without dropping answers', () => {
+  let state = act(
+    { ...INITIAL_CHAT_STATE, isOpen: true, screen: 'need', answers: validAnswers },
+    { type: 'need', value: 'curto' },
+    { type: 'next' },
+  );
+  assert.equal(state.validatedStep, 'need');
+  state = act(state, { type: 'back' });
+  assert.equal(state.screen, 'service');
+  assert.equal(state.validatedStep, null);
+  assert.deepEqual(state.errors, {});
+  assert.equal(state.answers.need, 'curto');
+
+  state = act(
+    review(),
+    { type: 'edit', step: 'need' },
+    { type: 'need', value: 'curto' },
+    { type: 'next' },
+  );
+  assert.equal(state.validatedStep, 'need');
+  assert.equal(state.editing, true);
+  state = act(state, { type: 'need', value: validAnswers.need }, { type: 'next' });
+  assert.equal(state.screen, 'review');
+  assert.equal(state.validatedStep, null);
+});
+
 test('contact validation accepts Unicode names and practical emails while rejecting empty and malformed input', () => {
   assert.deepEqual(validateChatStep('contact', validAnswers), {});
   for (const name of ['', '  ', 'A', '123'])

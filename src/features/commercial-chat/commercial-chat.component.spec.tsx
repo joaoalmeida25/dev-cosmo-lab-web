@@ -5,6 +5,9 @@ import { createRef } from 'react';
 import { CommercialChatView } from './commercial-chat-view.component';
 import type { ICommercialChatViewProps } from './commercial-chat.types';
 import { ProjectDetailsStep } from './components/project-details-step/project-details-step.component';
+import { NeedStep } from './components/need-step/need-step.component';
+import { ServiceStep } from './components/service-step/service-step.component';
+import { ContactStep } from './components/contact-step/contact-step.component';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { CHAT_SERVICE_IDS } from './commercial-chat.constants';
 import { ReviewStep } from './components/review-step/review-step.component';
@@ -94,6 +97,105 @@ test('the public controller starts closed with localized welcome/launcher, nativ
   } finally {
     fetch.mock.restore();
   }
+});
+
+test('invalid fields render red labels and borders and show feedback before their inputs', () => {
+  for (const { messages } of locales) {
+    const need = renderToStaticMarkup(
+      <NeedStep
+        title={messages.steps.need.title}
+        fieldLabel={messages.steps.need.label}
+        placeholder={messages.steps.need.placeholder}
+        counter="5 / 1000"
+        maxLength={1000}
+        value="curto"
+        error={messages.errors.needShort.replace('{min}', '20')}
+        onChange={() => undefined}
+      />,
+    );
+    assert.ok(need.indexOf('id="chat-need-error"') < need.indexOf('id="chat-need"'));
+    assert.ok(need.indexOf('</label>') < need.indexOf('id="chat-need-error"'));
+    assert.match(need, /aria-invalid="true"/);
+    assert.match(need, /border-rose-500/);
+    assert.match(need, /text-rose-400/);
+
+    const contact = renderToStaticMarkup(
+      <ContactStep
+        labels={messages.steps.contact}
+        nameLabel={messages.steps.contact.name}
+        emailLabel={messages.steps.contact.email}
+        name=""
+        email="invalid"
+        nameMaxLength={100}
+        emailMaxLength={254}
+        nameError={messages.errors.nameInvalid}
+        emailError={messages.errors.emailInvalid}
+        onNameChange={() => undefined}
+        onEmailChange={() => undefined}
+      />,
+    );
+    for (const field of ['name', 'email']) {
+      assert.ok(
+        contact.indexOf(`id="chat-${field}-error"`) < contact.indexOf(`id="chat-${field}"`),
+      );
+      assert.match(contact, new RegExp(`id="chat-${field}"[^>]*aria-invalid="true"`));
+    }
+
+    const service = renderToStaticMarkup(
+      <ServiceStep
+        title={messages.steps.service.title}
+        options={[{ value: 'sites', label: 'Sites' }]}
+        value=""
+        error={messages.errors.serviceRequired}
+        otherService={null}
+        onChange={() => undefined}
+      />,
+    );
+    assert.match(service, /id="chat-service-error"/);
+    assert.match(service, /border-rose-500/);
+  }
+});
+
+test('Continue disables after a failed attempt while the back action stays available', () => {
+  const messages = pt;
+  const props: ICommercialChatViewProps = {
+    dialogRef: createRef<HTMLDialogElement>(),
+    screen: 'need',
+    isOpen: true,
+    isEditing: false,
+    discard: null,
+    progress: 2,
+    content: <p>Test</p>,
+    labels: {
+      brand: messages.brand,
+      launcher: messages.launcher,
+      title: messages.title,
+      close: messages.actions.close,
+      welcomeTitle: messages.welcome.title,
+      welcomeDescription: messages.welcome.description,
+      start: messages.welcome.start,
+      progress: '2 / 5',
+      progressLabel: messages.progressLabel,
+      back: messages.actions.back,
+      next: messages.actions.next,
+      save: messages.actions.save,
+      send: messages.actions.send,
+    },
+    onOpen: () => undefined,
+    onClose: () => undefined,
+    onCancel: (event) => event.preventDefault(),
+    onStart: () => undefined,
+    onContinue: (event) => event.preventDefault(),
+    onBack: () => undefined,
+    onCancelDiscard: () => undefined,
+    onConfirmDiscard: () => undefined,
+  };
+  const before = renderToStaticMarkup(<CommercialChatView {...props} />);
+  const blocked = renderToStaticMarkup(<CommercialChatView {...props} disableContinue />);
+  assert.match(before, /type="submit"/);
+  assert.ok(!before.includes('type="submit" disabled=""'));
+  assert.match(blocked, /type="submit" disabled=""/);
+  assert.ok(blocked.includes(messages.actions.back));
 });
 
 test('submission presentation states are localized and announce outcomes only when explicitly provided', () => {

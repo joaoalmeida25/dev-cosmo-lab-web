@@ -26,17 +26,26 @@ export const ServiceStep = ({
   <fieldset aria-describedby={error ? 'chat-service-error' : undefined}>
     <legend
       id="chat-service-title"
-      className="mb-5 text-lg leading-snug font-semibold text-text-primary"
+      className={`mb-5 text-lg leading-snug font-semibold ${error ? 'text-rose-400 light:text-rose-700' : 'text-text-primary'}`}
       data-chat-heading
       tabIndex={-1}
     >
       {title}
     </legend>
+    {error ? (
+      <p
+        id="chat-service-error"
+        role="alert"
+        className="mb-3 text-xs leading-relaxed font-medium text-rose-400 light:text-rose-700"
+      >
+        {error}
+      </p>
+    ) : null}
     <div className="grid gap-3">
       {options.map((option) => (
         <label
           key={option.value}
-          className={`flex min-h-12 cursor-pointer items-center gap-3 rounded-xl border px-3.5 py-3 text-sm leading-snug text-text-primary transition-colors hover:border-accent motion-reduce:transition-none ${value === option.value ? 'border-accent bg-primary-soft' : 'border-border bg-surface'}`}
+          className={`flex min-h-12 cursor-pointer items-center gap-3 rounded-xl border px-3.5 py-3 text-sm leading-snug text-text-primary transition-colors hover:border-accent motion-reduce:transition-none ${error ? 'border-rose-500 bg-surface' : value === option.value ? 'border-accent bg-primary-soft' : 'border-border bg-surface'}`}
         >
           <input
             type="radio"
@@ -57,10 +66,19 @@ export const ServiceStep = ({
       <div className="mt-5">
         <label
           htmlFor="chat-other-service"
-          className="mb-2 block text-sm font-medium text-text-primary"
+          className={`mb-2 block text-sm font-medium ${otherService.error ? 'text-rose-400 light:text-rose-700' : 'text-text-primary'}`}
         >
           {otherService.label}
         </label>
+        {otherService.error ? (
+          <p
+            id="chat-other-service-error"
+            role="alert"
+            className="mb-2 text-xs leading-relaxed font-medium text-rose-400 light:text-rose-700"
+          >
+            {otherService.error}
+          </p>
+        ) : null}
         <input
           id="chat-other-service"
           name="otherService"
@@ -71,27 +89,9 @@ export const ServiceStep = ({
           onChange={(event) => otherService.onChange(event.currentTarget.value)}
           aria-invalid={otherService.error ? true : undefined}
           aria-describedby={otherService.error ? 'chat-other-service-error' : undefined}
-          className="min-h-12 w-full rounded-xl border border-border bg-surface px-3.5 py-3 text-base text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
+          className={`min-h-12 w-full scroll-mt-20 rounded-xl border bg-surface px-3.5 py-3 text-base text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring ${otherService.error ? 'border-rose-500 focus-visible:border-rose-500 focus-visible:outline-rose-500' : 'border-border'}`}
         />
-        {otherService.error ? (
-          <p
-            id="chat-other-service-error"
-            role="alert"
-            className="mt-2 text-sm font-medium text-text-primary"
-          >
-            {otherService.error}
-          </p>
-        ) : null}
       </div>
-    ) : null}
-    {error ? (
-      <p
-        id="chat-service-error"
-        role="alert"
-        className="mt-2 text-sm font-medium text-text-primary"
-      >
-        {error}
-      </p>
     ) : null}
   </fieldset>
 );

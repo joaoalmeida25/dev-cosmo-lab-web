@@ -408,6 +408,7 @@ export const CommercialChat = ({
       content={content}
       submissionStatus={state.submission.status}
       canSubmit={Boolean(submissionConfig)}
+      disableContinue={state.validatedStep === screen && Object.keys(errors).length > 0}
       onHoneypotChange={(value) => {
         honeypotRef.current = value;
       }}
